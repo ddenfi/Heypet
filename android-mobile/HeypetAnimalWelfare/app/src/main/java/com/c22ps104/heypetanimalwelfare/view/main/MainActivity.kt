@@ -19,27 +19,7 @@ class MainActivity : AppCompatActivity() {
         setupView()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.main_options_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
-            R.id.btn_chat -> {
-                true
-            }
-
-            R.id.btn_notification -> {
-                true
-            }
-
-            else -> false
-        }
-    }
-
     private fun setupView() {
-        supportActionBar?.title = ""
+        supportActionBar?.hide()
     }
 }

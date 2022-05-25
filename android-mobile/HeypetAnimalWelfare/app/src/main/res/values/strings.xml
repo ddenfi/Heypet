@@ -35,15 +35,20 @@
     <string name="cd_comment_button">See this post\'s comments</string>
     <string name="cd_bookmark_button">Bookmark this post</string>
     <string name="cd_post_settings">Open post settings</string>
+    <string name="cd_camera_button">Open camera</string>
+    <string name="cd_heypet_filter">Filter posts</string>
+    <string name="cd_chat_button">Open chat</string>
+    <string name="cd_notification_button">Open notification</string>
 
     <!-- Misc -->
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="notification">Notification</string>
-    <string name="chat">Chat</string>
     <string name="timeout">Timeout</string>
     <string name="retry">Retry</string>
+    <string name="notification">Notification</string>
+    <string name="chat">Chat</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
     <string name="lorem_ipsum_2">Nullam a augue dui. Suspendisse dictum felis ut enim eleifend porta. <b> .... Read More</b></string>
+
 </resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_light_background"
+    tools:context=".view.splash.SplashScreenActivity">
+
+    <ImageView
+        android:id="@+id/img_splash_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash_character"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/cd_splash_image" />
+
+    <TextView
+        android:id="@+id/tv_splash_title"
+        style="@style/Text.Bold"
+        android:textSize="48sp"
+        android:text="@string/splash_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_splash_character" />
+
+    <TextView
+        android:id="@+id/tv_splash_subtitle"
+        style="@style/Text"
+        android:fontFamily="@font/lexend_light"
+        android:textSize="14sp"
+        android:text="@string/splash_subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_splash_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

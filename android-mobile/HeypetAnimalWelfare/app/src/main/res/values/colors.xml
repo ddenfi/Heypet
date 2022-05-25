@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FFFFFFFF</color>
+    <color name="secondary">#FF528AAC</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="blue_light_background">#FFA8DCFA</color>
+    <color name="blue_dark_text_title">#FF00689E</color>
+    <color name="blue_dark_text_subtitle">#FF528AAC</color>
+    <color name="blue_pale_icon">#FF3BF8FF</color>
+    <color name="orange_tag">#FFE5A534</color>
+    <color name="blue_selected_item">#FF1DAEFF</color>
+    <color name="grey_unselected_item">#FFB9BCBE</color>
+    <color name="grey_dark_description">#FF74787A</color>
+
+    <color name="white_blue_login_button">#FFEEFFFE</color>
+    <color name="main_background">#FFEFF9FF</color>
+    <color name="blue_pale_login_input">#FF528AAC</color>
+</resources>

@@ -30,6 +30,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
     }
     buildFeatures {
         viewBinding true
@@ -66,5 +67,6 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.5.0-alpha01'
 
     // Circle Image
+    implementation 'com.github.bumptech.glide:glide:4.13.1'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

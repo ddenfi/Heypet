@@ -1,40 +1,49 @@
 <resources>
     <string name="app_name">HeypetAnimalWelfare</string>
 
+    <!-- Splash -->
     <string name="splash_title">heypet.</string>
     <string name="splash_subtitle">your pet companion</string>
-
-
     <string name="cd_splash_image">Splash image</string>
+
+    <!-- Welcome -->
     <string name="welcome_title">Welcome!</string>
-    <string name="cd_welcome_image">Welcome image</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
-    <string name="sign_up">Sign Up</string>
     <string name="log_in_morethan"><![CDATA[Log In >]]></string>
-    <string name="profile_name">irene_</string>
-    <string name="cd_post_settings">Open post settings</string>
-    <string name="post_tag">Adoption</string>
-    <string name="cd_post_picture">Post\'s picture</string>
-    <string name="cd_like_button">Like this post</string>
-    <string name="likes_number">137</string>
-    <string name="lorem_ipsum_2">Nullam a augue dui. Suspendisse dictum felis ut enim eleifend porta. <b> .... Read More</b></string>
-    <string name="cd_bookmark_button">Bookmark this post</string>
-    <string name="cd_comment_button">See this post\'s comments</string>
-    <string name="cd_login_image">Login image</string>
+    <string name="cd_welcome_image">Welcome image</string>
+
+    <!-- Login -->
     <string name="login_title">One step\ncloser</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="log_in">Log In</string>
     <string name="or">Or</string>
+    <string name="cd_login_image">Login image</string>
     <string name="cd_facebook_login">Login with Facebook</string>
     <string name="cd_google_login">Login with Google</string>
     <string name="cd_apple_login">Login with Apple</string>
-    <string name="cd_sign_up_image">Sign Up image</string>
+
+    <!-- Signup -->
     <string name="signup_title">Let\'s Make\nOne!</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="cd_sign_up_image">Sign Up image</string>
+
+    <!-- Main and Post -->
+    <string name="profile_name">irene_</string>
+    <string name="post_tag">Adoption</string>
+    <string name="likes_number">137</string>
+    <string name="cd_post_picture">Post\'s picture</string>
+    <string name="cd_like_button">Like this post</string>
+    <string name="cd_comment_button">See this post\'s comments</string>
+    <string name="cd_bookmark_button">Bookmark this post</string>
+    <string name="cd_post_settings">Open post settings</string>
+
+    <!-- Misc -->
+    <string name="username">Username</string>
     <string name="email">Email</string>
+    <string name="password">Password</string>
     <string name="notification">Notification</string>
     <string name="chat">Chat</string>
-    <string name="retry">Retry</string>
     <string name="timeout">Timeout</string>
+    <string name="retry">Retry</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
+    <string name="lorem_ipsum_2">Nullam a augue dui. Suspendisse dictum felis ut enim eleifend porta. <b> .... Read More</b></string>
 </resources>

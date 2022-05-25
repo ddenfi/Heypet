@@ -83,7 +83,8 @@
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintEnd_toEndOf="@id/til_username"
         app:layout_constraintTop_toBottomOf="@id/til_email"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/blue_dark_text_title">
 
         <EditText
             android:id="@+id/et_password"

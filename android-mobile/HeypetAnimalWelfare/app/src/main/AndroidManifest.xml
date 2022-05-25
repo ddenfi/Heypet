@@ -27,18 +27,22 @@
 
         <activity
             android:name=".view.login.LoginActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="false" />
 
         <activity
             android:name=".view.signup.SignupActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="false" />
 
         <activity
             android:name=".view.welcome.WelcomeActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="false" />
 
         <activity
             android:name=".view.splash.SplashScreenActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -50,6 +54,7 @@
 
         <activity
             android:name=".view.main.MainActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="false" />
     </application>
 

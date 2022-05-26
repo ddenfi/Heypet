@@ -7,15 +7,32 @@
     android:background="@drawable/signup_bg_full"
     tools:context=".view.signup.SignupActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hor_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hor_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <ImageView
         android:id="@+id/img_signup_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/signup_character"
-        android:layout_marginBottom="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/gl_hor_bottom"
         android:contentDescription="@string/cd_sign_up_image" />
 
     <TextView
@@ -23,19 +40,18 @@
         style="@style/Text.Bold"
         android:textSize="32sp"
         android:text="@string/signup_title"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/gl_hor_top" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_signup_title">
@@ -117,17 +133,16 @@
         style="@style/Text"
         android:textSize="20sp"
         android:text="@string/or"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintEnd_toEndOf="@id/til_username"
         app:layout_constraintTop_toBottomOf="@id/btn_signup" />
 
     <ImageView
         android:id="@+id/btn_facebook"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
+        style="@style/AlternativeLoginButton"
         android:src="@drawable/button_facebook"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintEnd_toEndOf="@id/til_username"
         app:layout_constraintTop_toBottomOf="@id/tv_or"
@@ -135,8 +150,7 @@
 
     <ImageView
         android:id="@+id/btn_google"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
+        style="@style/AlternativeLoginButton"
         android:src="@drawable/button_google"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toStartOf="@id/btn_facebook"
@@ -146,8 +160,7 @@
 
     <ImageView
         android:id="@+id/btn_apple"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
+        style="@style/AlternativeLoginButton"
         android:src="@drawable/button_apple"
         android:layout_marginStart="32dp"
         app:layout_constraintStart_toEndOf="@id/btn_facebook"

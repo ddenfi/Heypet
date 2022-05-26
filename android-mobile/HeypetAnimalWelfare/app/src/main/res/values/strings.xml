@@ -27,16 +27,19 @@
     <string name="cd_sign_up_image">Sign Up image</string>
 
     <!-- Main and Post -->
+    <string name="heypet">heypet</string>
+    <string name="actionbar_filter_button"><![CDATA[>]]></string>
     <string name="profile_name">irene_</string>
     <string name="post_tag">Adoption</string>
     <string name="likes_number">137</string>
+    <string name="read_more">Read More</string>
+    <string name="cd_filter_posts">Filter posts</string>
     <string name="cd_post_picture">Post\'s picture</string>
     <string name="cd_like_button">Like this post</string>
     <string name="cd_comment_button">See this post\'s comments</string>
     <string name="cd_bookmark_button">Bookmark this post</string>
     <string name="cd_post_settings">Open post settings</string>
     <string name="cd_camera_button">Open camera</string>
-    <string name="cd_heypet_filter">Filter posts</string>
     <string name="cd_chat_button">Open chat</string>
     <string name="cd_notification_button">Open notification</string>
 
@@ -49,6 +52,6 @@
     <string name="notification">Notification</string>
     <string name="chat">Chat</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
-    <string name="lorem_ipsum_2">Nullam a augue dui. Suspendisse dictum felis ut enim eleifend porta. <b> .... Read More</b></string>
+    <string name="lorem_ipsum_2">Nullam a augue dui. Suspendisse dictum felis ut enim eleifend porta.</string>
 
 </resources>

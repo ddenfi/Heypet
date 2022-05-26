@@ -7,6 +7,15 @@
     android:background="@drawable/login_bg_full"
     tools:context=".view.login.LoginActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hor_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <ImageView
         android:id="@+id/img_login_character"
         android:layout_width="wrap_content"
@@ -14,10 +23,9 @@
         android:src="@drawable/login_character"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_hor_top"
         android:contentDescription="@string/cd_login_image" />
 
     <TextView
@@ -35,9 +43,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_login_title">
@@ -96,7 +104,7 @@
         android:text="@string/log_in"
         android:gravity="center"
         android:background="@drawable/button_login_signup"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintEnd_toEndOf="@id/til_username"
         app:layout_constraintTop_toBottomOf="@id/tv_forgot_password" />
@@ -106,17 +114,16 @@
         style="@style/Text"
         android:textSize="20sp"
         android:text="@string/or"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintEnd_toEndOf="@id/til_username"
         app:layout_constraintTop_toBottomOf="@id/btn_login" />
 
     <ImageView
         android:id="@+id/btn_facebook"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
+        style="@style/AlternativeLoginButton"
         android:src="@drawable/button_facebook"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintEnd_toEndOf="@id/til_username"
         app:layout_constraintTop_toBottomOf="@id/tv_or"
@@ -124,8 +131,7 @@
 
     <ImageView
         android:id="@+id/btn_google"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
+        style="@style/AlternativeLoginButton"
         android:src="@drawable/button_google"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toStartOf="@id/btn_facebook"
@@ -135,8 +141,7 @@
 
     <ImageView
         android:id="@+id/btn_apple"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
+        style="@style/AlternativeLoginButton"
         android:src="@drawable/button_apple"
         android:layout_marginStart="32dp"
         app:layout_constraintStart_toEndOf="@id/btn_facebook"

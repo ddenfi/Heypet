@@ -8,11 +8,13 @@
     tools:context=".view.welcome.WelcomeActivity">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_ver"
+        android:id="@+id/gl_hor_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/tv_welcome_title"
@@ -21,17 +23,17 @@
         android:textStyle="bold"
         android:textSize="32sp"
         android:text="@string/welcome_title"
-        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/gl_hor_top" />
 
     <ImageView
         android:id="@+id/img_welcome_character"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/welcome_character"
-        android:layout_marginTop="16dp"
+        android:scaleType="center"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_welcome_title"
@@ -46,24 +48,16 @@
         android:textAlignment="center"
         android:textColor="@color/blue_dark_text_subtitle"
         android:text="@string/lorem_ipsum"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_welcome_character" />
 
     <TextView
-        android:id="@+id/btn_signup"
-        style="@style/Text.Bold"
-        android:textSize="16sp"
-        android:text="@string/sign_up"
-        android:layout_marginStart="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btn_login"
-        app:layout_constraintBottom_toBottomOf="@id/btn_login" />
-
-    <TextView
         android:id="@+id/btn_login"
         style="@style/Text.Bold"
+        android:layout_width="152dp"
+        android:layout_height="72dp"
         android:textSize="16sp"
         android:textColor="@color/white_blue_login_button"
         android:text="@string/log_in_morethan"
@@ -71,5 +65,17 @@
         android:background="@drawable/button_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_signup"
+        style="@style/Text.Bold"
+        android:layout_width="152dp"
+        android:layout_height="72dp"
+        android:textSize="16sp"
+        android:text="@string/sign_up"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_login"
+        app:layout_constraintBottom_toBottomOf="@id/btn_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

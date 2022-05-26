@@ -27,16 +27,29 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/cd_camera_button" />
 
-        <ImageView
-            android:id="@+id/btn_heypet_filter"
-            android:layout_width="wrap_content"
-            android:layout_height="27dp"
-            android:src="@drawable/icon_heypetfdropdown"
+        <TextView
+            android:id="@+id/tv_heypet_title"
+            style="@style/Text"
+            android:fontFamily="@font/lexend_medium"
+            android:textSize="20sp"
+            android:text="@string/heypet"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toEndOf="@id/btn_camera"
             app:layout_constraintTop_toTopOf="@id/btn_camera"
+            app:layout_constraintBottom_toBottomOf="@id/btn_camera" />
+
+        <TextView
+            android:id="@+id/btn_filter"
+            style="@style/Text"
+            android:rotation="90"
+            android:fontFamily="@font/lexend_medium"
+            android:textSize="20sp"
+            android:text="@string/actionbar_filter_button"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/tv_heypet_title"
+            app:layout_constraintTop_toTopOf="@id/btn_camera"
             app:layout_constraintBottom_toBottomOf="@id/btn_camera"
-            android:contentDescription="@string/cd_heypet_filter" />
+            android:contentDescription="@string/cd_filter_posts"/>
 
         <ImageView
             android:id="@+id/btn_chat"

@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.c22ps104.heypetanimalwelfare.data.ListPostData
 import com.c22ps104.heypetanimalwelfare.databinding.ItemRowPostBinding
 
-class ListPostPagingAdapter :
-    PagingDataAdapter<ListPostData, ListPostPagingAdapter.ListViewHolder>(DIFF_CALLBACK) {
+class ListProfilePostPagingAdapter :
+    PagingDataAdapter<ListPostData, ListProfilePostPagingAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 

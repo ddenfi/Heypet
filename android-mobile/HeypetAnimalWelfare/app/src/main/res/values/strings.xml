@@ -34,6 +34,7 @@
     <string name="likes_number">137</string>
     <string name="read_more">Read More</string>
     <string name="cd_filter_posts">Filter posts</string>
+    <string name="cd_profile_image">Profile image</string>
     <string name="cd_post_picture">Post\'s picture</string>
     <string name="cd_like_button">Like this post</string>
     <string name="cd_comment_button">See this post\'s comments</string>
@@ -42,6 +43,20 @@
     <string name="cd_camera_button">Open camera</string>
     <string name="cd_chat_button">Open chat</string>
     <string name="cd_notification_button">Open notification</string>
+
+    <!-- Profile -->
+    <string name="_20">20</string>
+    <string name="posts">Posts</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="profile_fullname">Irene Vorger</string>
+    <string name="pet_name">Yuuki</string>
+    <string name="pet_dash">-</string>
+    <string name="pet_breed">American Short Hair</string>
+    <string name="follow">Follow</string>
+    <string name="cd_back_button">Back to previous page</string>
+    <string name="cd_pet_type">Pet type</string>
+    <string name="cd_profile_chat_button">Chat this user</string>
 
     <!-- Misc -->
     <string name="username">Username</string>
@@ -53,5 +68,11 @@
     <string name="chat">Chat</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
     <string name="lorem_ipsum_2">Nullam a augue dui. Suspendisse dictum felis ut enim eleifend porta.</string>
+
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 
 </resources>

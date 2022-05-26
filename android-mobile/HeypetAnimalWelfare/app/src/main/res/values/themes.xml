@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary</item>
-        <item name="colorOnPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorSecondaryVariant">@color/secondary</item>
@@ -27,6 +27,22 @@
     <style name="Text.Bold">
         <item name="fontFamily">@font/lexend_bold</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Medium">
+        <item name="fontFamily">@font/lexend_medium</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Text.Medium.PetDetails">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/grey_pale_pet_details</item>
+        <item name="android:layout_marginStart">4dp</item>
+    </style>
+
+    <style name="Text.Light">
+        <item name="fontFamily">@font/lexend_light</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="AlternativeLoginButton">

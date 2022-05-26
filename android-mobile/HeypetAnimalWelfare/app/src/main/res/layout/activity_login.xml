@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg_full"
+    android:background="@drawable/login_background"
     tools:context=".view.login.LoginActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -103,7 +103,7 @@
         android:textColor="@color/white_blue_login_button"
         android:text="@string/log_in"
         android:gravity="center"
-        android:background="@drawable/button_login_signup"
+        android:background="@drawable/button_general"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintEnd_toEndOf="@id/til_username"

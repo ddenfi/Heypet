@@ -26,6 +26,6 @@
         android:textColor="@color/white_blue_login_button"
         android:text="@string/retry"
         android:gravity="center"
-        android:background="@drawable/button_login_signup"
+        android:background="@drawable/button_general"
         android:layout_gravity="center" />
 </LinearLayout>

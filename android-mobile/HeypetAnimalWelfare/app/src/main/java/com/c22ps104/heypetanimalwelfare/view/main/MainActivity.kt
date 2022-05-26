@@ -1,11 +1,8 @@
 package com.c22ps104.heypetanimalwelfare.view.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import com.c22ps104.heypetanimalwelfare.R
+import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -65,7 +65,7 @@
     <string name="alarm_time">Alarm Time</string>
     <string name="set_one_time_alarm">Set One Time Alarm</string>
     <string name="alarm_message">Alarm Message</string>
-    <string name="one_time_alarm_confirm">One-time alarm set</string>
+    <string name="one_time_alarm_confirm">One time alarm set</string>
     <string name="repeating_alarm">Repeating Alarm</string>
     <string name="set_repeating_alarm">Set Repeating Alarm</string>
     <string name="repeating_alarm_confirm">Repeating alarm set</string>

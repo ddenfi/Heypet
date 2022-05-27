@@ -9,6 +9,7 @@
     tools:context=".view.settings.SettingsActivity">
 
     <TextView
+        android:id="@+id/tv_once_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -27,7 +28,8 @@
             style="@style/Base.Widget.AppCompat.ImageButton"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_date_range_24" />
+            android:src="@drawable/ic_baseline_date_range_24"
+            android:contentDescription="@string/cd_calendar_button" />
 
         <TextView
             android:id="@+id/tv_once_date"
@@ -46,7 +48,8 @@
             android:id="@+id/btn_once_time"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_access_time_24" />
+            android:src="@drawable/ic_baseline_access_time_24"
+            android:contentDescription="@string/cd_clock_button" />
 
         <TextView
             android:id="@+id/tv_once_time"
@@ -88,7 +91,8 @@
             android:id="@+id/btn_repeating_time"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_access_time_24" />
+            android:src="@drawable/ic_baseline_access_time_24"
+            android:contentDescription="@string/cd_clock_button" />
 
         <TextView
             android:id="@+id/tv_repeating_time"

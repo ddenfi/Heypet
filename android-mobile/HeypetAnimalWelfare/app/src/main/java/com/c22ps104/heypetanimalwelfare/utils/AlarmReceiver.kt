@@ -20,21 +20,6 @@ import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
 
-    companion object {
-        const val TYPE_ONE_TIME = "OneTimeAlarm"
-        const val TYPE_REPEATING = "RepeatingAlarm"
-        const val EXTRA_MESSAGE = "message"
-        const val EXTRA_TYPE = "type"
-
-        // Siapkan 2 id untuk 2 macam alarm, onetime dan repeating
-        private const val ID_ONETIME = 100
-        private const val ID_REPEATING = 101
-
-        private const val DATE_FORMAT = "yyyy-MM-dd"
-        private const val TIME_FORMAT = "HH:mm"
-
-    }
-
     override fun onReceive(context: Context, intent: Intent) {
         val type = intent.getStringExtra(EXTRA_TYPE)
         val message = intent.getStringExtra(EXTRA_MESSAGE)
@@ -42,7 +27,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
         val notifId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
 
-        //Jika Anda ingin menampilkan dengan toast anda bisa menghilangkan komentar pada baris dibawah ini.
+        // Uncomment this function call to enable Toast
 //        showToast(context, title, message)
 
         if (message != null) {
@@ -50,13 +35,7 @@ class AlarmReceiver : BroadcastReceiver() {
         }
     }
 
-    // Gunakan metode ini untuk menampilkan toast
-
-    private fun showToast(context: Context, title: String, message: String?) {
-        Toast.makeText(context, "$title : $message", Toast.LENGTH_LONG).show()
-    }
-
-    // Gunakan metode ini untuk menampilkan notifikasi
+    // Method for notification
     private fun showAlarmNotification(context: Context, title: String, message: String, notifId: Int) {
 
         val channelId = "Channel_1"
@@ -72,13 +51,10 @@ class AlarmReceiver : BroadcastReceiver() {
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
             .setSound(alarmSound)
 
-        /*
-        Untuk android Oreo ke atas perlu menambahkan notification channel
-        Materi ini akan dibahas lebih lanjut di modul extended
-         */
+        // Android Oreo and above requires adding notification channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            /* Create or update. */
+            // Create or update
             val channel = NotificationChannel(channelId,
                 channelName,
                 NotificationManager.IMPORTANCE_DEFAULT)
@@ -94,14 +70,12 @@ class AlarmReceiver : BroadcastReceiver() {
         val notification = builder.build()
 
         notificationManagerCompat.notify(notifId, notification)
-
     }
 
-    // Metode ini digunakan untuk menjalankan alarm one time
-
+    // Method for one-time alarm
     fun setOneTimeAlarm(context: Context, type: String, date: String, time: String, message: String) {
 
-        // Validasi inputan date dan time terlebih dahulu
+        // Validate date and time inputs first
         if (isDateInvalid(date, DATE_FORMAT) || isDateInvalid(time, TIME_FORMAT)) return
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -127,10 +101,10 @@ class AlarmReceiver : BroadcastReceiver() {
         Toast.makeText(context, "One time alarm set up", Toast.LENGTH_SHORT).show()
     }
 
-    // Metode ini digunakan untuk menjalankan alarm repeating
+    // Method for repeating alarm
     fun setRepeatingAlarm(context: Context, type: String, time: String, message: String) {
 
-        // Validasi inputan waktu terlebih dahulu
+        // Validate time input first
         if (isDateInvalid(time, TIME_FORMAT)) return
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -151,7 +125,7 @@ class AlarmReceiver : BroadcastReceiver() {
         Toast.makeText(context, "Repeating alarm set up", Toast.LENGTH_SHORT).show()
     }
 
-    // Gunakan metode ini untuk mengecek apakah alarm tersebut sudah terdaftar di alarm manager
+    // Use this method to check if the alarm is already registered in the alarm manager or not
     fun isAlarmSet(context: Context, type: String): Boolean {
         val intent = Intent(context, AlarmReceiver::class.java)
         val requestCode = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
@@ -159,7 +133,7 @@ class AlarmReceiver : BroadcastReceiver() {
         return PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_NO_CREATE) != null
     }
 
-    // Metode ini digunakan untuk validasi date dan time
+    // Validate date and time
     private fun isDateInvalid(date: String, format: String): Boolean {
         return try {
             val df = SimpleDateFormat(format, Locale.getDefault())
@@ -179,5 +153,25 @@ class AlarmReceiver : BroadcastReceiver() {
         pendingIntent.cancel()
         alarmManager.cancel(pendingIntent)
         Toast.makeText(context, "Repeating alarm dibatalkan", Toast.LENGTH_SHORT).show()
+    }
+
+    // Method for Toast
+    private fun showToast(context: Context, title: String, message: String?) {
+        Toast.makeText(context, "$title : $message", Toast.LENGTH_LONG).show()
+    }
+
+    companion object {
+        const val TYPE_ONE_TIME = "OneTimeAlarm"
+        const val TYPE_REPEATING = "RepeatingAlarm"
+        const val EXTRA_MESSAGE = "message"
+        const val EXTRA_TYPE = "type"
+
+        // IDs for two kinds of alarms, onetime and repeating
+        private const val ID_ONETIME = 100
+        private const val ID_REPEATING = 101
+
+        private const val DATE_FORMAT = "yyyy-MM-dd"
+        private const val TIME_FORMAT = "HH:mm"
+
     }
 }

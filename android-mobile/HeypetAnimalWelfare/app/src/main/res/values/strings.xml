@@ -58,6 +58,24 @@
     <string name="cd_pet_type">Pet type</string>
     <string name="cd_profile_chat_button">Chat this user</string>
 
+    <!-- Settings -->
+    <string name="one_time_alarm">One Time Alarm</string>
+    <string name="alarm_date">Alarm Date</string>
+    <string name="alarm_time">Alarm Time</string>
+    <string name="set_one_time_alarm">Set One Time Alarm</string>
+    <string name="alarm_message">Alarm Message</string>
+    <string name="repeating_alarm">Repeating Alarm</string>
+    <string name="set_repeating_alarm">Set Repeating Alarm</string>
+    <string name="cancel_alarm">Cancel Alarm</string>
+    <string name="cd_clock_button">Choose hour and minute</string>
+    <string name="cd_calendar_button">Choose date</string>
+
+    <!-- Bottom Navigation -->
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
     <!-- Misc -->
     <string name="username">Username</string>
     <string name="email">Email</string>
@@ -67,22 +85,6 @@
     <string name="notification">Notification</string>
     <string name="chat">Chat</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
-    <string name="lorem_ipsum_2">Nullam a augue dui. Suspendisse dictum felis ut enim eleifend porta.</string>
 
-    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-
-    <string name="one_time_alarm">One Time Alarm</string>
-    <string name="alarm_date">Alarm Date</string>
-    <string name="set_one_time_alarm">Set One Time Alarm</string>
-    <string name="alarm_message">Alarm Message</string>
-    <string name="repeating_alarm">Repeating Alarm</string>
-    <string name="set_repeating_alarm">Set Repeating Alarm</string>
-    <string name="cancel_alarm">Cancel Alarm</string>
-    <string name="alarm_time">Alarm Time</string>
-    <string name="cd_clock_button">Choose hour and minute</string>
-    <string name="cd_calendar_button">Choose date</string>
 
 </resources>

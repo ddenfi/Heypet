@@ -6,18 +6,20 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.c22ps104.heypetanimalwelfare.data.ListPostData
-import com.c22ps104.heypetanimalwelfare.databinding.ItemRowPostBinding
+import com.c22ps104.heypetanimalwelfare.databinding.ItemMainPostBinding
 
 class ListProfilePostPagingAdapter :
     PagingDataAdapter<ListPostData, ListProfilePostPagingAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
+    // test
+
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    inner class ListViewHolder(private var binding: ItemRowPostBinding) :
+    inner class ListViewHolder(private var binding: ItemMainPostBinding) :
         RecyclerView.ViewHolder(binding.root)
     {
         fun bind(post: ListPostData) {
@@ -27,7 +29,7 @@ class ListProfilePostPagingAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val binding =
-            ItemRowPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemMainPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 

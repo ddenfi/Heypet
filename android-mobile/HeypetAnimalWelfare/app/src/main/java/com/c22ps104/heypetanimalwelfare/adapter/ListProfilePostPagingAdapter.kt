@@ -13,8 +13,6 @@ class ListProfilePostPagingAdapter :
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    // test
-
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }

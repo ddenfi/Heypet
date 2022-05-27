@@ -27,7 +27,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
         val notificationId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
 
-        // Show Toast after setting an alarm
+        // Show Toast when alarm is ringing
         showToast(context, title, message)
 
         // Show alarm notification
@@ -36,7 +36,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
     // Method for notification
     private fun showAlarmNotification(context: Context, title: String, message: String, notificationId: Int) {
-
         val channelId = "Channel_1"
         val channelName = "AlarmManager channel"
 
@@ -70,7 +69,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
     // Method for one-time alarm
     fun setOneTimeAlarm(context: Context, type: String, date: String, time: String, message: String) {
-
         // Validate date and time inputs first
         if (isDateInvalid(date, DATE_FORMAT) || isDateInvalid(time, TIME_FORMAT)) return
 
@@ -93,13 +91,10 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val pendingIntent = PendingIntent.getBroadcast(context, ID_ONETIME, intent, PendingIntent.FLAG_IMMUTABLE)
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
-
-        Toast.makeText(context, "One time alarm set up", Toast.LENGTH_SHORT).show()
     }
 
     // Method for repeating alarm
     fun setRepeatingAlarm(context: Context, type: String, time: String, message: String) {
-
         // Validate time input first
         if (isDateInvalid(time, TIME_FORMAT)) return
 
@@ -117,8 +112,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, PendingIntent.FLAG_IMMUTABLE)
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
-
-        Toast.makeText(context, "Repeating alarm set up", Toast.LENGTH_SHORT).show()
     }
 
     // Use this method to check if the alarm is already registered in the alarm manager or not
@@ -148,17 +141,17 @@ class AlarmReceiver : BroadcastReceiver() {
         val pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_IMMUTABLE)
         pendingIntent.cancel()
         alarmManager.cancel(pendingIntent)
-        Toast.makeText(context, "Repeating alarm canceled", Toast.LENGTH_SHORT).show()
     }
 
     // Method for Toast
     private fun showToast(context: Context, title: String, message: String?) {
-        Toast.makeText(context, "$title : $message", Toast.LENGTH_LONG).show()
+        if(message != null) Toast.makeText(context, "$title: $message", Toast.LENGTH_LONG).show()
+        else Toast.makeText(context, title, Toast.LENGTH_LONG).show()
     }
 
     companion object {
-        const val TYPE_ONE_TIME = "OneTimeAlarm"
-        const val TYPE_REPEATING = "RepeatingAlarm"
+        const val TYPE_ONE_TIME = "Heypet Alarm"
+        const val TYPE_REPEATING = "Heypet Alarm"
         const val EXTRA_MESSAGE = "message"
         const val EXTRA_TYPE = "type"
 

@@ -2,6 +2,7 @@ package com.c22ps104.heypetanimalwelfare.view.settings
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.databinding.ActivitySettingsBinding
@@ -63,6 +64,8 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener,
                     onceTime,
                     onceMessage
                 )
+
+                Toast.makeText(this@SettingsActivity, getString(R.string.one_time_alarm_confirm), Toast.LENGTH_SHORT).show()
             }
 
             R.id.btn_repeating_time -> {
@@ -77,20 +80,26 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener,
                     this, AlarmReceiver.TYPE_REPEATING,
                     repeatTime, repeatMessage
                 )
+
+                Toast.makeText(this@SettingsActivity, getString(R.string.repeating_alarm_confirm), Toast.LENGTH_SHORT).show()
             }
 
-            R.id.btn_cancel_repeating_alarm -> alarmReceiver.cancelAlarm(
-                this,
-                AlarmReceiver.TYPE_REPEATING
-            )
+            R.id.btn_cancel_repeating_alarm -> {
+                alarmReceiver.cancelAlarm(
+                    this,
+                    AlarmReceiver.TYPE_REPEATING
+                )
+
+                Toast.makeText(this@SettingsActivity, getString(R.string.cancel_alarm_confirm), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     override fun onDialogDateSet(tag: String?, year: Int, month: Int, dayOfMonth: Int) {
-
         // Ready date formatter
         val calendar = Calendar.getInstance()
         calendar.set(year, month, dayOfMonth)
+
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
         // Set text of TextView
@@ -105,7 +114,6 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
-
         // Ready time formatter
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)

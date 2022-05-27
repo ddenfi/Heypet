@@ -24,9 +24,9 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_camera.xml" value="0.258230012825994" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_caretips.xml" value="0.31765711842667804" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_login.xml" value="0.271985494106981" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_profile.xml" value="0.33" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_settings.xml" value="0.33" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_main.xml" value="0.5471281296023565" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_profile.xml" value="0.5" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_settings.xml" value="0.5" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_welcome.xml" value="0.31765711842667804" />
@@ -34,7 +34,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_home.xml" value="0.31765711842667804" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_notifications.xml" value="0.67" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_loading.xml" value="0.33" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_main_post.xml" value="0.75" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_main_post.xml" value="0.5" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_profile_post.xml" value="0.67" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_row_post.xml" value="0.29814814814814816" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />

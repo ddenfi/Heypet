@@ -74,5 +74,15 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="one_time_alarm">One Time Alarm</string>
+    <string name="alarm_date">Tanggal Alarm</string>
+    <string name="set_one_time_alarm">Set One Time Alarm</string>
+    <string name="alarm_message">Pesan Alarm</string>
+    <string name="repeating_alarm">Repeating Alarm</string>
+    <string name="set_repeating_alarm">Set Repeating Alarm</string>
+    <string name="cancel_alarm">Batalkan Alarm</string>
+    <string name="alarm_time">Waktu Alarm</string>
+    <string name="cd_time_button">Choose hour and minute</string>
+    <string name="cd_calendar_button">Choose date</string>
 
 </resources>

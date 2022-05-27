@@ -24,6 +24,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HeypetAnimalWelfare"
         tools:targetApi="31">
+
+        <receiver
+            android:name=".utils.AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
         <activity
             android:name=".view.bottomnavigation.BottomNavigationActivity"
             android:exported="false"

@@ -11,6 +11,7 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.c22ps104.heypetanimalwelfare.R
@@ -25,18 +26,17 @@ class AlarmReceiver : BroadcastReceiver() {
         val message = intent.getStringExtra(EXTRA_MESSAGE)
 
         val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
-        val notifId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
+        val notificationId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
 
         // Uncomment this function call to enable Toast
-//        showToast(context, title, message)
+        showToast(context, title, message)
 
-        if (message != null) {
-            showAlarmNotification(context, title, message, notifId)
-        }
+        // Show alarm notification
+        if (message != null) showAlarmNotification(context, title, message, notificationId)
     }
 
     // Method for notification
-    private fun showAlarmNotification(context: Context, title: String, message: String, notifId: Int) {
+    private fun showAlarmNotification(context: Context, title: String, message: String, notificationId: Int) {
 
         val channelId = "Channel_1"
         val channelName = "AlarmManager channel"
@@ -61,15 +61,12 @@ class AlarmReceiver : BroadcastReceiver() {
 
             channel.enableVibration(true)
             channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
-
             builder.setChannelId(channelId)
-
             notificationManagerCompat.createNotificationChannel(channel)
         }
 
         val notification = builder.build()
-
-        notificationManagerCompat.notify(notifId, notification)
+        notificationManagerCompat.notify(notificationId, notification)
     }
 
     // Method for one-time alarm
@@ -152,7 +149,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_IMMUTABLE)
         pendingIntent.cancel()
         alarmManager.cancel(pendingIntent)
-        Toast.makeText(context, "Repeating alarm dibatalkan", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Repeating alarm canceled", Toast.LENGTH_SHORT).show()
     }
 
     // Method for Toast

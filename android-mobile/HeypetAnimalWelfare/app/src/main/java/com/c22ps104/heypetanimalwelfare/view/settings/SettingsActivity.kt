@@ -25,6 +25,8 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun setupView() {
+        supportActionBar?.title = getString(R.string.settings_title)
+
         // Listener one time alarm
         binding?.btnOnceDate?.setOnClickListener(this)
         binding?.btnOnceTime?.setOnClickListener(this)

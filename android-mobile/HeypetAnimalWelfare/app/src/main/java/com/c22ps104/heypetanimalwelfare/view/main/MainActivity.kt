@@ -1,9 +1,11 @@
 package com.c22ps104.heypetanimalwelfare.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityMainBinding
+import com.c22ps104.heypetanimalwelfare.view.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,5 +23,9 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.progressBar.visibility = View.VISIBLE
+        binding.btnChat.setOnClickListener {
+            val intentToSettings = Intent(this@MainActivity, SettingsActivity::class.java)
+            startActivity(intentToSettings)
+        }
     }
 }

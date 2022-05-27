@@ -19,9 +19,7 @@ class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
 
     override fun onDetach() {
         super.onDetach()
-        if (mListener != null) {
-            mListener = null
-        }
+        if (mListener != null) mListener = null
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -29,6 +27,7 @@ class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener 
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
         val formatHour24 = true
+
         return TimePickerDialog(activity, this, hour, minute, formatHour24)
     }
 

@@ -59,6 +59,7 @@
     <string name="cd_profile_chat_button">Chat this user</string>
 
     <!-- Settings -->
+    <string name="settings_title">Settings</string>
     <string name="one_time_alarm">One Time Alarm</string>
     <string name="alarm_date">Alarm Date</string>
     <string name="alarm_time">Alarm Time</string>

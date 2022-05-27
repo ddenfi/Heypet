@@ -11,7 +11,6 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.c22ps104.heypetanimalwelfare.R
@@ -28,7 +27,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
         val notificationId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
 
-        // Uncomment this function call to enable Toast
+        // Show Toast after setting an alarm
         showToast(context, title, message)
 
         // Show alarm notification
@@ -107,7 +106,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
-        val putExtra = intent.putExtra(EXTRA_TYPE, type)
+        intent.putExtra(EXTRA_TYPE, type)
 
         val timeArray = time.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
 

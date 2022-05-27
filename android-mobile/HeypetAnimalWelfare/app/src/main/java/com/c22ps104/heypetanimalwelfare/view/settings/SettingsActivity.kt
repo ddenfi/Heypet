@@ -27,7 +27,7 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener,
     private fun setupView() {
         supportActionBar?.title = getString(R.string.settings_title)
 
-        // Listener one time alarm
+        // Listener one-time alarm
         binding?.btnOnceDate?.setOnClickListener(this)
         binding?.btnOnceTime?.setOnClickListener(this)
         binding?.btnSetOnceAlarm?.setOnClickListener(this)
@@ -88,38 +88,38 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener,
 
     override fun onDialogDateSet(tag: String?, year: Int, month: Int, dayOfMonth: Int) {
 
-        // Siapkan date formatter-nya terlebih dahulu
+        // Ready date formatter
         val calendar = Calendar.getInstance()
         calendar.set(year, month, dayOfMonth)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
-        // Set text dari textview once
+        // Set text of TextView
         binding?.tvOnceDate?.text = dateFormat.format(calendar.time)
 
         when (tag) {
             TIME_PICKER_ONCE_TAG -> binding?.tvOnceTime?.text = dateFormat.format(calendar.time)
             TIME_PICKER_REPEAT_TAG -> binding?.tvRepeatingTime?.text =
                 dateFormat.format(calendar.time)
-            else -> {
-            }
+            else -> {}
         }
     }
 
     override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
 
-        // Siapkan time formatter-nya terlebih dahulu
+        // Ready time formatter
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
         calendar.set(Calendar.MINUTE, minute)
 
         val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
 
-        // Set text dari textview berdasarkan tag
+        // Set text of TextView based on tag
         when (tag) {
             TIME_PICKER_ONCE_TAG -> binding?.tvOnceTime?.text = dateFormat.format(calendar.time)
-            TIME_PICKER_REPEAT_TAG -> {}
-            else -> {
+            TIME_PICKER_REPEAT_TAG -> {
+                binding?.tvRepeatingTime?.text = dateFormat.format(calendar.time)
             }
+            else -> {}
         }
     }
 

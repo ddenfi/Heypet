@@ -76,6 +76,7 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener,
             R.id.btn_set_repeating_alarm -> {
                 val repeatTime = binding?.tvRepeatingTime?.text.toString()
                 val repeatMessage = binding?.edtRepeatingMessage?.text.toString()
+
                 alarmReceiver.setRepeatingAlarm(
                     this, AlarmReceiver.TYPE_REPEATING,
                     repeatTime, repeatMessage

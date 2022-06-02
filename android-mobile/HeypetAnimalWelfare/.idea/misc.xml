@@ -39,6 +39,33 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_row_post.xml" value="0.29814814814814816" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/HeypetGit/heypet-animal-welfare-community-platform/android-mobile/HeypetAnimalWelfare/app/src/main/res/menu/main_options_menu.xml" value="0.31765711842667804" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.242" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.242" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.242" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/drawable/ic_profile.xml" value="0.242" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/drawable/ic_reminder.xml" value="0.1095" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.25" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_camera.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_caretips.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_profile.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_settings.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_signup.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_splash_screen.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_welcome.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_dashboard.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_notifications.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_profile.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_reminder.xml" value="0.1" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_scan.xml" value="0.1" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_loading.xml" value="0.14722222222222223" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_main_post.xml" value="0.14722222222222223" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_profile_post.xml" value="0.14722222222222223" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/menu-v26/bottom_nav_menu.xml" value="0.3859375" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/menu/bottom_nav_menu.xml" value="0.38697916666666665" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/menu/main_options_menu.xml" value="0.38697916666666665" />
       </map>
     </option>
   </component>

@@ -1,16 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_background"
     tools:context=".view.bottomnavigation.ui.profile.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView"
-        android:gravity="center"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hor_center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.40218878"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_profile_details"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cardCornerRadius="10dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gl_hor_center">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_hor_top"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_back"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/cd_back_button" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_profile_picture"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:src="@drawable/profile_picture"
+                android:layout_marginStart="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gl_hor_top"
+                android:contentDescription="@string/cd_profile_image"/>
+
+            <TextView
+                android:id="@+id/tv_profile_name"
+                style="@style/Text.Medium"
+                android:text="@string/profile_name"
+                android:layout_marginStart="32dp"
+                app:layout_constraintStart_toEndOf="@id/img_profile_picture"
+                app:layout_constraintTop_toTopOf="@id/img_profile_picture" />
+
+            <TextView
+                android:id="@+id/tv_profile_posts"
+                style="@style/Text.Light"
+                android:text="@string/posts"
+                app:layout_constraintStart_toStartOf="@id/tv_profile_name"
+                app:layout_constraintBottom_toBottomOf="@id/img_profile_picture" />
+
+            <TextView
+                android:id="@+id/tv_posts_number"
+                style="@style/Text.Medium"
+                android:text="@string/_20"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintStart_toStartOf="@id/tv_profile_posts"
+                app:layout_constraintEnd_toEndOf="@id/tv_profile_posts"
+                app:layout_constraintBottom_toTopOf="@id/tv_profile_posts" />
+
+            <TextView
+                android:id="@+id/tv_profile_followers"
+                style="@style/Text.Light"
+                android:text="@string/followers"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/tv_profile_posts"
+                app:layout_constraintTop_toTopOf="@id/tv_profile_posts"
+                app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts" />
+
+            <TextView
+                android:id="@+id/tv_followers_number"
+                style="@style/Text.Medium"
+                android:text="@string/_20"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintStart_toStartOf="@id/tv_profile_followers"
+                app:layout_constraintEnd_toEndOf="@id/tv_profile_followers"
+                app:layout_constraintBottom_toTopOf="@id/tv_profile_followers" />
+
+            <TextView
+                android:id="@+id/tv_profile_following"
+                style="@style/Text.Light"
+                android:text="@string/following"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/tv_profile_followers"
+                app:layout_constraintTop_toTopOf="@id/tv_profile_posts"
+                app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts" />
+
+            <TextView
+                android:id="@+id/tv_following_number"
+                style="@style/Text.Medium"
+                android:text="@string/_20"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintStart_toStartOf="@id/tv_profile_following"
+                app:layout_constraintEnd_toEndOf="@id/tv_profile_following"
+                app:layout_constraintBottom_toTopOf="@id/tv_profile_following" />
+
+            <TextView
+                android:id="@+id/tv_profile_fullname"
+                style="@style/Text.Bold"
+                android:textSize="13sp"
+                android:textColor="@color/grey_dark_description"
+                android:text="@string/profile_fullname"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="@id/img_profile_picture"
+                app:layout_constraintTop_toBottomOf="@id/img_profile_picture" />
+
+            <ImageView
+                android:id="@+id/img_pet_type"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_cat"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/tv_profile_fullname"
+                app:layout_constraintTop_toBottomOf="@id/tv_profile_fullname"
+                android:contentDescription="@string/cd_pet_type" />
+
+            <TextView
+                android:id="@+id/tv_pet_name"
+                style="@style/Text.Medium.PetDetails"
+                android:text="@string/pet_name"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/img_pet_type"
+                app:layout_constraintTop_toTopOf="@id/img_pet_type"
+                app:layout_constraintBottom_toBottomOf="@id/img_pet_type" />
+
+            <TextView
+                android:id="@+id/tv_pet_dash"
+                style="@style/Text.Medium.PetDetails"
+                android:text="@string/pet_dash"
+                app:layout_constraintStart_toEndOf="@id/tv_pet_name"
+                app:layout_constraintTop_toTopOf="@id/img_pet_type"
+                app:layout_constraintBottom_toBottomOf="@id/img_pet_type" />
+
+            <TextView
+                android:id="@+id/tv_pet_breed"
+                style="@style/Text.Medium.PetDetails"
+                android:text="@string/pet_breed"
+                app:layout_constraintStart_toEndOf="@id/tv_pet_dash"
+                app:layout_constraintTop_toTopOf="@id/img_pet_type"
+                app:layout_constraintBottom_toBottomOf="@id/img_pet_type" />
+
+            <TextView
+                android:id="@+id/tv_pet_description"
+                style="@style/Text.Medium.PetDetails"
+                android:layout_width="0dp"
+                android:text="@string/lorem_ipsum"
+                android:maxLines="2"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/img_pet_type"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_pet_type" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/btn_follow"
+                    style="@style/Text.Medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:text="@string/follow"
+                    android:background="@drawable/button_follow"
+                    android:gravity="center"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/btn_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_paperplane_filled"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@id/btn_follow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/btn_follow"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_follow"
+                    android:contentDescription="@string/cd_profile_chat_button" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_profile_posts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_profile_post"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_profile_details"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_profile_details"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

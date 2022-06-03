@@ -4,21 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_background"
     tools:context=".view.bottomnavigation.ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="@string/title_home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_camera"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:src="@drawable/icon_camera"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/cd_camera_button" />
+
+        <TextView
+            android:id="@+id/tv_heypet_title"
+            style="@style/Text"
+            android:fontFamily="@font/lexend_medium"
+            android:textSize="20sp"
+            android:text="@string/heypet"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/btn_camera"
+            app:layout_constraintTop_toTopOf="@id/btn_camera"
+            app:layout_constraintBottom_toBottomOf="@id/btn_camera" />
+
+        <TextView
+            android:id="@+id/btn_filter"
+            style="@style/Text"
+            android:rotation="90"
+            android:fontFamily="@font/lexend_medium"
+            android:textSize="20sp"
+            android:text="@string/actionbar_filter_button"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/tv_heypet_title"
+            app:layout_constraintTop_toTopOf="@id/btn_camera"
+            app:layout_constraintBottom_toBottomOf="@id/btn_camera"
+            android:contentDescription="@string/cd_filter_posts"/>
+
+        <ImageView
+            android:id="@+id/btn_chat"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_chat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_camera"
+            app:layout_constraintBottom_toBottomOf="@id/btn_camera"
+            android:contentDescription="@string/cd_chat_button" />
+
+        <ImageView
+            android:id="@+id/btn_notification"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_notification"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/btn_chat"
+            app:layout_constraintTop_toTopOf="@id/btn_camera"
+            app:layout_constraintBottom_toBottomOf="@id/btn_camera"
+            android:contentDescription="@string/cd_notification_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tv_posts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_main_post"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_actionbar"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_actionbar"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

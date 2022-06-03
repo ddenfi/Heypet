@@ -17,9 +17,10 @@
     <color name="grey_pale_pet_details">#FFADADAD</color>
 
     <color name="white_blue_login_button">#FFEEFFFE</color>
-    <color name="main_background">#FFEFF9FF</color>
+    <color name="main_background">#EFF9FF</color>
     <color name="blue_pale_login_input">#FF528AAC</color>
 
     <!--Color Reference Form Figma-->
     <color name="blue_primary">#1DAEFF</color>
+    <color name="background">#EFF9FF</color>
 </resources>

@@ -93,6 +93,7 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reminderItem_clock">07\n30</string>
 
 
 </resources>

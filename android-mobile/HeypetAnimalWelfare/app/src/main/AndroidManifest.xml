@@ -24,7 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HeypetAnimalWelfare"
         tools:targetApi="31">
-
+        <activity
+            android:name=".view.upload.UploadActivity"
+            android:exported="false" />
         <receiver
             android:name=".utils.AlarmReceiver"
             android:enabled="true"

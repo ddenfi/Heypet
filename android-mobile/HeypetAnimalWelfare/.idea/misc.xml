@@ -59,6 +59,7 @@
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_settings.xml" value="0.358695652173913" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_signup.xml" value="0.358695652173913" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_splash_screen.xml" value="0.358695652173913" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_upload.xml" value="0.33" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/activity_welcome.xml" value="0.358695652173913" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_dashboard.xml" value="0.358695652173913" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
@@ -66,6 +67,7 @@
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_profile.xml" value="0.358695652173913" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_reminder.xml" value="0.25" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/fragment_scan.xml" value="0.33" />
+        <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_dropdown.xml" value="0.358695652173913" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_loading.xml" value="0.14722222222222223" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_main_post.xml" value="0.14722222222222223" />
         <entry key="..\:/heypet-animal-welfare-community-platform-android/android-mobile/HeypetAnimalWelfare/app/src/main/res/layout/item_profile_post.xml" value="0.14722222222222223" />

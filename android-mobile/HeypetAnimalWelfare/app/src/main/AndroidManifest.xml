@@ -24,14 +24,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HeypetAnimalWelfare"
         tools:targetApi="31">
-        <activity
-            android:name=".view.upload.UploadActivity"
-            android:exported="false" />
+
         <receiver
             android:name=".utils.AlarmReceiver"
             android:enabled="true"
             android:exported="false" />
 
+        <activity
+            android:name=".view.upload.UploadActivity"
+            android:exported="false" />
         <activity
             android:name=".view.bottomnavigation.BottomNavigationActivity"
             android:exported="false"
@@ -61,6 +62,10 @@
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
+            android:name=".view.main.MainActivity"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
+        <activity
             android:name=".view.splash.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="fullSensor"
@@ -71,10 +76,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.main.MainActivity"
-            android:exported="false"
-            android:screenOrientation="fullSensor" />
+
     </application>
 
 </manifest>

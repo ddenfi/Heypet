@@ -146,19 +146,22 @@
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintEnd_toEndOf="@id/til_username"
         app:layout_constraintTop_toBottomOf="@id/tv_or"
-        android:contentDescription="@string/cd_facebook_login" />
+        android:contentDescription="@string/cd_facebook_login"
+        android:alpha="0"/>
 
     <ImageView
         android:id="@+id/btn_google"
         style="@style/AlternativeLoginButton"
+        android:contentDescription="@string/cd_google_login"
         android:src="@drawable/button_google"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toStartOf="@id/btn_facebook"
-        app:layout_constraintTop_toTopOf="@id/btn_facebook"
         app:layout_constraintBottom_toBottomOf="@id/btn_facebook"
-        android:contentDescription="@string/cd_google_login" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_or"
+        app:layout_constraintStart_toStartOf="@+id/tv_or"
+        app:layout_constraintTop_toBottomOf="@+id/tv_or"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
+        android:alpha="0"
         android:id="@+id/btn_apple"
         style="@style/AlternativeLoginButton"
         android:src="@drawable/button_apple"

@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.DarkActionBar"/>
 
     <style name="Text">
         <item name="android:layout_width">wrap_content</item>

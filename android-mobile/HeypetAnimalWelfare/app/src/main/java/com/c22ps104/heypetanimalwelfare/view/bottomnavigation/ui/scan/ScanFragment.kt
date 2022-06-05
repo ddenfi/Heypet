@@ -6,6 +6,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Environment
@@ -14,12 +16,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentScanBinding
+import com.google.android.material.appbar.AppBarLayout
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -93,7 +98,6 @@ class ScanFragment : Fragment() {
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         binding.btnScanCamera.setOnClickListener {
             cameraPermission.launch(android.Manifest.permission.CAMERA)
             scanViewModel.isLoading.observe(viewLifecycleOwner) {
@@ -108,19 +112,6 @@ class ScanFragment : Fragment() {
                     binding.tvScanClassifyResult.text = it.name
                 }
             }
-
-
-//            if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA)
-//                == PackageManager.PERMISSION_GRANTED
-//            ) {
-//                dispatchTakePictureIntent()
-//            } else {
-//                requestPermissions(
-//                    this,
-//                    arrayOf(android.Manifest.permission.CAMERA),
-//                    REQUEST_IMAGE_CAPTURE
-//                )
-//            }
         }
 
         binding.btnScanGallery.setOnClickListener {
@@ -143,7 +134,6 @@ class ScanFragment : Fragment() {
 
         return root
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

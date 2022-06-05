@@ -3,6 +3,7 @@ package com.c22ps104.heypetanimalwelfare.view.bottomnavigation
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,12 +16,14 @@ import com.c22ps104.heypetanimalwelfare.databinding.ActivityBottomNavigationBind
 
 class BottomNavigationActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBottomNavigationBinding
+    lateinit var binding: ActivityBottomNavigationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBottomNavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.tbNavigation)
 
         val navView: BottomNavigationView = binding.navView
 

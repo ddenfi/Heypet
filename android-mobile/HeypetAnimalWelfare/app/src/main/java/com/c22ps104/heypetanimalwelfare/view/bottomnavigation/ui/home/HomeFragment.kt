@@ -1,21 +1,18 @@
 package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.home
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps104.heypetanimalwelfare.R
+import com.c22ps104.heypetanimalwelfare.adapter.ListFeedsAdapter
+import com.c22ps104.heypetanimalwelfare.api.CategoriesItem
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentHomeBinding
+import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.scan.ScanViewModel
 import com.c22ps104.heypetanimalwelfare.view.upload.UploadActivity
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,6 +24,8 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var homeViewModel: HomeViewModel
+//    private lateinit var listFeed: List<CategoriesItem>
 
     private var db = FirebaseFirestore.getInstance()
 
@@ -35,23 +34,42 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
+        homeViewModel =
             ViewModelProvider(this)[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        homeViewModel.getAllFeeds()
+
         fireStoreListener()
-
-//        setRecyclerView()
-
         setHasOptionsMenu(true)
+        setRecyclerView()
+
         return root
     }
 
     private fun setRecyclerView() {
         binding.rvPosts.setHasFixedSize(true)
         binding.rvPosts.layoutManager = LinearLayoutManager(requireContext())
+
+        homeViewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.pbFeeds.visibility = View.VISIBLE
+            } else {
+                binding.pbFeeds.visibility = View.GONE
+            }
+        }
+
+        homeViewModel.feedsResult.observe(requireActivity()) {
+            binding.rvPosts.adapter = ListFeedsAdapter(it)
+        }
+
+//        listFeedsAdapter.setOnItemClickCallback(object: ListFeedsAdapter.OnItemClickCallback {
+//            override fun onItemClicked(data: CategoriesItem) {
+//                // TODO (intent to detail)
+//            }
+//        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

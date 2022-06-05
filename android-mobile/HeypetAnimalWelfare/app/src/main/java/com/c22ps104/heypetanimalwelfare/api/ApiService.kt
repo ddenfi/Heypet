@@ -38,4 +38,8 @@ interface ApiService {
         @Part photo:MultipartBody.Part,
         @Part ("description") desc:RequestBody
     ): Call<PostFeedsResponse>
+
+    @GET("posts")
+    fun getAllFeeds(
+    ): Call<FeedsResponse>
 }

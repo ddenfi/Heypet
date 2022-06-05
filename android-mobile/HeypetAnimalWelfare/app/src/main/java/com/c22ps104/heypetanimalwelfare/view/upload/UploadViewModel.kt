@@ -19,7 +19,7 @@ import retrofit2.Response
 class UploadViewModel:ViewModel() {
     private val retrofit: ApiService = ApiConfig.getApiService()
 
-    fun upload(category:RequestBody,photo:MultipartBody.Part,desc:RequestBody):LiveData<String> {
+    fun upload(category:RequestBody,photo:MultipartBody.Part,desc:RequestBody): LiveData<String> {
         val result = MutableLiveData<String>()
 
         retrofit.postFeed(category,photo,desc).enqueue(object :

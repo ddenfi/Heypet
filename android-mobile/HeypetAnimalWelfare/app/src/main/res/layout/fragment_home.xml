@@ -28,5 +28,20 @@
         app:layout_constraintTop_toTopOf="@+id/rv_posts"
         app:layout_constraintVertical_bias="0.35" />
 
+    <TextView
+        android:visibility="visible"
+        android:id="@+id/btn_refresh"
+        style="@style/Text"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        android:background="@drawable/button_general"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rv_posts" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

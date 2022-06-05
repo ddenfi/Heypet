@@ -45,8 +45,16 @@ class HomeFragment : Fragment() {
         fireStoreListener()
         setHasOptionsMenu(true)
         setRecyclerView()
+        setupView()
 
         return root
+    }
+
+    private fun setupView() {
+        binding.btnRefresh.setOnClickListener {
+            homeViewModel.getAllFeeds()
+            binding.rvPosts.scrollToPosition(0)
+        }
     }
 
     private fun setRecyclerView() {
@@ -63,6 +71,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel.feedsResult.observe(requireActivity()) {
             binding.rvPosts.adapter = ListFeedsAdapter(it)
+            binding.btnRefresh.visibility = View.GONE
         }
 
 //        listFeedsAdapter.setOnItemClickCallback(object: ListFeedsAdapter.OnItemClickCallback {
@@ -117,23 +126,24 @@ class HomeFragment : Fragment() {
                     )
 
                 }
-                readFirestoreData()
+                binding.btnRefresh.visibility = View.VISIBLE
+//                readFirestoreData()
             }
         }
     }
 
-    private fun readFirestoreData() {
-        db.collection("feeds")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    for (document in task.result) {
-                        Log.d("Firestore", document.id + " => " + document.data)
-                    }
-                } else {
-                    Log.w("Firestore", "Error getting documents")
-                }
-            }
-    }
+//    private fun readFirestoreData() {
+//        db.collection("feeds")
+//            .get()
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    for (document in task.result) {
+//                        Log.d("Firestore", document.id + " => " + document.data)
+//                    }
+//                } else {
+//                    Log.w("Firestore", "Error getting documents")
+//                }
+//            }
+//    }
 
 }

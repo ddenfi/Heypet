@@ -33,6 +33,7 @@ class ListFeedsAdapter(private val listFeed: List<CategoriesItem>) : RecyclerVie
 
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(listFeed[absoluteAdapterPosition])
+                // TODO intent
             }
         }
     }

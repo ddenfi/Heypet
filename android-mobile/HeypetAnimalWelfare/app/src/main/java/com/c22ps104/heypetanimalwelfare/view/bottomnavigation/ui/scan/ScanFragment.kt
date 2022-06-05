@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable
 import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,10 +38,11 @@ class ScanFragment : Fragment() {
     private lateinit var scanViewModel: ScanViewModel
 
     private val takePicture =
-        registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
-            if (it != null) {
-                binding.imageView.setImageBitmap(it)
-                val file = createTempFile(it)
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == -1) {
+                val imageBitmap = it.data?.extras?.get("data") as Bitmap
+                binding.imageView.setImageBitmap(imageBitmap)
+                val file = createTempFile(imageBitmap)
                 if (file != null) {
                     scanViewModel.classify(file)
                 } else Toast.makeText(activity, "Filed to classify", Toast.LENGTH_SHORT)
@@ -69,7 +71,8 @@ class ScanFragment : Fragment() {
     private val cameraPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
-                takePicture.launch(null)
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                takePicture.launch(intent)
             } else {
                 Toast.makeText(activity, "Permission Denied", Toast.LENGTH_SHORT).show()
             }

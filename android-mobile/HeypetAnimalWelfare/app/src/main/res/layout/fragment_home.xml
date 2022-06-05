@@ -9,7 +9,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="?attr/actionBarSize"
-        android:id="@+id/tv_posts"
+        android:id="@+id/rv_posts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,11 +20,11 @@
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_posts"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_posts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_posts"
+        app:layout_constraintTop_toTopOf="@+id/rv_posts"
         app:layout_constraintVertical_bias="0.35" />
 
 

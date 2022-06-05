@@ -1,6 +1,7 @@
 package com.c22ps104.heypetanimalwelfare.api
 
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -29,4 +30,12 @@ interface ApiService {
     fun classify(
         @Part file:MultipartBody.Part
     ): Call<ClassifyResponse>
+
+    @Multipart
+    @POST("posts/feed")
+    fun postFeed(
+        @Part ("categoryId") categoryId:RequestBody,
+        @Part photo:MultipartBody.Part,
+        @Part ("description") desc:RequestBody
+    ): Call<PostFeedsResponse>
 }

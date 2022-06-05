@@ -75,7 +75,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tv_posts"
+        android:id="@+id/rv_posts"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:listitem="@layout/item_main_post"

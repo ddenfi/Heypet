@@ -54,6 +54,7 @@ class ProfileFragment : Fragment() {
             val intentToLogin = Intent(requireActivity(), WelcomeActivity::class.java)
             intentToLogin.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intentToLogin)
+            activity?.finish()
         }
     }
 

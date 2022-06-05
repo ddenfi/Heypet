@@ -33,7 +33,9 @@ class PreferencesHelper(context: Context) {
 
     companion object {
         private const val PREF_NAME = "session"
+
         const val PREF_IS_LOGIN = "PREF_IS_LOGIN"
         const val PREF_TOKEN = "PREF_TOKEN"
+        const val PREF_ID = "PREF_TOKEN"
     }
 }

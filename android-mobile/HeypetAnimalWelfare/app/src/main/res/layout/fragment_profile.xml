@@ -66,6 +66,17 @@
                 app:layout_constraintStart_toEndOf="@id/img_profile_picture"
                 app:layout_constraintTop_toTopOf="@id/img_profile_picture" />
 
+            <!-- TODO -->
+            <ImageView
+                android:id="@+id/btn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_baseline_logout_24"
+                android:layout_marginStart="52dp"
+                app:layout_constraintStart_toEndOf="@id/tv_profile_name"
+                app:layout_constraintTop_toTopOf="@id/tv_profile_name"
+                app:layout_constraintBottom_toBottomOf="@id/tv_profile_name" />
+
             <TextView
                 android:id="@+id/tv_profile_posts"
                 style="@style/Text.Light"

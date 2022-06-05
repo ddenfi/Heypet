@@ -25,14 +25,15 @@
         android:theme="@style/Theme.HeypetAnimalWelfare"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".view.upload.UploadActivity"
-            android:exported="false" />
+
         <receiver
             android:name=".utils.AlarmReceiver"
             android:enabled="true"
             android:exported="false" />
 
+        <activity
+            android:name=".view.upload.UploadActivity"
+            android:exported="false" />
         <activity
             android:theme="@style/NavigationLayoutTheme"
             android:name=".view.bottomnavigation.BottomNavigationActivity"

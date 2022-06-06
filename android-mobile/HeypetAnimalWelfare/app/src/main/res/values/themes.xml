@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
     
-    <style name="NavigationLayoutTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="NavigationLayoutTheme" parent="Theme.MaterialComponents.Light">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

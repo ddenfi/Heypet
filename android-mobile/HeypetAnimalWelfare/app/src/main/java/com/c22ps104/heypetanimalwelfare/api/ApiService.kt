@@ -42,4 +42,9 @@ interface ApiService {
     @GET("posts")
     fun getAllFeeds(
     ): Call<FeedsResponse>
+
+    @GET("posts/category/{categorizedId}")
+    fun getCategorizedFeed(
+        @Path ("categorizedId") categorizedId:String
+    ): Call<FeedsResponse>
 }

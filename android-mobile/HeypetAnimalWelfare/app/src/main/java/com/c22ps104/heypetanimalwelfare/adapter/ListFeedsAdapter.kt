@@ -1,19 +1,30 @@
 package com.c22ps104.heypetanimalwelfare.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.c22ps104.heypetanimalwelfare.api.CategoriesItem
 import com.c22ps104.heypetanimalwelfare.databinding.ItemMainPostBinding
 
-class ListFeedsAdapter(private val listFeed: List<CategoriesItem>) : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>() {
-
-    private lateinit var onItemClickCallback: OnItemClickCallback
+class ListFeedsAdapter: RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>() {
+    private val listFeed: ArrayList<CategoriesItem> = ArrayList()
+//    private lateinit var onItemClickCallback: OnItemClickCallback
 
 //    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
 //        this.onItemClickCallback = onItemClickCallback
 //    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(data: List<CategoriesItem>) {
+        listFeed.apply {
+            clear()
+            addAll(data)
+        }
+        notifyDataSetChanged()
+    }
 
     inner class ListViewHolder(private var binding: ItemMainPostBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(feed: CategoriesItem) {
@@ -31,10 +42,10 @@ class ListFeedsAdapter(private val listFeed: List<CategoriesItem>) : RecyclerVie
                 }
             }
 
-            itemView.setOnClickListener {
-                onItemClickCallback.onItemClicked(listFeed[absoluteAdapterPosition])
-                // TODO intent
-            }
+//            itemView.setOnClickListener {
+//                onItemClickCallback.onItemClicked(listFeed[absoluteAdapterPosition])
+//                // TODO intent
+//            }
         }
     }
 
@@ -49,7 +60,19 @@ class ListFeedsAdapter(private val listFeed: List<CategoriesItem>) : RecyclerVie
 
     override fun getItemCount(): Int = listFeed.size
 
-    interface OnItemClickCallback {
-        fun onItemClicked(data: CategoriesItem)
+//    interface OnItemClickCallback {
+//        fun onItemClicked(data: CategoriesItem)
+//
+//    }
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CategoriesItem>() {
+            override fun areItemsTheSame(oldItem: CategoriesItem, newItem: CategoriesItem): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: CategoriesItem, newItem: CategoriesItem): Boolean {
+                return oldItem.id == newItem.id
+            }
+        }
     }
 }

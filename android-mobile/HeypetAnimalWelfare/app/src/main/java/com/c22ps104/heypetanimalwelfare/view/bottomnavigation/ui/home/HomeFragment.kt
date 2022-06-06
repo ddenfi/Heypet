@@ -12,6 +12,7 @@ import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.adapter.ListFeedsAdapter
 import com.c22ps104.heypetanimalwelfare.api.CategoriesItem
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentHomeBinding
+import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ModalBottomSheet
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.scan.ScanViewModel
 import com.c22ps104.heypetanimalwelfare.view.upload.UploadActivity
 import com.google.firebase.firestore.DocumentChange
@@ -25,6 +26,10 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
+    val bottomSheet = ModalBottomSheet()
+    private val adapter by lazy {
+        ListFeedsAdapter()
+    }
 //    private lateinit var listFeed: List<CategoriesItem>
 
     private var db = FirebaseFirestore.getInstance()
@@ -35,13 +40,18 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         homeViewModel =
-            ViewModelProvider(this)[HomeViewModel::class.java]
+            ViewModelProvider(requireActivity())[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        homeViewModel.getAllFeeds()
-
+        homeViewModel.filterState.observe(requireActivity()) {
+            sendRequest(it)
+            Log.d("filter state",it)
+        }
+        homeViewModel.feedsResult.observe(requireActivity()) {
+            adapter.setData(it)
+            binding.btnRefresh.visibility = View.GONE
+        }
         fireStoreListener()
         setHasOptionsMenu(true)
         setRecyclerView()
@@ -60,6 +70,7 @@ class HomeFragment : Fragment() {
     private fun setRecyclerView() {
         binding.rvPosts.setHasFixedSize(true)
         binding.rvPosts.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvPosts.adapter = adapter
 
         homeViewModel.isLoading.observe(viewLifecycleOwner) {
             if (it) {
@@ -69,10 +80,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        homeViewModel.feedsResult.observe(requireActivity()) {
-            binding.rvPosts.adapter = ListFeedsAdapter(it)
-            binding.btnRefresh.visibility = View.GONE
-        }
 
 //        listFeedsAdapter.setOnItemClickCallback(object: ListFeedsAdapter.OnItemClickCallback {
 //            override fun onItemClicked(data: CategoriesItem) {
@@ -89,7 +96,7 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == R.id.menu_filter) {
-            Toast.makeText(requireContext(), "Filter Clicked", Toast.LENGTH_SHORT).show()
+            bottomSheet.show(parentFragmentManager, ModalBottomSheet.TAG)
         }
         if (id == R.id.menu_add_post) {
             startActivity(Intent(activity, UploadActivity::class.java))
@@ -132,18 +139,14 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    private fun readFirestoreData() {
-//        db.collection("feeds")
-//            .get()
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    for (document in task.result) {
-//                        Log.d("Firestore", document.id + " => " + document.data)
-//                    }
-//                } else {
-//                    Log.w("Firestore", "Error getting documents")
-//                }
-//            }
-//    }
-
+    fun sendRequest(test: String) {
+        when (test) {
+            "0" -> homeViewModel.getAllFeeds()
+            "1" -> homeViewModel.getCategorizedFeed("1")
+            "2" -> homeViewModel.getCategorizedFeed("2")
+            "3" -> homeViewModel.getCategorizedFeed("3")
+            "4" -> homeViewModel.getCategorizedFeed("4")
+            else -> homeViewModel.getAllFeeds()
+        }
+    }
 }

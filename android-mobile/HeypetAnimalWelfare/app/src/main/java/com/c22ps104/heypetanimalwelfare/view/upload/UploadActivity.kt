@@ -43,7 +43,6 @@ class UploadActivity : AppCompatActivity() {
                 binding.ivUpload.setImageBitmap(cropBmp(imageBitmap))
 
                 tempFile = createTempFile(imageBitmap)
-
             }
         }
 
@@ -109,7 +108,7 @@ class UploadActivity : AppCompatActivity() {
             val categoryId = when (binding.tvAutocompleteUpload.text.toString()) {
                 "Story" -> 1
                 "Breeding" -> 2
-                "Adopsi" -> 3
+                "Adoption" -> 3
                 "Tips & Trick" -> 4
                 else -> 1
             }
@@ -151,32 +150,5 @@ class UploadActivity : AppCompatActivity() {
         val cropBmp = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension)
 
         return Bitmap.createScaledBitmap(cropBmp, dimension, dimension, false)
-    }
-
-    private fun resizeBitmap(source: Bitmap, maxLength: Int): Bitmap {
-        try {
-            if (source.height >= source.width) {
-                if (source.height <= maxLength) { // if image height already smaller than the required height
-                    return source
-                }
-
-                val aspectRatio = source.width.toDouble() / source.height.toDouble()
-                val targetWidth = (maxLength * aspectRatio).toInt()
-                val result = Bitmap.createScaledBitmap(source, targetWidth, maxLength, false)
-                return result
-            } else {
-                if (source.width <= maxLength) { // if image width already smaller than the required width
-                    return source
-                }
-
-                val aspectRatio = source.height.toDouble() / source.width.toDouble()
-                val targetHeight = (maxLength * aspectRatio).toInt()
-
-                val result = Bitmap.createScaledBitmap(source, maxLength, targetHeight, false)
-                return result
-            }
-        } catch (e: Exception) {
-            return source
-        }
     }
 }

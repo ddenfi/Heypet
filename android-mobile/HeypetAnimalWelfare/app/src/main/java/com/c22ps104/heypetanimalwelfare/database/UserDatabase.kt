@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.c22ps104.heypetanimalwelfare.data.ListPostData
+import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 
 @Database(
-    entities = [ListPostData::class, RemoteKeys::class],
+    entities = [ListPostData::class, RemoteKeys::class,ReminderEntity::class],
     version = 1,
     exportSchema = false
 )
@@ -15,6 +16,7 @@ abstract class UserDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun remoteKeysDao(): RemoteKeysDao
+    abstract fun reminderDao(): ReminderDao
 
     companion object {
         @Volatile

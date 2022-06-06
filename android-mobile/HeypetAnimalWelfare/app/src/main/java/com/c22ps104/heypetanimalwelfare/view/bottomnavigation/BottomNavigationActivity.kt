@@ -24,10 +24,10 @@ import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.home.HomeFragme
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.home.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class  ModalBottomSheet: BottomSheetDialogFragment(){
+class ModalBottomSheet : BottomSheetDialogFragment() {
     private var _binding: BottomSheetLayoutBinding? = null
     private val binding get() = _binding!!
-    private lateinit var homeViewModel:HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,14 +40,16 @@ class  ModalBottomSheet: BottomSheetDialogFragment(){
 
         binding.filterGroup.setOnCheckedStateChangeListener { group, checkedIds ->
             when (checkedIds[0]) {
-               binding.chipAll.id -> {homeViewModel.setFilterState("0")
-               Log.d("filter state update","")}
+                binding.chipAll.id -> {
+                    homeViewModel.setFilterState("0")
+                    Log.d("filter state update", "")
+                }
                 binding.chipStory.id -> homeViewModel.setFilterState("1")
                 binding.chipBreeding.id -> homeViewModel.setFilterState("2")
                 binding.chipAdoption.id -> homeViewModel.setFilterState("3")
                 binding.chipTips.id -> homeViewModel.setFilterState("4")
                 else -> homeViewModel.setFilterState("0")
-           }
+            }
         }
         return binding.root
     }
@@ -76,10 +78,14 @@ class BottomNavigationActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.bottom_nav_host) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.bottom_nav_host) as NavHostFragment
         val navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_home, R.id.navigation_scan, R.id.navigation_reminder, R.id.navigation_profile
+            R.id.navigation_home,
+            R.id.navigation_scan,
+            R.id.navigation_reminder,
+            R.id.navigation_profile
         ).build()
 
         setupActionBarWithNavController(navController, appBarConfiguration)

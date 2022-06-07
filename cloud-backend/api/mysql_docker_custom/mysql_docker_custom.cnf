@@ -1,0 +1,7 @@
+[mysqld]
+wait_timeout=36000
+interactive_timeout=230400
+bind-address="0.0.0.0"
+connect_timeout=230400
+max_allowed_packet=32M
+lower_case_table_names=1

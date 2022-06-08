@@ -7,20 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityBottomNavigationBinding
 import com.c22ps104.heypetanimalwelfare.databinding.BottomSheetLayoutBinding
-import com.c22ps104.heypetanimalwelfare.databinding.FragmentHomeBinding
-import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.home.HomeFragment
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.home.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 

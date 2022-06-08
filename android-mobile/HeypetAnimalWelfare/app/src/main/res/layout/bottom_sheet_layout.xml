@@ -1,57 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/bottom_sheet_filter">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/filter_group"
-        android:layout_width="wrap_content"
+
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_gravity="center"
-        app:singleSelection="true"
-        app:selectionRequired="true"
-        app:checkedChip="@+id/chip_all">
+        android:id="@+id/bottom_sheet_filter">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_all"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:text="All"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filter_group"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:checkedChip="@+id/chip_all">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_adoption"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:text="Adoption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_all"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="All"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_tips"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:text="Tips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_adoption"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Adoption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_breeding"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:text="Breeding"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_tips"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_story"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:text="Story"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_breeding"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Breeding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_story"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="Story"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
 
-    </com.google.android.material.chip.ChipGroup>
+        </com.google.android.material.chip.ChipGroup>
 
-</FrameLayout>
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,16 +1,22 @@
 package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps104.heypetanimalwelfare.R
+import com.c22ps104.heypetanimalwelfare.adapter.ListReminderAdapter
+import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentReminderBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class ReminderFragment : Fragment() {
 
@@ -23,6 +29,10 @@ class ReminderFragment : Fragment() {
 
     private var _binding: FragmentReminderBinding? = null
 
+    private val adapter by lazy {
+        ListReminderAdapter()
+    }
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -33,27 +43,50 @@ class ReminderFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
+        val viewModel =
             ViewModelProvider(this)[ReminderViewModel::class.java]
 
         _binding = FragmentReminderBinding.inflate(inflater, container, false)
 
-//        val textView: TextView = binding.textNotifications
-//        notificationsViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
 
         binding.fabReminderAdd.setOnClickListener {
             onAddButtonClicked()
         }
-
         binding.fabReminderAddOne.setOnClickListener {
-            Toast.makeText(requireContext(),"One Time",Toast.LENGTH_SHORT).show()
+            startActivity(Intent(activity, ReminderAddOneTimeActivity::class.java))
         }
         binding.fabReminderAddRepeating.setOnClickListener {
-            Toast.makeText(requireContext(),"Repeating",Toast.LENGTH_SHORT).show()
+            startActivity(Intent(activity, ReminderAddRepeatingActivity::class.java))
         }
+
+        viewModel.getAllReminder().observe(requireActivity()){
+            adapter.setData(it)
+        }
+
+        setRecyclerView()
         return binding.root
+    }
+
+    private fun setRecyclerView() {
+        binding.rvReminder.setHasFixedSize(true)
+        binding.rvReminder.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvReminder.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : ListReminderAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: ReminderEntity) {
+                val toDetailActivity = Intent(requireActivity(),DetailReminderActivity::class.java)
+                toDetailActivity.putExtra("EXTRA_REMINDER", data)
+                startActivity(toDetailActivity)
+            }
+        })
+    }
+
+    override fun onPause() {
+        lifecycleScope.launch {
+            delay(100L)
+            if (clicked) { onAddButtonClicked()}
+        }
+        super.onPause()
     }
 
     private fun onAddButtonClicked() {

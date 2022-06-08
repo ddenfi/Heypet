@@ -10,10 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.adapter.ListFeedsAdapter
-import com.c22ps104.heypetanimalwelfare.api.CategoriesItem
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentHomeBinding
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ModalBottomSheet
-import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.scan.ScanViewModel
 import com.c22ps104.heypetanimalwelfare.view.upload.UploadActivity
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
@@ -96,7 +94,7 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == R.id.menu_filter) {
-            bottomSheet.show(parentFragmentManager, ModalBottomSheet.TAG)
+            bottomSheet.show(childFragmentManager, ModalBottomSheet.TAG)
         }
         if (id == R.id.menu_add_post) {
             startActivity(Intent(activity, UploadActivity::class.java))

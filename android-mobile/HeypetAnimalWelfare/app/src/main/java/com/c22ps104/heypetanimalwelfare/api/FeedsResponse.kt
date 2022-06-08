@@ -18,7 +18,7 @@ data class FeedsResponse(
 ) : Parcelable
 
 @Parcelize
-data class CategoriesItem(
+data class PostCategoriesItem(
 
 	@field:SerializedName("CategoryId")
 	val categoryId: Int,
@@ -43,5 +43,5 @@ data class CategoriesItem(
 data class FeedsData(
 
 	@field:SerializedName("categories")
-	val categories: List<CategoriesItem>
+	val categories: List<PostCategoriesItem>
 ) : Parcelable

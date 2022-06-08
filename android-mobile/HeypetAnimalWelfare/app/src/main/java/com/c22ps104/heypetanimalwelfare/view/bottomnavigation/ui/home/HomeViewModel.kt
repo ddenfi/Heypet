@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
 
-    private val _filterState = MutableLiveData("2")
+    private val _filterState = MutableLiveData("0")
     val filterState: LiveData<String> = _filterState
 
     fun setFilterState(categoryId: String){
@@ -20,8 +20,8 @@ class HomeViewModel : ViewModel() {
 
     private val retrofit: ApiService = ApiConfig.getApiService()
 
-    private val _feedsResult = MutableLiveData<List<CategoriesItem>>()
-    val feedsResult: LiveData<List<CategoriesItem>> = _feedsResult
+    private val _feedsResult = MutableLiveData<List<PostCategoriesItem>>()
+    val feedsResult: LiveData<List<PostCategoriesItem>> = _feedsResult
 
 
     private val _isLoading = MutableLiveData<Boolean>()

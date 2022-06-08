@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.databinding.ActivitySettingsBinding
 import com.c22ps104.heypetanimalwelfare.utils.AlarmReceiver
+import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.DatePickerFragment
+import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.TimePickerFragment
 import java.text.SimpleDateFormat
 import java.util.*
 

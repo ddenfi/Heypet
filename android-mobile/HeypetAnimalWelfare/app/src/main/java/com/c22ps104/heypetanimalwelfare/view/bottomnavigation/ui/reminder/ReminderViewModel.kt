@@ -1,13 +1,15 @@
 package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.c22ps104.heypetanimalwelfare.data.UserRepository
 
-class ReminderViewModel : ViewModel() {
+class ReminderViewModel(application: Application):AndroidViewModel(application) {
+    private val repo = UserRepository(application)
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is reminder Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getAllReminder() = repo.getAllReminder()
+
 }

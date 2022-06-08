@@ -1,4 +1,4 @@
-package com.c22ps104.heypetanimalwelfare.view.settings
+package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder
 
 import android.app.Dialog
 import android.app.TimePickerDialog

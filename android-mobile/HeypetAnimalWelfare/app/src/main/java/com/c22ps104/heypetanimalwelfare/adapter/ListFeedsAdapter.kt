@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.c22ps104.heypetanimalwelfare.api.CategoriesItem
+import com.c22ps104.heypetanimalwelfare.api.PostCategoriesItem
 import com.c22ps104.heypetanimalwelfare.databinding.ItemMainPostBinding
 
 class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>() {
-    private val listFeed: ArrayList<CategoriesItem> = ArrayList()
+    private val listFeed: ArrayList<PostCategoriesItem> = ArrayList()
 //    private lateinit var onItemClickCallback: OnItemClickCallback
 
 //    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -18,7 +18,7 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
 //    }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(data: List<CategoriesItem>) {
+    fun setData(data: List<PostCategoriesItem>) {
         listFeed.apply {
             clear()
             addAll(data)
@@ -28,7 +28,7 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
 
     inner class ListViewHolder(private var binding: ItemMainPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(feed: CategoriesItem) {
+        fun bind(feed: PostCategoriesItem) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(feed.photo)
@@ -67,17 +67,17 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
 //
 //    }
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CategoriesItem>() {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<PostCategoriesItem>() {
             override fun areItemsTheSame(
-                oldItem: CategoriesItem,
-                newItem: CategoriesItem
+                oldItem: PostCategoriesItem,
+                newItem: PostCategoriesItem
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: CategoriesItem,
-                newItem: CategoriesItem
+                oldItem: PostCategoriesItem,
+                newItem: PostCategoriesItem
             ): Boolean {
                 return oldItem.id == newItem.id
             }

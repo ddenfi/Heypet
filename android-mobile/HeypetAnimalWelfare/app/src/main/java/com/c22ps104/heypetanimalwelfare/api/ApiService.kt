@@ -34,6 +34,7 @@ interface ApiService {
     @Multipart
     @POST("posts/feed")
     fun postFeed(
+        @Header("Authorization") token: String,
         @Part ("categoryId") categoryId:RequestBody,
         @Part photo:MultipartBody.Part,
         @Part ("description") desc:RequestBody

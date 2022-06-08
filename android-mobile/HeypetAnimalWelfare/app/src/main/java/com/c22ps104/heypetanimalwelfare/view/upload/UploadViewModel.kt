@@ -19,10 +19,10 @@ import retrofit2.Response
 class UploadViewModel:ViewModel() {
     private val retrofit: ApiService = ApiConfig.getApiService()
 
-    fun upload(category:RequestBody,photo:MultipartBody.Part,desc:RequestBody): LiveData<String> {
+    fun upload(token:String,category:RequestBody,photo:MultipartBody.Part,desc:RequestBody): LiveData<String> {
         val result = MutableLiveData<String>()
-
-        retrofit.postFeed(category,photo,desc).enqueue(object :
+        Log.d("Token",token)
+        retrofit.postFeed("Bearer $token",category,photo,desc).enqueue(object :
             Callback<PostFeedsResponse> {
             override fun onResponse(call: Call<PostFeedsResponse>, response: Response<PostFeedsResponse>) {
                 val responseBody = response.body()
@@ -31,7 +31,7 @@ class UploadViewModel:ViewModel() {
                     Log.d("Upload",responseBody!!.status)
                 } else {
                     result.postValue("Filed")
-                    Log.d("Upload Filed", response.body().toString())
+                    Log.d("Upload Filed", response.message())
                 }
             }
 

@@ -1,18 +1,14 @@
 package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.profile
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentProfileBinding
-import com.c22ps104.heypetanimalwelfare.view.login.LoginActivity
 import com.c22ps104.heypetanimalwelfare.view.welcome.WelcomeActivity
 
 class ProfileFragment : Fragment() {

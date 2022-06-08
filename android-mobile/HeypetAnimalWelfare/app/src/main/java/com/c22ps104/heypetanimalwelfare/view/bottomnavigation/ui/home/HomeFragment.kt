@@ -10,10 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.adapter.ListFeedsAdapter
+import com.c22ps104.heypetanimalwelfare.api.PostCategoriesItem
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentHomeBinding
+import com.c22ps104.heypetanimalwelfare.view.comment.CommentSectionActivity
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ModalBottomSheet
 import com.c22ps104.heypetanimalwelfare.view.upload.UploadActivity
-import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeFragment : Fragment() {
@@ -70,6 +71,14 @@ class HomeFragment : Fragment() {
         binding.rvPosts.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPosts.adapter = adapter
 
+        adapter.setOnItemClickCallback(object : ListFeedsAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: PostCategoriesItem) {
+                val toCommentSection = Intent(requireActivity(), CommentSectionActivity::class.java)
+                toCommentSection.putExtra("EXTRA_ID", data.idFeeds)
+                startActivity(toCommentSection)
+            }
+        })
+
         homeViewModel.isLoading.observe(viewLifecycleOwner) {
             if (it) {
                 binding.pbFeeds.visibility = View.VISIBLE
@@ -116,28 +125,27 @@ class HomeFragment : Fragment() {
                 return@addSnapshotListener
             }
             for (dc in snapshot!!.documentChanges) {
-                when (dc.type) {
-                    DocumentChange.Type.ADDED -> Log.d(
-                        "Firestore_ADDED",
-                        "date: ${dc.document.data.getValue("date")}"
-                    )
-                    DocumentChange.Type.MODIFIED -> Log.d(
-                        "Firestore_MODIFIED",
-                        "date: ${dc.document.data.getValue("date")}"
-                    )
-                    DocumentChange.Type.REMOVED -> Log.d(
-                        "Firestore_REMOVED",
-                        "date: ${dc.document.data.getValue("date")}"
-                    )
-
-                }
+//                when (dc.type) {
+//                    DocumentChange.Type.ADDED -> Log.d(
+//                        "Firestore_ADDED",
+//                        "date: ${dc.document.data.getValue("date")}"
+//                    )
+//                    DocumentChange.Type.MODIFIED -> Log.d(
+//                        "Firestore_MODIFIED",
+//                        "date: ${dc.document.data.getValue("date")}"
+//                    )
+//                    DocumentChange.Type.REMOVED -> Log.d(
+//                        "Firestore_REMOVED",
+//                        "date: ${dc.document.data.getValue("date")}"
+//                    )
+//                }
                 binding.btnRefresh.visibility = View.VISIBLE
 //                readFirestoreData()
             }
         }
     }
 
-    fun sendRequest(test: String) {
+    private fun sendRequest(test: String) {
         when (test) {
             "0" -> homeViewModel.getAllFeeds()
             "1" -> homeViewModel.getCategorizedFeed("1")

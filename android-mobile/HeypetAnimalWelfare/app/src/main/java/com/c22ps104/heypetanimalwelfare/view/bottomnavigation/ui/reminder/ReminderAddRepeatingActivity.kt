@@ -9,9 +9,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
-import com.c22ps104.heypetanimalwelfare.data.UserRepository
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityReminderAddRepeatingBinding
-import com.c22ps104.heypetanimalwelfare.utils.timeStamp
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*

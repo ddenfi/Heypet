@@ -26,18 +26,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.bottomnavigation.ui.reminder.DetailReminderActivity"
+            android:name=".view.comment.CommentSectionActivity"
             android:exported="false" />
         <activity
-            android:name=".view.bottomnavigation.ui.reminder.ReminderAddRepeatingActivity"
+            android:name="com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.DetailReminderActivity"
             android:exported="false" />
         <activity
-            android:name=".view.bottomnavigation.ui.reminder.ReminderAddOneTimeActivity"
+            android:name="com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.ReminderAddRepeatingActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailPostActivity"
+            android:name="com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.ReminderAddOneTimeActivity"
             android:exported="false" />
-
         <receiver
             android:name=".utils.AlarmReceiver"
             android:enabled="true"
@@ -82,7 +81,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -91,5 +89,4 @@
             android:exported="false"
             android:screenOrientation="fullSensor" />
     </application>
-
 </manifest>

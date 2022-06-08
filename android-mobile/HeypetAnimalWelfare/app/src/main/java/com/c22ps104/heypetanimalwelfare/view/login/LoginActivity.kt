@@ -9,6 +9,7 @@ import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_ID
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_IS_LOGIN
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_TOKEN
+import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_USER_NAME
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityLoginBinding
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.BottomNavigationActivity
 
@@ -41,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
             viewModel.login.observe(this) {
                 if (it != null) {
-                    saveSession(it.data.token.accessToken, it.data.user.id.toString())
+                    saveSession(it.data.token.accessToken, it.data.user.id.toString(),it.data.user.name)
 
                     val intentToMain = Intent(this@LoginActivity, BottomNavigationActivity::class.java)
                     intentToMain.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -52,9 +53,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveSession(accessToken: String, userId: String) {
+    private fun saveSession(accessToken: String, userId: String,userName:String) {
         preferencesHelper.putString(PREF_TOKEN, accessToken)
         preferencesHelper.putString(PREF_ID, userId)
         preferencesHelper.putBoolean(PREF_IS_LOGIN, true)
+        preferencesHelper.putString(PREF_USER_NAME,userName)
     }
 }

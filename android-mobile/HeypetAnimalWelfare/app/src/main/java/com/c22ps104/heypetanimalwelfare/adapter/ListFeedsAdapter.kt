@@ -11,11 +11,11 @@ import com.c22ps104.heypetanimalwelfare.databinding.ItemMainPostBinding
 
 class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>() {
     private val listFeed: ArrayList<PostCategoriesItem> = ArrayList()
-//    private lateinit var onItemClickCallback: OnItemClickCallback
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
-//    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-//        this.onItemClickCallback = onItemClickCallback
-//    }
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(data: List<PostCategoriesItem>) {
@@ -41,12 +41,12 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
                     4 -> "Tips"
                     else -> ""
                 }
-            }
+                tvProfileName.text = feed.userName
 
-//            itemView.setOnClickListener {
-//                onItemClickCallback.onItemClicked(listFeed[absoluteAdapterPosition])
-//                // TODO intent
-//            }
+            }
+            itemView.setOnClickListener {
+                onItemClickCallback.onItemClicked(listFeed[absoluteAdapterPosition])
+            }
         }
     }
 
@@ -62,25 +62,7 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
 
     override fun getItemCount(): Int = listFeed.size
 
-    //    interface OnItemClickCallback {
-//        fun onItemClicked(data: CategoriesItem)
-//
-//    }
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<PostCategoriesItem>() {
-            override fun areItemsTheSame(
-                oldItem: PostCategoriesItem,
-                newItem: PostCategoriesItem
-            ): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(
-                oldItem: PostCategoriesItem,
-                newItem: PostCategoriesItem
-            ): Boolean {
-                return oldItem.id == newItem.id
-            }
-        }
+    interface OnItemClickCallback {
+        fun onItemClicked(data: PostCategoriesItem)
     }
 }

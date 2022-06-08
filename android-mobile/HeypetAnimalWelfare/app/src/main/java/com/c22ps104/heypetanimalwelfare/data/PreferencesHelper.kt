@@ -36,6 +36,7 @@ class PreferencesHelper(context: Context) {
 
         const val PREF_IS_LOGIN = "PREF_IS_LOGIN"
         const val PREF_TOKEN = "PREF_TOKEN"
-        const val PREF_ID = "PREF_TOKEN"
+        const val PREF_ID = "PREF_ID"
+        const val PREF_USER_NAME = "PREF_USER_NAME"
     }
 }

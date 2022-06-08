@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.c22ps104.heypetanimalwelfare.api.ApiConfig
 import com.c22ps104.heypetanimalwelfare.api.ApiService
 import com.c22ps104.heypetanimalwelfare.api.ClassifyResponse
-import com.c22ps104.heypetanimalwelfare.api.LoginResponse
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

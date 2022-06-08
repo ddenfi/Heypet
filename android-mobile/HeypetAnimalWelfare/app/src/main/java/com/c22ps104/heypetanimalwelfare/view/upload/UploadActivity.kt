@@ -15,6 +15,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.c22ps104.heypetanimalwelfare.R
+import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
+import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_TOKEN
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityUploadBinding
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -30,6 +32,7 @@ import kotlin.math.min
 class UploadActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUploadBinding
     private val viewModel:UploadViewModel by viewModels()
+    private lateinit var preferencesHelper: PreferencesHelper
 
     private lateinit var tempFile:File
 
@@ -89,6 +92,7 @@ class UploadActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        preferencesHelper = PreferencesHelper(this)
 
         val category = resources.getStringArray(R.array.post_category)
         val arrayAdapter = ArrayAdapter(this, R.layout.item_dropdown,category)
@@ -119,8 +123,12 @@ class UploadActivity : AppCompatActivity() {
                 tempFile.name,
                 file
             )
-            viewModel.upload(category,imageMultipart,desc).observe(this){
-                Toast.makeText(this,"Upload $it",Toast.LENGTH_SHORT).show()
+
+            val token = preferencesHelper.getString(PREF_TOKEN)
+            if (token != null) {
+                viewModel.upload(token,category,imageMultipart,desc).observe(this){
+                    Toast.makeText(this,"Upload $it",Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

@@ -36,7 +36,16 @@ data class PostCategoriesItem(
 	val id: Int,
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String
+	val updatedAt: String,
+
+	@field:SerializedName("userName")
+	val userName: String,
+
+	@field:SerializedName("idFeeds")
+	val idFeeds: String
+
+
+
 ) : Parcelable
 
 @Parcelize

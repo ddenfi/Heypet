@@ -1,0 +1,48 @@
+package com.c22ps104.heypetanimalwelfare.adapter
+
+import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.c22ps104.heypetanimalwelfare.api.CommentModel
+import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
+import com.c22ps104.heypetanimalwelfare.databinding.ItemCommentBinding
+import com.c22ps104.heypetanimalwelfare.databinding.ItemReminderBinding
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
+class ListCommentAdapter:RecyclerView.Adapter<ListCommentAdapter.ListViewHolder>() {
+
+    private val listComment: ArrayList<CommentModel> = ArrayList()
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(data: List<CommentModel>) {
+        listComment.apply {
+            clear()
+            addAll(data)
+        }
+        notifyDataSetChanged()
+    }
+
+    inner class ListViewHolder(private var binding: ItemCommentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: CommentModel) {
+            binding.tvItemCommentComment.text = data.comment
+            binding.tvItemCommnetName.text = data.name
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+        val binding =
+            ItemCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ListViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        holder.bind(listComment[position])
+    }
+
+    override fun getItemCount() = listComment.size
+
+}

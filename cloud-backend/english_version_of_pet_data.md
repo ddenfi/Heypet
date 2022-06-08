@@ -160,4 +160,4 @@ Sphynx body becomes oily and must be bathed weekly to monthly to prevent clogged
 
 ## Type: Cat
 
-## Source: http://www.vetstreet.com/
+# Source: http://www.vetstreet.com/

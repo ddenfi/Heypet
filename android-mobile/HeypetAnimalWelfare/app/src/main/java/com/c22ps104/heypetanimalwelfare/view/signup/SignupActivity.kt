@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.c22ps104.heypetanimalwelfare.view.login.LoginActivity
 import androidx.activity.viewModels
 import com.c22ps104.heypetanimalwelfare.databinding.ActivitySignupBinding
+import com.c22ps104.heypetanimalwelfare.view.onBoarding.OnBoardingActivity
 
 class SignupActivity : AppCompatActivity() {
 
@@ -36,10 +36,9 @@ class SignupActivity : AppCompatActivity() {
         viewModel.register.observe(this) {
             if (it != null ) {
                 Toast.makeText(this,"Register Success",Toast.LENGTH_SHORT).show()
-                val intentToLogin = Intent(this@SignupActivity, LoginActivity::class.java)
+                val intentToLogin = Intent(this@SignupActivity, OnBoardingActivity::class.java)
                 startActivity(intentToLogin)
                 finish()
-
                 RESULT_OK
             }
         }

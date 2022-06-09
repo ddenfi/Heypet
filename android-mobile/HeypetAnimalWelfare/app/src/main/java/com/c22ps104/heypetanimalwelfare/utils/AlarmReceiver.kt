@@ -14,24 +14,35 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.c22ps104.heypetanimalwelfare.R
+import com.c22ps104.heypetanimalwelfare.data.UserRepository
+import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.ReminderFragment
+import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.ReminderViewModel
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
+    private lateinit var listener: ReminderFragment.ReminderCallback
+
+    fun setReminderCallback(listener: ReminderFragment.ReminderCallback){
+        this.listener = listener
+    }
 
     override fun onReceive(context: Context, intent: Intent) {
-        val type = intent.getStringExtra(EXTRA_TYPE)
+        val type = intent.getIntExtra(EXTRA_TYPE,1)
         val message = intent.getStringExtra(EXTRA_MESSAGE)
+        val id = intent.getIntExtra(EXTRA_ID,1)
 
-        val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
-        val notificationId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
+        val title = if (type == 1) TYPE_ONE_TIME else TYPE_REPEATING
 
         // Show Toast when alarm is ringing
-        showToast(context, title, message)
+//        showToast(context, title, message)
+
+        //notifyToActivity
+        listener.reminderRinging()
 
         // Show alarm notification
-        if (message != null) showAlarmNotification(context, title, message, notificationId)
+        if (message != null) showAlarmNotification(context, title, message, id)
     }
 
     // Method for notification
@@ -68,58 +79,37 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     // Method for one-time alarm
-    fun setOneTimeAlarm(context: Context, type: String, date: String, time: String, message: String) {
-        // Validate date and time inputs first
-        if (isDateInvalid(date, DATE_FORMAT) || isDateInvalid(time, TIME_FORMAT)) return
+    fun setOneTimeAlarm(context: Context, type: Int, date: Calendar, message: String, id:Int) {
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
         intent.putExtra(EXTRA_TYPE, type)
-
-        Log.e("ONE TIME", "$date $time")
-        val dateArray = date.split("-").toTypedArray()
-        val timeArray = time.split(":").toTypedArray()
-
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.YEAR, Integer.parseInt(dateArray[0]))
-        calendar.set(Calendar.MONTH, Integer.parseInt(dateArray[1]) - 1)
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateArray[2]))
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]))
-        calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
-        calendar.set(Calendar.SECOND, 0)
+        intent.putExtra(EXTRA_ID, id)
 
         val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            PendingIntent.getBroadcast(context, ID_ONETIME, intent, PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_IMMUTABLE)
         } else {
             TODO("VERSION.SDK_INT < M")
         }
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+        alarmManager.set(AlarmManager.RTC_WAKEUP, date.timeInMillis, pendingIntent)
     }
 
     // Method for repeating alarm
-    fun setRepeatingAlarm(context: Context, type: String, time: String, message: String) {
-        // Validate time input first
-        if (isDateInvalid(time, TIME_FORMAT)) return
+    fun setRepeatingAlarm(context: Context, type: Int, date: Calendar, message: String, id:Int) {
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
         intent.putExtra(EXTRA_TYPE, type)
-
-        val timeArray = time.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]))
-        calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
-        calendar.set(Calendar.SECOND, 0)
+        intent.putExtra(EXTRA_ID,id)
 
         val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             PendingIntent.getBroadcast(context, ID_REPEATING, intent, PendingIntent.FLAG_IMMUTABLE)
         } else {
             TODO("VERSION.SDK_INT < M")
         }
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, date.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
     }
 
     // Use this method to check if the alarm is already registered in the alarm manager or not
@@ -130,24 +120,12 @@ class AlarmReceiver : BroadcastReceiver() {
         return PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_NO_CREATE) != null
     }
 
-    // Validate date and time
-    private fun isDateInvalid(date: String, format: String): Boolean {
-        return try {
-            val df = SimpleDateFormat(format, Locale.getDefault())
-            df.isLenient = false
-            df.parse(date)
-            false
-        } catch (e: ParseException) {
-            true
-        }
-    }
-
-    fun cancelAlarm(context: Context, type: String) {
+    fun cancelAlarm(context: Context, idReminder:Int) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
-        val requestCode = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
+
         val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.getBroadcast(context, idReminder, intent, PendingIntent.FLAG_IMMUTABLE)
         } else {
             TODO("VERSION.SDK_INT < M")
         }
@@ -162,10 +140,12 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        const val TYPE_ONE_TIME = "Heypet Alarm"
-        const val TYPE_REPEATING = "Heypet Alarm"
+        const val TYPE_ONE_TIME = "Heypet One Time Reminder"
+        const val TYPE_REPEATING = "Heypet Everyday Reminder"
+
         const val EXTRA_MESSAGE = "message"
         const val EXTRA_TYPE = "type"
+        const val EXTRA_ID = "id"
 
         // IDs for two kinds of alarms, onetime and repeating
         private const val ID_ONETIME = 100
@@ -175,4 +155,6 @@ class AlarmReceiver : BroadcastReceiver() {
         private const val TIME_FORMAT = "HH:mm"
 
     }
+
+
 }

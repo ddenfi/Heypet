@@ -20,8 +20,8 @@ class HomeViewModel : ViewModel() {
 
     private val retrofit: ApiService = ApiConfig.getApiService()
 
-    private val _feedsResult = MutableLiveData<List<PostCategoriesItem>>()
-    val feedsResult: LiveData<List<PostCategoriesItem>> = _feedsResult
+    private val _feedsResult = MutableLiveData<List<PostsItem>>()
+    val feedsResult: LiveData<List<PostsItem>> = _feedsResult
 
 
     private val _isLoading = MutableLiveData<Boolean>()
@@ -32,12 +32,12 @@ class HomeViewModel : ViewModel() {
         _isLoading.postValue(true)
         retrofit.getAllFeeds().enqueue(object :
             Callback<FeedsResponse> {
-
             override fun onResponse(call: Call<FeedsResponse>, response: Response<FeedsResponse>) {
                 _isLoading.postValue(false)
                 if (response.isSuccessful) {
                     val feedsResponse: FeedsResponse = response.body()!!
-                    _feedsResult.postValue(feedsResponse.data.categories)
+                    _feedsResult.postValue(feedsResponse.data.posts)
+                    Log.d("Get All Feeds",response.message())
                 } else {
                     Log.d("Get All Feeds", response.body().toString())
                 }
@@ -59,7 +59,7 @@ class HomeViewModel : ViewModel() {
                 _isLoading.postValue(false)
                 if (response.isSuccessful) {
                     val feedsResponse: FeedsResponse = response.body()!!
-                    _feedsResult.postValue(feedsResponse.data.categories)
+                    _feedsResult.postValue(feedsResponse.data.posts)
                     Log.d("Categorized Feeds", response.message())
                 } else {
                     Log.d("Categorized Feeds", response.message())

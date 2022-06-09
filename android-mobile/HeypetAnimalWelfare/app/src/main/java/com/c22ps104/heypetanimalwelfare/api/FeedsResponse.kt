@@ -1,10 +1,7 @@
 package com.c22ps104.heypetanimalwelfare.api
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
 data class FeedsResponse(
 
 	@field:SerializedName("data")
@@ -15,16 +12,27 @@ data class FeedsResponse(
 
 	@field:SerializedName("status")
 	val status: String
-) : Parcelable
+)
 
-@Parcelize
-data class PostCategoriesItem(
+data class PostsItem(
+
+	@field:SerializedName("idUser")
+	val idUser: String,
 
 	@field:SerializedName("CategoryId")
-	val categoryId: Int,
+	val categoryId: String,
 
 	@field:SerializedName("createdAt")
 	val createdAt: String,
+
+	@field:SerializedName("userPhoto")
+	val userPhoto: String,
+
+	@field:SerializedName("Category")
+	val  category: FeedsCategory,
+
+	@field:SerializedName("idFeeds")
+	val idFeeds: String,
 
 	@field:SerializedName("description")
 	val description: String,
@@ -35,22 +43,30 @@ data class PostCategoriesItem(
 	@field:SerializedName("id")
 	val id: Int,
 
-	@field:SerializedName("updatedAt")
-	val updatedAt: String,
-
 	@field:SerializedName("userName")
 	val userName: String,
 
-	@field:SerializedName("idFeeds")
-	val idFeeds: String
+	@field:SerializedName("updatedAt")
+	val updatedAt: String
+)
 
-
-
-) : Parcelable
-
-@Parcelize
 data class FeedsData(
 
-	@field:SerializedName("categories")
-	val categories: List<PostCategoriesItem>
-) : Parcelable
+	@field:SerializedName("posts")
+	val posts: List<PostsItem>
+)
+
+data class FeedsCategory(
+
+	@field:SerializedName("createdAt")
+	val createdAt: Any,
+
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("id")
+	val id: Int,
+
+	@field:SerializedName("updatedAt")
+	val updatedAt: Any
+)

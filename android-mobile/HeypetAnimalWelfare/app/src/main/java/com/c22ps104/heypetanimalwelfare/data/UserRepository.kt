@@ -9,13 +9,17 @@ class UserRepository(application: Application) {
     private val reminderDao = userDatabase.reminderDao()
 
 
+    //reminder
     suspend fun addReminder(data: ReminderEntity) {
         reminderDao.addReminder(data)
     }
 
     fun getAllReminder() = reminderDao.readAllReminder()
 
+    fun getLatestReminder() = reminderDao.readLatestReminder()
 
     suspend fun deleteAllReminder() = reminderDao.deleteAllReminder()
+
+    suspend fun deleteReminder(idReminder:Int) = reminderDao.deleteReminder(idReminder)
 
 }

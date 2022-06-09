@@ -10,10 +10,9 @@ import kotlinx.coroutines.launch
 class ReminderAddOneTimeViewModel(application: Application) :AndroidViewModel(application) {
     private val repo = UserRepository(application)
 
-    fun addReminder(data: ReminderEntity) = viewModelScope.launch {
-        repo.addReminder(data)
-    }
+    suspend fun addReminder(data: ReminderEntity) = repo.addReminder(data)
 
-    fun deleteAllReminder() = viewModelScope.launch { repo.deleteAllReminder() }
+
+    fun getLatestReminder()= repo.getLatestReminder()
 
 }

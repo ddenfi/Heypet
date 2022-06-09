@@ -7,7 +7,6 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps104.heypetanimalwelfare.adapter.ListCommentAdapter
 import com.c22ps104.heypetanimalwelfare.api.CommentModel
-import com.c22ps104.heypetanimalwelfare.api.PostCategoriesItem
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_USER_NAME
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityCommnetSectionBinding

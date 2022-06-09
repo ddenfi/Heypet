@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.adapter.ListFeedsAdapter
-import com.c22ps104.heypetanimalwelfare.api.PostCategoriesItem
+import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentHomeBinding
 import com.c22ps104.heypetanimalwelfare.view.comment.CommentSectionActivity
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ModalBottomSheet
@@ -48,7 +48,10 @@ class HomeFragment : Fragment() {
             Log.d("filter state",it)
         }
         homeViewModel.feedsResult.observe(requireActivity()) {
-            adapter.setData(it)
+            if (it!=null) {
+                Log.d("Feeds","")
+                adapter.setData(it)
+            }
             binding.btnRefresh.visibility = View.GONE
         }
         fireStoreListener()
@@ -72,7 +75,7 @@ class HomeFragment : Fragment() {
         binding.rvPosts.adapter = adapter
 
         adapter.setOnItemClickCallback(object : ListFeedsAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: PostCategoriesItem) {
+            override fun onItemClicked(data: PostsItem) {
                 val toCommentSection = Intent(requireActivity(), CommentSectionActivity::class.java)
                 toCommentSection.putExtra("EXTRA_ID", data.idFeeds)
                 startActivity(toCommentSection)

@@ -64,12 +64,10 @@ class ReminderAddRepeatingActivity : AppCompatActivity(),TimePickerFragment.Dial
     }
 
     override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
-        // Ready time formatter
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-        calendar.set(Calendar.MINUTE, minute)
+        reminderSetCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+        reminderSetCalendar.set(Calendar.MINUTE, minute)
 
         val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-        binding.tvReminderRepeatingChooseTime.text = dateFormat.format(calendar.time)
+        binding.tvReminderRepeatingChooseTime.text = dateFormat.format(reminderSetCalendar.time)
     }
 }

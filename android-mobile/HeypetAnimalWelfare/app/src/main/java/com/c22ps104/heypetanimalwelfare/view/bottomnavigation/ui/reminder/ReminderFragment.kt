@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +16,7 @@ import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.adapter.ListReminderAdapter
 import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentReminderBinding
+import com.c22ps104.heypetanimalwelfare.utils.AlarmReceiver
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -24,6 +26,8 @@ class ReminderFragment : Fragment() {
     private val rotateClose:Animation by lazy{ AnimationUtils.loadAnimation(requireContext(),R.anim.rotate_close_anim)}
     private val fromBottom:Animation by lazy{ AnimationUtils.loadAnimation(requireContext(),R.anim.from_bottom_anim)}
     private val toBottom:Animation by lazy{ AnimationUtils.loadAnimation(requireContext(),R.anim.to_bottom_anim)}
+
+    private lateinit var reminderBroadcast:AlarmReceiver
 
     private var clicked = false
 
@@ -48,6 +52,7 @@ class ReminderFragment : Fragment() {
 
         _binding = FragmentReminderBinding.inflate(inflater, container, false)
 
+        reminderBroadcast = AlarmReceiver()
 
         binding.fabReminderAdd.setOnClickListener {
             onAddButtonClicked()
@@ -63,6 +68,12 @@ class ReminderFragment : Fragment() {
             adapter.setData(it)
         }
 
+        reminderBroadcast.setReminderCallback(object :ReminderCallback{
+            override fun reminderRinging() {
+                Toast.makeText(requireContext(), "Ringing from callback",Toast.LENGTH_SHORT).show()
+            }
+
+        })
         setRecyclerView()
         return binding.root
     }
@@ -121,5 +132,9 @@ class ReminderFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    interface ReminderCallback{
+        fun reminderRinging()
     }
 }

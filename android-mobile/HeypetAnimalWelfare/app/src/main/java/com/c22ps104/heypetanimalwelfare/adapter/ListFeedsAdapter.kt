@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.c22ps104.heypetanimalwelfare.api.PostCategoriesItem
+import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import com.c22ps104.heypetanimalwelfare.databinding.ItemMainPostBinding
 
 class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>() {
-    private val listFeed: ArrayList<PostCategoriesItem> = ArrayList()
+    private val listFeed: ArrayList<PostsItem> = ArrayList()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -18,7 +18,7 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(data: List<PostCategoriesItem>) {
+    fun setData(data: List<PostsItem>) {
         listFeed.apply {
             clear()
             addAll(data)
@@ -28,20 +28,24 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
 
     inner class ListViewHolder(private var binding: ItemMainPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(feed: PostCategoriesItem) {
+        fun bind(feed: PostsItem) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(feed.photo)
                     .into(imgPostPicture)
                 tvPostDescription.text = feed.description
                 tvPostTag.text = when (feed.categoryId) {
-                    1 -> "Story"
-                    2 -> "Breed"
-                    3 -> "Adoption"
-                    4 -> "Tips"
+                    "1" -> "Story"
+                    "2" -> "Breed"
+                    "3" -> "Adoption"
+                    "4" -> "Tips"
                     else -> ""
                 }
                 tvProfileName.text = feed.userName
+//                Glide.with(itemView.context)
+//                    .load(feed.userPhoto)
+//                    .placeholder()
+//                    .into(imgProfilePicture)
 
             }
             itemView.setOnClickListener {
@@ -63,6 +67,6 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
     override fun getItemCount(): Int = listFeed.size
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: PostCategoriesItem)
+        fun onItemClicked(data: PostsItem)
     }
 }

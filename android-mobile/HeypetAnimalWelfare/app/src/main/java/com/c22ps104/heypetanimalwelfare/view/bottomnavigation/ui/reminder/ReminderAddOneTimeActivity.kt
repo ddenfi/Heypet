@@ -2,6 +2,7 @@ package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityReminderAddOneTimeBinding
+import com.c22ps104.heypetanimalwelfare.utils.AlarmReceiver
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,6 +20,7 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
     private lateinit var binding:ActivityReminderAddOneTimeBinding
     private val viewModel:ReminderAddOneTimeViewModel by viewModels()
     private val reminderSetCalendar = Calendar.getInstance()
+    private lateinit var alarmReceiver: AlarmReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,8 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
+
+        alarmReceiver = AlarmReceiver()
 
         binding.btnReminderRepeatingChooseDate.setOnClickListener {
             val dialogDate = DatePickerFragment()
@@ -66,6 +71,10 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
         lifecycleScope.launch {
             viewModel.addReminder(reminder)
         }
+        viewModel.getLatestReminder().observe(this@ReminderAddOneTimeActivity){
+            alarmReceiver.setRepeatingAlarm(this@ReminderAddOneTimeActivity,1,reminderSetCalendar,name,it.id)
+            Log.d("Reminder",it.id.toString())
+        }
     }
 
     override fun onDialogDateSet(tag: String?, year: Int, month: Int, dayOfMonth: Int) {
@@ -81,13 +90,12 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
 
     override fun onDialogTimeSet(tag: String?, hourOfDay: Int, minute: Int) {
         // Ready time formatter
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-        calendar.set(Calendar.MINUTE, minute)
+        reminderSetCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+        reminderSetCalendar.set(Calendar.MINUTE, minute)
         reminderSetCalendar.set(Calendar.HOUR_OF_DAY,hourOfDay)
         reminderSetCalendar.set(Calendar.MINUTE,minute)
 
         val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-        binding.tvReminderRepeatingChooseTime.text = dateFormat.format(calendar.time)
+        binding.tvReminderRepeatingChooseTime.text = dateFormat.format(reminderSetCalendar.time)
     }
 }

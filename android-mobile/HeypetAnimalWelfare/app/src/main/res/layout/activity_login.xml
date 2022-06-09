@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@id/img_login_character" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_username"
+        android:id="@+id/til_bio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -68,9 +68,9 @@
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/til_username"
-        app:layout_constraintEnd_toEndOf="@id/til_username"
-        app:layout_constraintTop_toBottomOf="@id/til_username"
+        app:layout_constraintStart_toStartOf="@id/til_bio"
+        app:layout_constraintEnd_toEndOf="@id/til_bio"
+        app:layout_constraintTop_toBottomOf="@id/til_bio"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/blue_dark_text_title">
 
@@ -105,8 +105,8 @@
         android:gravity="center"
         android:background="@drawable/button_general"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="@id/til_username"
-        app:layout_constraintEnd_toEndOf="@id/til_username"
+        app:layout_constraintStart_toStartOf="@id/til_bio"
+        app:layout_constraintEnd_toEndOf="@id/til_bio"
         app:layout_constraintTop_toBottomOf="@id/tv_forgot_password" />
 
     <TextView
@@ -115,8 +115,8 @@
         android:textSize="20sp"
         android:text="@string/or"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/til_username"
-        app:layout_constraintEnd_toEndOf="@id/til_username"
+        app:layout_constraintStart_toStartOf="@id/til_bio"
+        app:layout_constraintEnd_toEndOf="@id/til_bio"
         app:layout_constraintTop_toBottomOf="@id/btn_login" />
 
     <ImageView
@@ -124,8 +124,8 @@
         style="@style/AlternativeLoginButton"
         android:src="@drawable/button_facebook"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/til_username"
-        app:layout_constraintEnd_toEndOf="@id/til_username"
+        app:layout_constraintStart_toStartOf="@id/til_bio"
+        app:layout_constraintEnd_toEndOf="@id/til_bio"
         app:layout_constraintTop_toBottomOf="@id/tv_or"
         android:contentDescription="@string/cd_facebook_login" />
 

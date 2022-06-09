@@ -9,4 +9,6 @@ class ReminderViewModel(application: Application):AndroidViewModel(application) 
 
     fun getAllReminder() = repo.getAllReminder()
 
+    suspend fun deleteReminder(idReminder:Int) = repo.deleteReminder(idReminder)
+
 }

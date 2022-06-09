@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityMainBinding
-import com.c22ps104.heypetanimalwelfare.view.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,16 +15,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupView()
+
     }
 
-    private fun setupView() {
-        supportActionBar?.hide()
-
-        binding.progressBar.visibility = View.VISIBLE
-        binding.btnChat.setOnClickListener {
-            val intentToSettings = Intent(this@MainActivity, SettingsActivity::class.java)
-            startActivity(intentToSettings)
-        }
-    }
+//    private fun setupView() {
+//        supportActionBar?.hide()
+//
+//        binding.progressBar.visibility = View.VISIBLE
+//        binding.btnChat.setOnClickListener {
+//            val intentToSettings = Intent(this@MainActivity, SettingsActivity::class.java)
+//            startActivity(intentToSettings)
+//        }
+//    }
 }

@@ -14,32 +14,30 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.c22ps104.heypetanimalwelfare.R
-import com.c22ps104.heypetanimalwelfare.data.UserRepository
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.ReminderFragment
-import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.ReminderViewModel
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.*
 
-class AlarmReceiver : BroadcastReceiver() {
-    private lateinit var listener: ReminderFragment.ReminderCallback
 
-    fun setReminderCallback(listener: ReminderFragment.ReminderCallback){
-        this.listener = listener
-    }
+class AlarmReceiver : BroadcastReceiver() {
+
 
     override fun onReceive(context: Context, intent: Intent) {
-        val type = intent.getIntExtra(EXTRA_TYPE,1)
+        val type = intent.getIntExtra(EXTRA_TYPE,0)
         val message = intent.getStringExtra(EXTRA_MESSAGE)
-        val id = intent.getIntExtra(EXTRA_ID,1)
+        val id = intent.getIntExtra(EXTRA_ID,0)
 
         val title = if (type == 1) TYPE_ONE_TIME else TYPE_REPEATING
 
         // Show Toast when alarm is ringing
-//        showToast(context, title, message)
+        showToast(context, title, message)
 
+        Log.d("Reminder", message.toString())
+
+        val intent = Intent("REMINDER_BROADCAST")
+        intent.putExtra(EXTRA_ID,id)
+        intent.putExtra(EXTRA_TYPE,type)
+        context.sendBroadcast(intent)
         //notifyToActivity
-        listener.reminderRinging()
 
         // Show alarm notification
         if (message != null) showAlarmNotification(context, title, message, id)
@@ -105,7 +103,7 @@ class AlarmReceiver : BroadcastReceiver() {
         intent.putExtra(EXTRA_ID,id)
 
         val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            PendingIntent.getBroadcast(context, ID_REPEATING, intent, PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_IMMUTABLE)
         } else {
             TODO("VERSION.SDK_INT < M")
         }
@@ -151,10 +149,6 @@ class AlarmReceiver : BroadcastReceiver() {
         private const val ID_ONETIME = 100
         private const val ID_REPEATING = 101
 
-        private const val DATE_FORMAT = "yyyy-MM-dd"
-        private const val TIME_FORMAT = "HH:mm"
-
     }
-
 
 }

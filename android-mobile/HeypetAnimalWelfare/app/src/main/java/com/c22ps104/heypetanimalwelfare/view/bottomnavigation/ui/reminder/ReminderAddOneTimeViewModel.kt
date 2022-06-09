@@ -12,7 +12,6 @@ class ReminderAddOneTimeViewModel(application: Application) :AndroidViewModel(ap
 
     suspend fun addReminder(data: ReminderEntity) = repo.addReminder(data)
 
-
     fun getLatestReminder()= repo.getLatestReminder()
 
 }

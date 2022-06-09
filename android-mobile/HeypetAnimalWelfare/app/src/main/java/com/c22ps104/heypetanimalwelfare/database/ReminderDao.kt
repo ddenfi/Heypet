@@ -12,7 +12,7 @@ interface ReminderDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addReminder(reminder:ReminderEntity)
 
-    @Query("SELECT * FROM reminder_table ORDER BY id ASC")
+    @Query("SELECT * FROM reminder_table ORDER BY reminderDate DESC")
     fun readAllReminder(): LiveData<List<ReminderEntity>>
 
     @Query("SELECT * FROM reminder_table ORDER BY id DESC LIMIT 1")

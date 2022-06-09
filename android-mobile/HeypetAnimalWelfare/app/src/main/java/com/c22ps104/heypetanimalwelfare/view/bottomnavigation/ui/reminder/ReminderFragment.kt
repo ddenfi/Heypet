@@ -1,7 +1,11 @@
 package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +13,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +22,9 @@ import com.c22ps104.heypetanimalwelfare.adapter.ListReminderAdapter
 import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentReminderBinding
 import com.c22ps104.heypetanimalwelfare.utils.AlarmReceiver
+import com.c22ps104.heypetanimalwelfare.utils.AlarmReceiver.Companion.EXTRA_ID
+import com.c22ps104.heypetanimalwelfare.utils.AlarmReceiver.Companion.EXTRA_TYPE
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -37,9 +45,13 @@ class ReminderFragment : Fragment() {
         ListReminderAdapter()
     }
 
+    private val viewModel:ReminderViewModel by viewModels()
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+
 
 
     override fun onCreateView(
@@ -47,8 +59,6 @@ class ReminderFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel =
-            ViewModelProvider(this)[ReminderViewModel::class.java]
 
         _binding = FragmentReminderBinding.inflate(inflater, container, false)
 
@@ -68,14 +78,24 @@ class ReminderFragment : Fragment() {
             adapter.setData(it)
         }
 
-        reminderBroadcast.setReminderCallback(object :ReminderCallback{
-            override fun reminderRinging() {
-                Toast.makeText(requireContext(), "Ringing from callback",Toast.LENGTH_SHORT).show()
-            }
+        activity?.registerReceiver(broadcastReceiver, IntentFilter("REMINDER_BROADCAST"))
 
-        })
         setRecyclerView()
         return binding.root
+    }
+
+    var broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val id = intent.getIntExtra(EXTRA_ID,0)
+            val type = intent.getIntExtra(EXTRA_TYPE,0)
+
+            if (id != 0 && type != 2){
+                Log.d("Reminder","Delete Success")
+                lifecycleScope.launch(Dispatchers.IO){
+                    viewModel.deleteReminder(id)
+                }
+            }
+        }
     }
 
     private fun setRecyclerView() {
@@ -85,9 +105,9 @@ class ReminderFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : ListReminderAdapter.OnItemClickCallback{
             override fun onItemClicked(data: ReminderEntity) {
-                val toDetailActivity = Intent(requireActivity(),DetailReminderActivity::class.java)
-                toDetailActivity.putExtra("EXTRA_REMINDER", data)
-                startActivity(toDetailActivity)
+                lifecycleScope.launch{viewModel.deleteReminder(data.id)}
+                context?.let { reminderBroadcast.cancelAlarm(it,data.id) }
+                Toast.makeText(context,"Reminder ${data.reminderName} deleted",Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -129,12 +149,13 @@ class ReminderFragment : Fragment() {
     }
 
 
+    override fun onDestroy() {
+        activity?.unregisterReceiver(broadcastReceiver)
+        super.onDestroy()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    interface ReminderCallback{
-        fun reminderRinging()
-    }
 }

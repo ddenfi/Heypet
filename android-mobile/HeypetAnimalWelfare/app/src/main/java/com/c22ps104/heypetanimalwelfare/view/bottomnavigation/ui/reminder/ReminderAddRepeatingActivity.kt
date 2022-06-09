@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityReminderAddRepeatingBinding
+import com.c22ps104.heypetanimalwelfare.utils.AlarmReceiver
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,6 +19,7 @@ class ReminderAddRepeatingActivity : AppCompatActivity(),TimePickerFragment.Dial
     private lateinit var binding: ActivityReminderAddRepeatingBinding
     private val viewModel:ReminderAddOneTimeViewModel by viewModels()
     private val reminderSetCalendar = Calendar.getInstance()
+    private lateinit var alarmReceiver: AlarmReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,8 @@ class ReminderAddRepeatingActivity : AppCompatActivity(),TimePickerFragment.Dial
             val dialogTime = TimePickerFragment()
             dialogTime.show(supportFragmentManager,"RepeatingAlarmTime")
         }
+
+        alarmReceiver = AlarmReceiver()
 
     }
 
@@ -57,9 +61,12 @@ class ReminderAddRepeatingActivity : AppCompatActivity(),TimePickerFragment.Dial
     private fun saveReminder(){
         val name = binding.etReminderRepeatingName.text.toString()
         val date = reminderSetCalendar.time
-        val reminder = ReminderEntity(reminderDate = date, reminderName = name, reminderType = 1 )
+        val reminder = ReminderEntity(reminderDate = date, reminderName = name, reminderType = 2 )
         lifecycleScope.launch {
             viewModel.addReminder(reminder)
+            viewModel.getLatestReminder().observe(this@ReminderAddRepeatingActivity){
+                alarmReceiver.setRepeatingAlarm(this@ReminderAddRepeatingActivity,2,reminderSetCalendar,name,it.id)
+            }
         }
     }
 

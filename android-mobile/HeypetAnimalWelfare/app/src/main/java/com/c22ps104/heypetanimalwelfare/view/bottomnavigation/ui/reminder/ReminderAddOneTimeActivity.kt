@@ -70,10 +70,9 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
         val reminder = ReminderEntity(reminderDate = date, reminderName = name, reminderType = 1 )
         lifecycleScope.launch {
             viewModel.addReminder(reminder)
-        }
-        viewModel.getLatestReminder().observe(this@ReminderAddOneTimeActivity){
-            alarmReceiver.setRepeatingAlarm(this@ReminderAddOneTimeActivity,1,reminderSetCalendar,name,it.id)
-            Log.d("Reminder",it.id.toString())
+            viewModel.getLatestReminder().observe(this@ReminderAddOneTimeActivity){
+                alarmReceiver.setOneTimeAlarm(this@ReminderAddOneTimeActivity,1,reminderSetCalendar,name,it.id)
+            }
         }
     }
 
@@ -94,6 +93,7 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
         reminderSetCalendar.set(Calendar.MINUTE, minute)
         reminderSetCalendar.set(Calendar.HOUR_OF_DAY,hourOfDay)
         reminderSetCalendar.set(Calendar.MINUTE,minute)
+        reminderSetCalendar.set(Calendar.SECOND,0)
 
         val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
         binding.tvReminderRepeatingChooseTime.text = dateFormat.format(reminderSetCalendar.time)

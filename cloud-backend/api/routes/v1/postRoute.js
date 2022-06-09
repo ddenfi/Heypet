@@ -8,6 +8,8 @@ const {
   getPostById,
   deletePost,
   getPostsByCategoryId,
+  getPostByIdUser,
+  getPostByToken,
 } = require("../../controllers/postController");
 
 const { uploadSingle } = require("../../utils/files");
@@ -19,9 +21,10 @@ router.post(
   createPost
 );
 
-router.route("/").get(getPosts);
+router.route("/").get(getPosts).get(auth(), getPostByToken);
 
 router.route("/category/:categoryId").get(getPostsByCategoryId);
+router.route("/profile/feeds/:idUser").get(getPostByIdUser);
 
 router.route("/:id").delete(deletePost).get(getPostById);
 

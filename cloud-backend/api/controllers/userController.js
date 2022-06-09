@@ -1,11 +1,8 @@
 const catchAsync = require("../utils/catchAsync");
 const { User } = require("../models/index");
-const { pagination } = require("../utils/helper");
 
 exports.getUsers = catchAsync(async (req, res, next) => {
-  const { count, rows } = await User.findAndCountAll({
-    ...pagination(req),
-  });
+  const { count, rows } = await User.findAndCountAll({});
 
   res.status(200).json({
     status: "success",
@@ -33,25 +30,25 @@ exports.getUserByToken = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.updateBio = catchAsync(async (req, res, next) => {
-  const rows = await User.update(
-    { bio: req.body.bio },
-    {
-      where: {
-        id: req.user.id,
+exports.updateProfile = catchAsync(async (req, res, next) => {
+  if (req.file) {
+    req.body["photo"] = req.file.filename;
+    const rows = await User.update(
+      {
+        photo: `${process.env.BASE_URL}user/${req.file.filename}`,
       },
-    }
-  );
-
-  res.status(200).json({
-    status: "success",
-  });
-});
-
-exports.updatePhoto = catchAsync(async (req, res, next) => {
-  if (req.file) req.body["photo"] = req.file.filename;
+      {
+        where: {
+          id: req.user.id,
+        },
+      }
+    );
+  }
   const rows = await User.update(
-    { photo: `${process.env.BASE_URL}user/${req.file.filename}` },
+    {
+      bio: req.body.bio,
+      pet: req.body.pet,
+    },
     {
       where: {
         id: req.user.id,

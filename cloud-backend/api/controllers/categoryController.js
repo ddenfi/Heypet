@@ -1,12 +1,10 @@
 const catchAsync = require("../utils/catchAsync");
 const { Category } = require("../models");
-const { pagination } = require("../utils/helper");
 const { Sequelize } = require("sequelize");
 const sequelize = Sequelize;
 
 exports.getCategories = catchAsync(async (req, res, next) => {
   const rows = await Category.findAll({
-    ...pagination(req),
     order: sequelize.literal("createdAt	DESC"),
   });
 

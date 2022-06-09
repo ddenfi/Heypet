@@ -1,12 +1,10 @@
 const catchAsync = require("../utils/catchAsync");
 const { Animal } = require("../models");
-const { pagination } = require("../utils/helper");
 const { Sequelize } = require("sequelize");
 const sequelize = Sequelize;
 
 exports.getAnimal = catchAsync(async (req, res, next) => {
   const rows = await Animal.findAll({
-    ...pagination(req),
     order: sequelize.literal("createdAt	DESC"),
   });
 
@@ -14,7 +12,7 @@ exports.getAnimal = catchAsync(async (req, res, next) => {
     status: "success",
     results: rows.length,
     data: {
-      categories: rows,
+      animals: rows,
     },
   });
 });
@@ -31,7 +29,7 @@ exports.createAnimal = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     data: {
-      categories: rows,
+      animals: rows,
     },
   });
 });
@@ -75,7 +73,7 @@ exports.getAnimalById = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     data: {
-      categories: rows,
+      animals: rows,
     },
   });
 });

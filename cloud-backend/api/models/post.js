@@ -19,6 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       photo: DataTypes.STRING,
       idFeeds: DataTypes.STRING,
       userName: DataTypes.STRING,
+      idUser: DataTypes.STRING,
+      userPhoto: DataTypes.STRING,
     },
     {
       //managing databases such as connecting tables etc

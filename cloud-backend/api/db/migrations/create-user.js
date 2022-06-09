@@ -13,11 +13,16 @@ module.exports = {
       },
       bio: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       email: {
         type: Sequelize.STRING,
         unique: true,
         allowNull: false,
+      },
+      pet: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       phoneNumber: {
         type: Sequelize.STRING,
@@ -27,6 +32,7 @@ module.exports = {
       },
       photo: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       role: {
         type: Sequelize.STRING,

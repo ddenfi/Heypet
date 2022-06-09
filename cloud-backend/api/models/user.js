@@ -19,6 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       bio: DataTypes.STRING,
+      pet: DataTypes.STRING,
+      photo: DataTypes.STRING,
       email: {
         type: DataTypes.STRING,
         unique: { msg: "Email address already in use!" },
@@ -52,17 +54,6 @@ module.exports = (sequelize, DataTypes) => {
           len: {
             args: [3, 64],
             msg: "Password must be greater than or equal to 3 characters",
-          },
-        },
-      },
-      photo: DataTypes.STRING,
-      role: {
-        type: DataTypes.STRING,
-        defaultValue: "user",
-        validate: {
-          isIn: {
-            args: [["user", "admin"]],
-            msg: "Invalid role name",
           },
         },
       },

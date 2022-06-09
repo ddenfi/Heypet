@@ -24,6 +24,12 @@ module.exports = {
       userName: {
         type: Sequelize.STRING,
       },
+      idUser: {
+        type: Sequelize.STRING,
+      },
+      userPhoto: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

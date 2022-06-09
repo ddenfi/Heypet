@@ -1,13 +1,11 @@
 const catchAsync = require("../utils/catchAsync");
 const { Post, Category } = require("../models");
-const { pagination } = require("../utils/helper");
 const { Sequelize } = require("sequelize");
 const sequelize = Sequelize;
 const { getFirestore } = require("firebase-admin/firestore");
 
 exports.getPosts = catchAsync(async (req, res, next) => {
   const rows = await Post.findAll({
-    ...pagination(req),
     order: sequelize.literal("createdAt	DESC"),
   });
 
@@ -15,14 +13,13 @@ exports.getPosts = catchAsync(async (req, res, next) => {
     status: "success",
     results: rows.length,
     data: {
-      categories: rows,
+      posts: rows,
     },
   });
 });
 
 exports.getPostsByCategoryId = catchAsync(async (req, res, next) => {
   const rows = await Post.findAll({
-    ...pagination(req),
     where: {
       categoryId: req.params.categoryId,
     },
@@ -34,7 +31,7 @@ exports.getPostsByCategoryId = catchAsync(async (req, res, next) => {
     status: "success",
     results: rows.length,
     data: {
-      categories: rows,
+      posts: rows,
     },
   });
 });
@@ -54,12 +51,14 @@ exports.createPost = catchAsync(async (req, res, next) => {
     photo: `${process.env.BASE_URL}feeds/${req.body.photo}`,
     idFeeds: doc.id,
     userName: req.user.name,
+    idUser: req.user.id,
+    userPhoto: req.user.photo,
   });
 
   res.status(200).json({
     status: "success",
     data: {
-      categories: rows,
+      posts: rows,
     },
   });
 });
@@ -86,7 +85,41 @@ exports.getPostById = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     data: {
-      categories: rows,
+      posts: rows,
+    },
+  });
+});
+
+exports.getPostByIdUser = catchAsync(async (req, res, next) => {
+  const rows = await Post.findAll({
+    where: {
+      idUser: req.params.idUser,
+    },
+    order: sequelize.literal("createdAt	DESC"),
+  });
+
+  res.status(200).json({
+    status: "success",
+    results: rows.length,
+    data: {
+      posts: rows,
+    },
+  });
+});
+
+exports.getPostByToken = catchAsync(async (req, res, next) => {
+  const rows = await Post.findAll({
+    where: {
+      idUser: req.user.idUser,
+    },
+    order: sequelize.literal("createdAt	DESC"),
+  });
+
+  res.status(200).json({
+    status: "success",
+    results: rows.length,
+    data: {
+      posts: rows,
     },
   });
 });

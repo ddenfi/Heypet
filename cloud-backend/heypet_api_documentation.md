@@ -41,7 +41,6 @@ Example Response:
             "accessTokenExpires": "2022-06-07 01:32:31"
         },
         "user": {
-            "role": "user",
             "id": 2,
             "name": "heypet",
             "bio": "hi this is heypet",
@@ -90,13 +89,13 @@ Example Response:
             "accessTokenExpires": "2022-06-07 01:36:11"
         },
         "user": {
-            "id": 2,
+            "id": 4,
             "name": "heypet",
             "bio": "hi this is heypet",
+            "pet": null,
+            "photo": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
             "email": "heypet@gmail.com",
             "phoneNumber": "082324252627",
-            "photo": "http://34.121.253.2:5001/user/photo-1654505551014.jpeg",
-            "role": "user"
         }
     }
 }
@@ -133,19 +132,19 @@ Example Response:
 ```
 {
     "status": "success",
-    "count": 22,
-    "results": 22,
+    "count": 2,
+    "results": 2,
     "data": {
         "users": [
             {
                 "id": 2,
                 "name": "heypet",
                 "bio": "hi this is heypet",
+                "pet": null,
+                "photo": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
                 "email": "heypet@gmail.com",
                 "phoneNumber": "082324252627",
-                "password": "$2a$08$Lko2b1wsLdo2SXug3aWwguJo9AC/.k6CHgEtdQw84oh7KuTbdXfei",
-                "photo": "http://34.121.253.2:5001/user/photo-1654505551014.jpeg",
-                "role": "user",
+                "password": "$2a$08$jEbjxsYhLX2Gua78UGJoJeehkAWN9Ha3ohU6uDDHOTJwUhHWRJbhS",
                 "createdAt": "2022-06-06T08:52:31.000Z",
                 "updatedAt": "2022-06-06T08:52:31.000Z"
             },
@@ -153,11 +152,11 @@ Example Response:
                 "id": 1,
                 "name": "zayn",
                 "bio": "halooo semua",
+                "pet": "Kucing Persia",
+                "photo": "http://34.121.253.2:5001/user/photo-1654446204064.jpeg",
                 "email": "zayn@gmail.com",
                 "phoneNumber": "0823724234586",
                 "password": "$2a$08$WVYhgyyH4OhNbWlSlE91O.TA7iTxMM8QZjxGHBaJSG8jIa/4iW7Ay",
-                "photo": "http://34.121.253.2:5001/user/photo-1654446204064.jpeg",
-                "role": "user",
                 "createdAt": "2022-06-05T16:23:24.000Z",
                 "updatedAt": "2022-06-05T16:23:24.000Z"
             }
@@ -200,11 +199,11 @@ Example Response:
             "id": 2,
             "name": "heypet",
             "bio": "hi this is heypet",
+            "pet": null,
+            "photo": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
             "email": "heypet@gmail.com",
             "phoneNumber": "082324252627",
-            "password": "$2a$08$Lko2b1wsLdo2SXug3aWwguJo9AC/.k6CHgEtdQw84oh7KuTbdXfei",
-            "photo": "http://34.121.253.2:5001/user/photo-1654505551014.jpeg",
-            "role": "user",
+            "password": "$2a$08$jEbjxsYhLX2Gua78UGJoJeehkAWN9Ha3ohU6uDDHOTJwUhHWRJbhS",
             "createdAt": "2022-06-06T08:52:31.000Z",
             "updatedAt": "2022-06-06T08:52:31.000Z"
         }
@@ -212,44 +211,9 @@ Example Response:
 }
 ```
 
-## Update Bio
+## Update Profile
 
-URL: `http://34.121.253.2:5001/api/v1/users/session`
-
-Method: `PUT`
-
-Auth requered: YES (Bearer Token)
-
-**Must Input Token**
-
-Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ1MDU3NzEsImV4cCI6MTY1NDU2NTc3MSwidHlwZSI6ImFjY2VzcyJ9.E45aDUG07q4DINbVMpTG6wcyFIg3Jwi6W5yPM2h0AMQ`
-
-Example Request:
-
-```
-curl --location --request PUT 'http://localhost:5000/api/v1/users/session' \
---data-raw '{
-    "bio": "haii guys')"
-}'
-```
-
-### Success Response
-
-Condition: If everything is OK
-
-Code: 200
-
-Example Response:
-
-```
-{
-    "status": "success"
-}
-```
-
-## Update Photo Profile
-
-URL: `http://34.121.253.2:5001/api/v1/users/session/photo`
+URL: `http://34.121.253.2:5001/api/v1/users/session/profile`
 
 Method: `PUT`
 
@@ -262,7 +226,9 @@ Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ
 Example Request:
 
 ```
-curl --location --request PUT 'http://localhost:5000/api/v1/users/session/photo' \
+curl --location --request PUT 'http://34.121.253.2:5001/api/v1/users/session/profile' \
+--form 'pet="Golden Retriever"' \
+--form 'bio="Hi! Welcome to my profile..."' \
 --form 'photo=@"/C:/Users/Milla/Downloads/Capstone Project/image/puppy.jpg"'
 ```
 
@@ -353,26 +319,32 @@ Example Response:
             {
                 "id": 1,
                 "name": "Story",
-                "createdAt": null,
-                "updatedAt": null
+                "updatedAt": "2022-06-05T10:56:53.333Z",
+                "createdAt": "2022-06-05T10:56:53.333Z"
             },
             {
                 "id": 2,
                 "name": "breeding",
-                "createdAt": null,
-                "updatedAt": null
+                "updatedAt": "2022-06-05T10:56:53.333Z",
+                "createdAt": "2022-06-05T10:56:53.333Z"
             },
             {
                 "id": 3,
                 "name": "Adopsi",
-                "createdAt": null,
-                "updatedAt": null
+                "updatedAt": "2022-06-05T10:56:53.333Z",
+                "createdAt": "2022-06-05T10:56:53.333Z"
             },
             {
                 "id": 4,
                 "name": "Tips",
-                "createdAt": null,
-                "updatedAt": null
+                "updatedAt": "2022-06-05T10:56:53.333Z",
+                "createdAt": "2022-06-05T10:56:53.333Z"
+            },
+            {
+                "id": 5,
+                "name": "Reels",
+                "updatedAt": "2022-06-06T13:56:53.333Z",
+                "createdAt": "2022-06-06T13:56:53.333Z"
             }
         ]
     }
@@ -815,6 +787,8 @@ Example Response:
             "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
             "idFeeds": "fVuUJ7NkvJnssrIVVij0",
             "userName": "heypet",
+            "idUser": 2,
+            "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
             "updatedAt": "2022-06-07T13:50:09.660Z",
             "createdAt": "2022-06-07T13:50:09.660Z"
         }
@@ -857,6 +831,8 @@ Example Response:
                 "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
                 "idFeeds": "fVuUJ7NkvJnssrIVVij0",
                 "userName": "heypet",
+                "idUser": 2,
+                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
                 "updatedAt": "2022-06-07T13:50:09.660Z",
                 "createdAt": "2022-06-07T13:50:09.660Z",
                 "CategoryId": "1",
@@ -868,8 +844,10 @@ Example Response:
                 "photo": "http://34.121.253.2:5001/feeds/photo-1654445986057.jpeg",
                 "idFeeds": "u29yg0aF2kw6gqxzWhIQ",
                 "userName": "heylovers"
-                "createdAt": "2022-06-05T16:19:48.000Z",
+                "idUser": "1",
+                "userPhoto": "http://localhost:5000/user/photo-1654766729741.jpeg",
                 "updatedAt": "2022-06-05T16:19:48.000Z",
+                "createdAt": "2022-06-05T16:19:48.000Z",
                 "CategoryId": "1"
             }
         ]
@@ -904,7 +882,40 @@ Code: 200
 Example Response:
 
 ```
-
+{
+    "status": "success",
+    "results": 2,
+    "data": {
+        "posts": [
+            {
+                "id": 2,
+                "categoryId": "1",
+                "description": "Hi guys. This is my pet. His name is Dogy",
+                "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
+                "idFeeds": "fVuUJ7NkvJnssrIVVij0",
+                "userName": "heypet",
+                "idUser": 2,
+                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "updatedAt": "2022-06-07T13:50:09.660Z",
+                "createdAt": "2022-06-07T13:50:09.660Z",
+                "CategoryId": "1",
+            },
+            {
+                "id": 1,
+                "categoryId": "1",
+                "description": "Hallo",
+                "photo": "http://34.121.253.2:5001/feeds/photo-1654445986057.jpeg",
+                "idFeeds": "u29yg0aF2kw6gqxzWhIQ",
+                "userName": "heylovers"
+                "idUser": "1",
+                "userPhoto": "http://localhost:5000/user/photo-1654766729741.jpeg",
+                "updatedAt": "2022-06-05T16:19:48.000Z",
+                "createdAt": "2022-06-05T16:19:48.000Z",
+                "CategoryId": "1"
+            }
+        ]
+    }
+}
 ```
 
 ## Get Post By CategoryId
@@ -946,14 +957,17 @@ Example Response:
                 "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
                 "idFeeds": "fVuUJ7NkvJnssrIVVij0",
                 "userName": "heypet",
+                "userName": "heypet",
+                "idUser": 2,
+                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
                 "createdAt": "2022-06-07T13:50:09.000Z",
                 "updatedAt": "2022-06-07T13:50:09.000Z",
                 "CategoryId": 1,
                 "Category": {
                     "id": 1,
                     "name": "Story",
-                    "createdAt": null,
-                    "updatedAt": null
+                    "updatedAt": "2022-06-05T10:56:53.333Z",
+                    "createdAt": "2022-06-05T10:56:53.333Z"
                 }
             },
             {
@@ -963,14 +977,16 @@ Example Response:
                 "photo": "http://34.121.253.2:5001/feeds/photo-1654445986057.jpeg",
                 "idFeeds": "u29yg0aF2kw6gqxzWhIQ",
                 "userName": "heylovers"
+                "idUser": "1",
+                "userPhoto": "http://localhost:5000/user/photo-1654766729741.jpeg",
                 "createdAt": "2022-06-05T16:19:48.000Z",
                 "updatedAt": "2022-06-05T16:19:48.000Z",
                 "CategoryId": "1"
                 "Category": {
                     "id": 1,
                     "name": "Story",
-                    "createdAt": null,
-                    "updatedAt": null
+                    "updatedAt": "2022-06-05T10:56:53.333Z",
+                    "createdAt": "2022-06-05T10:56:53.333Z"
                 }
             }
         ]
@@ -991,7 +1007,7 @@ Example Request:
 idUser: 2
 
 ```
-curl --location --request GET http://34.121.253.2:5001/api/v1/posts/profile/feeds/:idUser
+curl --location --request GET 'http://34.121.253.2:5001/api/v1/posts/profile/feeds/2'
 ```
 
 ### Success Response
@@ -1003,7 +1019,52 @@ Code: 200
 Example Response:
 
 ```
-
+{
+    "status": "success",
+    "results": 2,
+    "data": {
+        "posts": [
+            {
+                "id": 6,
+                "categoryId": "1",
+                "description": "My pet is so cute",
+                "photo": "http://34.121.253.2:5001/feeds/photo-1654781028584.jpeg",
+                "idFeeds": "T2p1lpIRfKRvEv9DeFzv",
+                "userName": "heypet",
+                "idUser": "2",
+                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg"
+                "createdAt": "2022-06-09T13:23:51.000Z",
+                "updatedAt": "2022-06-09T13:23:51.000Z",
+                "CategoryId": "1"
+            },
+            {
+                "id": 4,
+                "categoryId": "1",
+                "description": "Hi this is my pet. Her name is Huahua.",
+                "photo": "http://34.121.253.2:5001/feeds/undefined",
+                "idFeeds": "hoHX8hUG3NkjjmjvUAwj",
+                "userName": "heypet",
+                "idUser": "2",
+                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "createdAt": "2022-06-09T12:31:22.000Z",
+                "updatedAt": "2022-06-09T12:31:22.000Z",
+                "CategoryId": "1"
+            },
+            {
+                "id": 2,
+                "categoryId": "1",
+                "description": "Hi guys. This is my pet. His name is Dogy",
+                "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
+                "idFeeds": "fVuUJ7NkvJnssrIVVij0",
+                "userName": "heypet",
+                "idUser": 2,
+                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "updatedAt": "2022-06-07T13:50:09.660Z",
+                "createdAt": "2022-06-07T13:50:09.660Z"
+            }
+        ]
+    }
+}
 ```
 
 ## Delete Post

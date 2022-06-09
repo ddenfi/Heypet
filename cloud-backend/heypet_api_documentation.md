@@ -42,7 +42,7 @@ Example Response:
         },
         "user": {
             "role": "user",
-            "id": 26,
+            "id": 2,
             "name": "heypet",
             "bio": "hi this is heypet",
             "email": "heypet@gmail.com",
@@ -90,7 +90,7 @@ Example Response:
             "accessTokenExpires": "2022-06-07 01:36:11"
         },
         "user": {
-            "id": 26,
+            "id": 2,
             "name": "heypet",
             "bio": "hi this is heypet",
             "email": "heypet@gmail.com",
@@ -197,7 +197,7 @@ Example Response:
     "status": "success",
     "data": {
         "users": {
-            "id": 26,
+            "id": 2,
             "name": "heypet",
             "bio": "hi this is heypet",
             "email": "heypet@gmail.com",
@@ -877,6 +877,36 @@ Example Response:
 }
 ```
 
+## Get Posts by Token
+
+URL: `http://34.121.253.2:5001/api/v1/posts`
+
+Method: `GET`
+
+Auth requered: YES (Bearer Token)
+
+**Must Input Token**
+
+Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ1MDU3NzEsImV4cCI6MTY1NDU2NTc3MSwidHlwZSI6ImFjY2VzcyJ9.E45aDUG07q4DINbVMpTG6wcyFIg3Jwi6W5yPM2h0AMQ`
+
+Example Request:
+
+```
+curl --location --request GET 'http://34.121.253.2:5001/api/v1/posts'
+```
+
+### Success Response
+
+Condition: If everything is OK
+
+Code: 200
+
+Example Response:
+
+```
+
+```
+
 ## Get Post By CategoryId
 
 URL: `http://34.121.253.2:5001/api/v1/posts/category/:categoryId`
@@ -946,6 +976,34 @@ Example Response:
         ]
     }
 }
+```
+
+## Get Posts by User Id
+
+URL: `http://34.121.253.2:5001/api/v1/posts/profile/feeds/:idUser`
+
+Method: `GET`
+
+Example Request:
+
+#### PATH VARIABLES
+
+idUser: 2
+
+```
+curl --location --request GET http://34.121.253.2:5001/api/v1/posts/profile/feeds/:idUser
+```
+
+### Success Response
+
+Condition: If everything is OK
+
+Code: 200
+
+Example Response:
+
+```
+
 ```
 
 ## Delete Post

@@ -57,6 +57,16 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      role: {
+        type: DataTypes.STRING,
+        defaultValue: "user",
+        validate: {
+          isIn: {
+            args: [["user", "admin"]],
+            msg: "Invalid role name",
+          },
+        },
+      },
     },
     {
       //managing databases such as connecting tables etc

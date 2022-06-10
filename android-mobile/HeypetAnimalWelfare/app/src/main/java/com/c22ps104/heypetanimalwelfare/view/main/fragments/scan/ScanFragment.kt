@@ -1,4 +1,4 @@
-package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.scan
+package com.c22ps104.heypetanimalwelfare.view.main.fragments.scan
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -29,7 +29,7 @@ class ScanFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == -1) {
                 val imageBitmap = it.data?.extras?.get("data") as Bitmap
-                binding.imageView.setImageBitmap(imageBitmap)
+                binding.ivPictureTaken.setImageBitmap(imageBitmap)
                 val file = createTempFile(imageBitmap)
                 if (file != null) {
                     scanViewModel.classify(file)
@@ -44,7 +44,7 @@ class ScanFragment : Fragment() {
                     val imageUri = it.data?.data
                     val imageStream = context?.contentResolver?.openInputStream(imageUri!!)
                     val bitmap = BitmapFactory.decodeStream(imageStream)
-                    binding.imageView.setImageBitmap(bitmap)
+                    binding.ivPictureTaken.setImageBitmap(bitmap)
                     val file = createTempFile(bitmap)
 
                     if (file != null) {

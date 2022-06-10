@@ -97,15 +97,14 @@ class UploadActivity : AppCompatActivity() {
 
         preferencesHelper = PreferencesHelper(this)
 
-        val category = resources.getStringArray(R.array.post_category)
-        val arrayAdapter = ArrayAdapter(this, R.layout.item_dropdown, category)
-
-        binding.tvAutocompleteUpload.setAdapter(arrayAdapter)
-
         setupView()
     }
 
     private fun setupView() {
+        val category = resources.getStringArray(R.array.post_category)
+        val arrayAdapter = ArrayAdapter(this, R.layout.item_dropdown, category)
+        binding.tvAutocompleteUpload.setAdapter(arrayAdapter)
+
         binding.ivUploadCamera.setOnClickListener{
             cameraPermission.launch(android.Manifest.permission.CAMERA)
         }
@@ -125,7 +124,7 @@ class UploadActivity : AppCompatActivity() {
                 else -> 1
             }
 
-            val category = categoryId.toString().toRequestBody("text/plain".toMediaType())
+            val categorySelected = categoryId.toString().toRequestBody("text/plain".toMediaType())
             val file = tempFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
 
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
@@ -137,7 +136,7 @@ class UploadActivity : AppCompatActivity() {
             val token = preferencesHelper.getString(PREF_TOKEN)
 
             if (token != null) {
-                viewModel.upload(token,category,imageMultipart,desc).observe(this){
+                viewModel.upload(token, categorySelected, imageMultipart, desc).observe(this) {
                     Toast.makeText(this,"Upload $it",Toast.LENGTH_SHORT).show()
                 }
             }

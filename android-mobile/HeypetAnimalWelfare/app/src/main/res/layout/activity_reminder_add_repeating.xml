@@ -4,58 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.bottomnavigation.fragments.reminder.ReminderAddRepeatingActivity">
+    tools:context=".view.main.fragments.reminder.ReminderAddRepeatingActivity">
 
     <EditText
         android:id="@+id/et_reminderRepeating_name"
+        style="@style/Text.Reminder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:inputType="textPersonName"
+        android:hint="@string/reminder_title_hint"
+        android:importantForAutofill="no"
         android:layout_marginStart="80dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="80dp"
-        android:hint="Your Reminder Name"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_reminderRepeating_chooseDate"
-        android:layout_width="0dp"
+        style="@style/Text.Reminder"
         android:layout_height="40dp"
-        android:layout_marginTop="12dp"
         android:gravity="center"
-        android:hint="Everyday"
-        app:layout_constraintEnd_toEndOf="@+id/et_reminderRepeating_name"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text="@string/everyday"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@+id/et_reminderRepeating_name"
+        app:layout_constraintEnd_toEndOf="@+id/et_reminderRepeating_name"
         app:layout_constraintTop_toBottomOf="@+id/et_reminderRepeating_name" />
 
     <ImageButton
         android:id="@+id/btn_reminderRepeating_chooseTime"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_time"
         android:background="@color/blue_light_background"
         android:padding="5dp"
-        android:src="@drawable/ic_time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_reminderRepeating_chooseDate" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/et_reminderRepeating_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reminderRepeating_chooseDate"
+        android:contentDescription="@string/cd_clock" />
 
     <TextView
         android:id="@+id/tv_reminderRepeating_chooseTime"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="80dp"
+        style="@style/Text.Reminder"
         android:gravity="center"
-        android:hint="Choose a Time"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_reminderRepeating_chooseTime"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/choose_a_time"
+        android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/btn_reminderRepeating_chooseTime"
-        app:layout_constraintTop_toTopOf="@+id/btn_reminderRepeating_chooseTime" />
+        app:layout_constraintEnd_toEndOf="@id/et_reminderRepeating_name"
+        app:layout_constraintTop_toTopOf="@+id/btn_reminderRepeating_chooseTime"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_reminderRepeating_chooseTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

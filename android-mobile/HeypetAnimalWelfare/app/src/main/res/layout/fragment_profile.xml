@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".view.bottomnavigation.fragments.profile.ProfileFragment">
+    tools:context=".view.main.fragments.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_hor_center"
@@ -189,8 +189,8 @@
         android:id="@+id/rv_profile_posts"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_profile_post"
         android:layout_marginTop="2dp"
+        tools:listitem="@layout/item_profile_post"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cv_profile_details"
@@ -206,7 +206,7 @@
         app:layout_constraintTop_toBottomOf="@id/cv_profile_details"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <ImageView
+    <View
         android:layout_width="match_parent"
         android:layout_height="9dp"
         android:background="@color/white"

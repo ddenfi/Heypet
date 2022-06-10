@@ -32,13 +32,13 @@
             android:name=".view.comment.CommentSectionActivity"
             android:exported="false" />
         <activity
-            android:name=".view.bottomnavigation.fragments.reminder.DetailReminderActivity"
+            android:name=".view.main.fragments.reminder.DetailReminderActivity"
             android:exported="false" />
         <activity
-            android:name=".view.bottomnavigation.fragments.reminder.ReminderAddRepeatingActivity"
+            android:name=".view.main.fragments.reminder.ReminderAddRepeatingActivity"
             android:exported="false" />
         <activity
-            android:name=".view.bottomnavigation.fragments.reminder.ReminderAddOneTimeActivity"
+            android:name=".view.main.fragments.reminder.ReminderAddOneTimeActivity"
             android:exported="false" />
         <receiver
             android:name=".utils.AlarmReceiver"
@@ -48,12 +48,12 @@
             android:name=".view.upload.UploadActivity"
             android:exported="false" />
         <activity
-            android:name=".view.bottomnavigation.BottomNavigationActivity"
+            android:name=".view.main.BottomNavigationActivity"
             android:exported="false"
             android:label="@string/title_activity_bottom_navigation"
             android:theme="@style/NavigationLayoutTheme" />
         <activity
-            android:name=".view.bottomnavigation.fragments.profile.EditProfileActivity"
+            android:name=".view.main.fragments.profile.EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".view.caretips.CaretipsActivity"

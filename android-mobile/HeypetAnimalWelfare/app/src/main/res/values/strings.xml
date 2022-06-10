@@ -26,6 +26,13 @@
     <string name="sign_up">Sign Up</string>
     <string name="cd_sign_up_image">Sign Up image</string>
 
+    <!-- Bottom Navigation -->
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_reminder">Reminder</string>
+    <string name="title_profile">Profile</string>
+
     <!-- Home and Feed -->
     <string name="heypet">heypet</string>
     <string name="filter">Filter</string>
@@ -35,15 +42,22 @@
     <string name="likes_number">137</string>
     <string name="read_more">Read More</string>
     <string name="cd_filter_posts">Filter posts</string>
+    <string name="cd_notification_button">Open notification</string>
+    <string name="cd_camera_button">Open camera</string>
+    <string name="cd_post_settings">Open post settings</string>
     <string name="cd_profile_image">Profile image</string>
     <string name="cd_post_picture">Post\'s picture</string>
     <string name="cd_like_button">Like this post</string>
     <string name="cd_comment_button">See this post\'s comments</string>
     <string name="cd_bookmark_button">Bookmark this post</string>
-    <string name="cd_post_settings">Open post settings</string>
-    <string name="cd_camera_button">Open camera</string>
     <string name="cd_chat_button">Open chat</string>
-    <string name="cd_notification_button">Open notification</string>
+
+    <!-- Feed Filter -->
+    <string name="all">All</string>
+    <string name="adoption">Adoption</string>
+    <string name="tips">Tips</string>
+    <string name="breeding">Breeding</string>
+    <string name="story">Story</string>
 
     <!--List Feed Category-->
     <string-array name="post_category">
@@ -53,12 +67,48 @@
         <item>Story</item>
     </string-array>
 
-    <!-- Feed Filter -->
-    <string name="all">All</string>
-    <string name="adoption">Adoption</string>
-    <string name="tips">Tips</string>
-    <string name="breeding">Breeding</string>
-    <string name="story">Story</string>
+    <!-- Upload -->
+    <string name="caption">Caption</string>
+    <string name="caption_description">Your caption</string>
+    <string name="category">Category</string>
+    <string name="none">None</string>
+    <string name="upload">Upload</string>
+    <string name="gallery">Gallery</string>
+    <string name="cd_picture_to_post">Picture to post</string>
+    <string name="cd_gallery_button">Open gallery</string>
+
+    <!-- Post Detail -->
+    <string name="your_comment">Your comment</string>
+    <string name="send">Send</string>
+
+    <!-- Scan -->
+    <string name="camera">Camera</string>
+    <string name="classified_as">Classified As</string>
+    <string name="your_pet_breed">Your pet breed</string>
+    <string name="cd_picture_taken">Pet image</string>
+    <string name="cd_caretips">Open identified pet\'s care tips</string>
+
+    <!-- Care Tips -->
+    <string name="breed">Breed</string>
+    <string name="personality">Personality</string>
+    <string name="health">Health</string>
+    <string name="grooming">Grooming</string>
+    <string name="cd_more_tips">More tips</string>
+
+    <!-- Reminder -->
+    <string name="reminder_title">Feeds Yuuki</string>
+    <string name="reminder_title_hint">Your Reminder Name</string>
+    <string name="choose_a_date">Choose a Date</string>
+    <string name="choose_a_time">Choose a Time</string>
+    <string name="everyday">Everyday</string>
+    <string name="save">Save</string>
+    <string name="cd_reminder_image">Reminder image</string>
+    <string name="cd_add_reminder">Add reminder</string>
+    <string name="cd_add_once">Add one-set alarm reminder</string>
+    <string name="cd_add_repeating">Add repeating alarm reminder</string>
+    <string name="cd_delete_reminder">Delete this reminder</string>
+    <string name="cd_calendar">Open calendar</string>
+    <string name="cd_clock">Open clock</string>
 
     <!-- Profile -->
     <string name="_20">20</string>
@@ -73,6 +123,9 @@
     <string name="cd_back_button">Back to previous page</string>
     <string name="cd_pet_type">Pet type</string>
     <string name="cd_profile_chat_button">Chat this user</string>
+
+    <!-- Edit Profile -->
+    <string name="profile_picture">Profile picture</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
@@ -90,13 +143,6 @@
     <string name="cd_clock_button">Choose hour and minute</string>
     <string name="cd_calendar_button">Choose date</string>
 
-    <!-- Bottom Navigation -->
-    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_scan">Scan</string>
-    <string name="title_reminder">Reminder</string>
-    <string name="title_profile">Profile</string>
-
     <!-- Misc -->
     <string name="username">Username</string>
     <string name="email">Email</string>
@@ -107,12 +153,5 @@
     <string name="chat">Chat</string>
     <string name="reminderItem_clock">07\n30</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
-
-    <!-- Care Tips -->
-    <string name="breed">Breed</string>
-    <string name="personality">Personality</string>
-    <string name="health">Health</string>
-    <string name="grooming">Grooming</string>
-    <string name="cd_more_tips">More tips</string>
 
 </resources>

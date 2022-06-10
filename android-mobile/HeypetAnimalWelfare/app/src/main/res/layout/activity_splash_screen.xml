@@ -20,7 +20,7 @@
         android:id="@+id/img_splash_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/splash_character"
+        android:src="@drawable/figure_splash"
         android:layout_marginBottom="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

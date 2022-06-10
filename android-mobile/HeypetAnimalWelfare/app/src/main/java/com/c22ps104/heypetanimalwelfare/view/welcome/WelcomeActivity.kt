@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_IS_LOGIN
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityWelcomeBinding
-import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.BottomNavigationActivity
+import com.c22ps104.heypetanimalwelfare.view.main.BottomNavigationActivity
 import com.c22ps104.heypetanimalwelfare.view.login.LoginActivity
 import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity
 

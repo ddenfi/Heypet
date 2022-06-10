@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_gravity="center"
     android:layout_height="wrap_content"
-    android:layout_margin="17dp"
     android:layout_width="match_parent"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_gravity="center"
     app:cardBackgroundColor="@color/blue_light_background"
     app:cardCornerRadius="15dp"
     app:cardElevation="6dp"
@@ -21,46 +22,44 @@
 
         <TextView
             android:id="@+id/tv_itemReminder_time"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_width="wrap_content"
-            android:text="@string/reminderItem_clock"
+            style="@style/Text.Bold"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/reminderItem_clock"
+            android:layout_marginStart="44dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.551" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
 
         <TextView
             android:id="@+id/tv_itemReminder_name"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_width="wrap_content"
-            android:text="Feeds Yuuki"
+            style="@style/Text.Medium"
+            android:text="@string/reminder_title"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_itemReminder_time" />
+            android:layout_marginStart="32dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_itemReminder_time"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
             android:id="@+id/tv_itemReminder_Type"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Everyday"
-            app:layout_constraintBottom_toTopOf="@+id/tv_itemReminder_name"
+            style="@style/Text"
+            android:textSize="14sp"
+            android:text="@string/everyday"
             app:layout_constraintStart_toStartOf="@+id/tv_itemReminder_name"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_itemReminder_name" />
 
         <ImageView
             android:id="@+id/iv_itemReminder_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:src="@drawable/ic_delete"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp"
+            app:tint="@color/blue_dark_text_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/cd_delete_reminder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

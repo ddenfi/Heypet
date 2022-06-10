@@ -1,4 +1,4 @@
-package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.home
+package com.c22ps104.heypetanimalwelfare.view.main.fragments.home
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -28,7 +28,9 @@ class HomeViewModel : ViewModel() {
 
     fun getAllFeeds() {
         Log.d("View Model Called","")
+
         _isLoading.postValue(true)
+
         retrofit.getAllFeeds().enqueue(object :
             Callback<FeedsResponse> {
             override fun onResponse(call: Call<FeedsResponse>, response: Response<FeedsResponse>) {

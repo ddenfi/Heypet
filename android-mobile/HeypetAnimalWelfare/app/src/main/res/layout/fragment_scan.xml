@@ -4,109 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.bottomnavigation.fragments.scan.ScanFragment">
-
-    <ProgressBar
-        android:id="@+id/pb_scan"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.775" />
+    tools:context=".view.main.fragments.scan.ScanFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_picture_taken"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
-    <Button
-        android:alpha="0"
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Button"
-        android:textSize="5sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.271"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        tools:src="@tools:sample/avatars"
+        android:contentDescription="@string/cd_picture_to_post" />
 
     <Button
         android:id="@+id/btn_scan_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/camera"
         android:layout_marginTop="44dp"
-        android:text="Camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_picture_taken"
+        app:layout_constraintHorizontal_bias="0.275" />
 
     <Button
         android:id="@+id/btn_scan_gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/gallery"
         android:layout_marginStart="60dp"
-        android:text="Gallery"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@id/btn_scan_camera"
+        app:layout_constraintTop_toTopOf="@id/btn_scan_camera"
+        app:layout_constraintBottom_toBottomOf="@id/btn_scan_camera" />
 
     <TextView
-        android:id="@+id/text_dashboard"
+        android:id="@+id/tv_class_title"
         style="@style/Text.Medium"
         android:textColor="@color/blue_selected_item"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Classified As"
-        android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textAlignment="center"
+        android:text="@string/classified_as"
+        android:layout_marginStart="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
     <TextView
         android:id="@+id/tv_scan_classify_result"
         style="@style/Text.Medium"
-        android:textColor="@color/blue_selected_item"
-        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="match_parent"
+        android:textSize="20sp"
+        android:textColor="@color/blue_selected_item"
+        android:hint="@string/your_pet_breed"
         android:background="@drawable/textview_rounded_stroke"
         android:gravity="center"
-        android:text="Golden Retriever"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_dashboard"
-        app:layout_constraintVertical_bias="0.119" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_class_title" />
 
     <ImageView
         android:id="@+id/btn_detail"
         android:layout_width="50dp"
         android:layout_height="0dp"
         android:src="@drawable/ic_baseline_search_24"
-        android:padding="8dp"
         android:background="@drawable/button_detail_reminder"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_scan_classify_result"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_scan_classify_result"
-        app:layout_constraintTop_toTopOf="@+id/tv_scan_classify_result" />
+        app:layout_constraintTop_toTopOf="@+id/tv_scan_classify_result"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_scan_classify_result"
+        android:contentDescription="@string/cd_caretips" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/pb_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_picture_taken"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.775" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

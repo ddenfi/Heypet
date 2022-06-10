@@ -8,34 +8,37 @@
     tools:context=".view.comment.CommentSectionActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_detailPost_comments"
+        android:id="@+id/rv_comments"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/et_comment_comment"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/et_comment_input" />
 
     <EditText
-        android:id="@+id/et_comment_comment"
+        android:id="@+id/et_comment_input"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:inputType="text"
+        android:hint="@string/your_comment"
+        android:importantForAutofill="no"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_send"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_send" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_send"
+        app:layout_constraintTop_toTopOf="@+id/btn_send"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
         android:id="@+id/btn_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/send"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
-        android:text="send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

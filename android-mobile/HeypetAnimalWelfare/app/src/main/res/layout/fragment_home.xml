@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".view.bottomnavigation.fragments.home.HomeFragment">
+    tools:context=".view.main.fragments.home.HomeFragment">
     
-    <ImageView
+    <View
         android:id="@+id/home_actionbar_background"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"

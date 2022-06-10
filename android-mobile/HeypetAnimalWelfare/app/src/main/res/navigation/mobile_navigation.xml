@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.home.HomeFragment"
+        android:name="com.c22ps104.heypetanimalwelfare.view.main.fragments.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_scan"
-        android:name="com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.scan.ScanFragment"
+        android:name="com.c22ps104.heypetanimalwelfare.view.main.fragments.scan.ScanFragment"
         android:label="@string/title_scan"
         tools:layout="@layout/fragment_scan" />
 
     <fragment
         android:id="@+id/navigation_reminder"
-        android:name="com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.reminder.ReminderFragment"
+        android:name="com.c22ps104.heypetanimalwelfare.view.main.fragments.reminder.ReminderFragment"
         android:label="@string/title_reminder"
         tools:layout="@layout/fragment_reminder" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.profile.ProfileFragment"
+        android:name="com.c22ps104.heypetanimalwelfare.view.main.fragments.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.reminder
+package com.c22ps104.heypetanimalwelfare.view.main.fragments.reminder
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

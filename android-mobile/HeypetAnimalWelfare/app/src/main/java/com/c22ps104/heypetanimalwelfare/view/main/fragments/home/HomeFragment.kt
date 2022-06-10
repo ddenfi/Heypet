@@ -1,4 +1,4 @@
-package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.home
+package com.c22ps104.heypetanimalwelfare.view.main.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,7 @@ import com.c22ps104.heypetanimalwelfare.adapter.ListFeedsAdapter
 import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentHomeBinding
 import com.c22ps104.heypetanimalwelfare.view.comment.CommentSectionActivity
-import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ModalBottomSheet
+import com.c22ps104.heypetanimalwelfare.view.main.ModalBottomSheet
 import com.c22ps104.heypetanimalwelfare.view.upload.UploadActivity
 import com.google.firebase.firestore.FirebaseFirestore
 

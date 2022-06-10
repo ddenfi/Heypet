@@ -11,7 +11,7 @@ import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_IS
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_TOKEN
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_USER_NAME
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityLoginBinding
-import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.BottomNavigationActivity
+import com.c22ps104.heypetanimalwelfare.view.main.BottomNavigationActivity
 
 class LoginActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.scan
+package com.c22ps104.heypetanimalwelfare.view.main.fragments.scan
 
 import android.util.Log
 import androidx.lifecycle.LiveData

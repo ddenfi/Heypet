@@ -1,4 +1,4 @@
-package com.c22ps104.heypetanimalwelfare.view.bottomnavigation
+package com.c22ps104.heypetanimalwelfare.view.main
 
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityBottomNavigationBinding
 import com.c22ps104.heypetanimalwelfare.databinding.BottomSheetLayoutBinding
-import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.home.HomeViewModel
+import com.c22ps104.heypetanimalwelfare.view.main.fragments.home.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ModalBottomSheet : BottomSheetDialogFragment() {

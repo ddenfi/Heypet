@@ -1,4 +1,4 @@
-package com.c22ps104.heypetanimalwelfare.view.bottomnavigation.fragments.profile
+package com.c22ps104.heypetanimalwelfare.view.main.fragments.profile
 
 import android.content.Intent
 import android.os.Bundle

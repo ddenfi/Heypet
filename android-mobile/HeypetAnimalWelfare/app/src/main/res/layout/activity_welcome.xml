@@ -31,7 +31,7 @@
         android:id="@+id/img_welcome_character"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/welcome_character"
+        android:src="@drawable/figure_welcome"
         android:scaleType="center"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"

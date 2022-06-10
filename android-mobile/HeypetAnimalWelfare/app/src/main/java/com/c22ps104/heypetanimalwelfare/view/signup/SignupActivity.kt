@@ -36,11 +36,18 @@ class SignupActivity : AppCompatActivity() {
         viewModel.register.observe(this) {
             if (it != null ) {
                 Toast.makeText(this,"Register Success",Toast.LENGTH_SHORT).show()
-                val intentToLogin = Intent(this@SignupActivity, OnBoardingActivity::class.java)
-                startActivity(intentToLogin)
+                val intentToOnBoarding = Intent(this@SignupActivity, OnBoardingActivity::class.java)
+                intentToOnBoarding.putExtra(EXTRA_TOKEN,it.data?.token?.accessToken)
+                intentToOnBoarding.putExtra(EXTRA_USERNAME,it.data?.user?.name)
+                startActivity(intentToOnBoarding)
                 finish()
                 RESULT_OK
             }
         }
+    }
+
+    companion object{
+        const val EXTRA_TOKEN = "EXTRA_TOKEN"
+        const val EXTRA_USERNAME ="EXTRA_USERNAME"
     }
 }

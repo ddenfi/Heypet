@@ -52,11 +52,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
+        android:id="@+id/iv_photoProfile"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/profile_picture"
+        android:src="@drawable/default_photo_profile"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/tv_onBoarding_username" />
@@ -94,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_photoProfile" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"

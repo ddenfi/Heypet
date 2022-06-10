@@ -48,4 +48,13 @@ interface ApiService {
     fun getCategorizedFeed(
         @Path ("categorizedId") categorizedId:String
     ): Call<FeedsResponse>
+
+    @PUT("users/session/profile")
+    fun updateProfile(
+        @Header("Authorization") token: String,
+        @Part("pet") pet:String,
+        @Part("bio") bio:String,
+        @Part photo:MultipartBody.Part
+    ): Call<UpdateProfileResponse>
+
 }

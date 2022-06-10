@@ -14,12 +14,9 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.c22ps104.heypetanimalwelfare.R
-import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.ui.reminder.ReminderFragment
 import java.util.*
 
-
 class AlarmReceiver : BroadcastReceiver() {
-
 
     override fun onReceive(context: Context, intent: Intent) {
         val type = intent.getIntExtra(EXTRA_TYPE,0)
@@ -33,11 +30,11 @@ class AlarmReceiver : BroadcastReceiver() {
 
         Log.d("Reminder", message.toString())
 
-        val intent = Intent("REMINDER_BROADCAST")
-        intent.putExtra(EXTRA_ID,id)
-        intent.putExtra(EXTRA_TYPE,type)
-        context.sendBroadcast(intent)
-        //notifyToActivity
+        val intentBroadcast = Intent("REMINDER_BROADCAST")
+        intentBroadcast.putExtra(EXTRA_ID, id)
+        intentBroadcast.putExtra(EXTRA_TYPE, type)
+        context.sendBroadcast(intentBroadcast)
+        // notifyToActivity
 
         // Show alarm notification
         if (message != null) showAlarmNotification(context, title, message, id)

@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import com.bumptech.glide.Glide
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_TOKEN
@@ -30,6 +29,7 @@ import java.io.FileOutputStream
 import kotlin.math.min
 
 class UploadActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityUploadBinding
     private val viewModel:UploadViewModel by viewModels()
     private lateinit var preferencesHelper: PreferencesHelper
@@ -56,6 +56,7 @@ class UploadActivity : AppCompatActivity() {
                     val imageUri = it.data?.data
                     val imageStream = contentResolver.openInputStream(imageUri!!)
                     val bitmap = BitmapFactory.decodeStream(imageStream)
+
                     binding.ivUpload.setImageBitmap(cropBmp(bitmap))
                     tempFile = createTempFile(bitmap)
 
@@ -78,10 +79,11 @@ class UploadActivity : AppCompatActivity() {
     private val galleryPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
-                val intent = Intent()
-                intent.action = Intent.ACTION_GET_CONTENT
-                intent.type = "image/*"
-                val chooser = Intent.createChooser(intent, "Choose a Picture")
+                val intentGallery = Intent()
+                intentGallery.action = Intent.ACTION_GET_CONTENT
+                intentGallery.type = "image/*"
+
+                val chooser = Intent.createChooser(intentGallery, "Choose a Picture")
                 gallery.launch(chooser)
             } else {
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
@@ -92,13 +94,18 @@ class UploadActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         preferencesHelper = PreferencesHelper(this)
 
         val category = resources.getStringArray(R.array.post_category)
-        val arrayAdapter = ArrayAdapter(this, R.layout.item_dropdown,category)
+        val arrayAdapter = ArrayAdapter(this, R.layout.item_dropdown, category)
 
         binding.tvAutocompleteUpload.setAdapter(arrayAdapter)
 
+        setupView()
+    }
+
+    private fun setupView() {
         binding.ivUploadCamera.setOnClickListener{
             cameraPermission.launch(android.Manifest.permission.CAMERA)
         }
@@ -109,6 +116,7 @@ class UploadActivity : AppCompatActivity() {
 
         binding.btnUpload.setOnClickListener {
             val desc = binding.etUploadCaption.text.toString().toRequestBody("text/plain".toMediaType())
+
             val categoryId = when (binding.tvAutocompleteUpload.text.toString()) {
                 "Story" -> 1
                 "Breeding" -> 2
@@ -116,8 +124,10 @@ class UploadActivity : AppCompatActivity() {
                 "Tips & Trick" -> 4
                 else -> 1
             }
+
             val category = categoryId.toString().toRequestBody("text/plain".toMediaType())
             val file = tempFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
+
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
                 tempFile.name,
@@ -125,6 +135,7 @@ class UploadActivity : AppCompatActivity() {
             )
 
             val token = preferencesHelper.getString(PREF_TOKEN)
+
             if (token != null) {
                 viewModel.upload(token,category,imageMultipart,desc).observe(this){
                     Toast.makeText(this,"Upload $it",Toast.LENGTH_SHORT).show()
@@ -138,9 +149,12 @@ class UploadActivity : AppCompatActivity() {
             getExternalFilesDir(Environment.DIRECTORY_PICTURES),
             System.currentTimeMillis().toString() + "_image.jpg"
         )
+
         val bos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos)
+
         val bytes: ByteArray = bos.toByteArray()
+
         try {
             val fos = FileOutputStream(file)
             fos.write(bytes)
@@ -149,6 +163,7 @@ class UploadActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
         return file
     }
 

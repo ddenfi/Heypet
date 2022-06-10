@@ -10,8 +10,8 @@ import java.util.*
 @Entity(tableName = "reminder_table")
 data class ReminderEntity(
     @PrimaryKey(autoGenerate = true)
-    var id:Int = 0,
-    val reminderType:Int,
-    val reminderName:String,
+    var id: Int = 0,
+    val reminderType: Int,
+    val reminderName: String,
     val reminderDate: Date
 ):Parcelable

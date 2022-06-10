@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.c22ps104.heypetanimalwelfare.databinding.ActivitySignupBinding
-import com.c22ps104.heypetanimalwelfare.view.onBoarding.OnBoardingActivity
+import com.c22ps104.heypetanimalwelfare.view.onboarding.OnBoardingActivity
 
 class SignupActivity : AppCompatActivity() {
 
@@ -42,6 +42,5 @@ class SignupActivity : AppCompatActivity() {
                 RESULT_OK
             }
         }
-
     }
 }

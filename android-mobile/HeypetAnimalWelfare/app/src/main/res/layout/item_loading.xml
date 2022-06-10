@@ -20,12 +20,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <TextView
+    <Button
         android:id="@+id/btn_retry"
-        style="@style/Text.Bold"
-        android:textColor="@color/white_blue_login_button"
+        style="@style/Text"
+        android:textColor="@color/white"
         android:text="@string/retry"
-        android:gravity="center"
         android:background="@drawable/button_general"
         android:layout_gravity="center" />
+
 </LinearLayout>

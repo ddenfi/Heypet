@@ -8,7 +8,6 @@ import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_IS
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityWelcomeBinding
 import com.c22ps104.heypetanimalwelfare.view.bottomnavigation.BottomNavigationActivity
 import com.c22ps104.heypetanimalwelfare.view.login.LoginActivity
-import com.c22ps104.heypetanimalwelfare.view.main.MainActivity
 import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity
 
 class WelcomeActivity : AppCompatActivity() {

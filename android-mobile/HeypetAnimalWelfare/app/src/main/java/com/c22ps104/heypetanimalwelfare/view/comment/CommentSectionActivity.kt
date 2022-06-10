@@ -16,10 +16,12 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class CommentSectionActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityCommnetSectionBinding
     private val adapter by lazy {
         ListCommentAdapter()
     }
+
     private var db = FirebaseFirestore.getInstance()
     private lateinit var preferencesHelper: PreferencesHelper
 
@@ -33,7 +35,6 @@ class CommentSectionActivity : AppCompatActivity() {
 
         preferencesHelper = PreferencesHelper(this)
         val id = intent.getStringExtra("EXTRA_ID")
-
 
         if (id != null) {
             Log.d("Call Firebase",id)
@@ -61,26 +62,31 @@ class CommentSectionActivity : AppCompatActivity() {
 
     private fun fireStoreListener(idFeed: String) {
         val docRef = db.collection("comments")
+
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w("Firestore", "listen:error", e)
                 return@addSnapshotListener
             }
+
             for (dc in snapshot!!.documentChanges) {
                 when (dc.type) {
                     DocumentChange.Type.ADDED -> Log.d(
                         "Firestore_ADDED",
                         "added:"
                     )
+
                     DocumentChange.Type.MODIFIED -> Log.d(
                         "Firestore_MODIFIED",
                         "date:"
                     )
+
                     DocumentChange.Type.REMOVED -> Log.d(
                         "Firestore_REMOVED",
                         "date:"
                     )
                 }
+
                 readFirestoreData(idFeed)
             }
         }
@@ -88,6 +94,7 @@ class CommentSectionActivity : AppCompatActivity() {
 
     private fun readFirestoreData(idFeed: String) {
         Log.d("Firestore","Id Feed $idFeed")
+
         db.collection("comments")
             .whereEqualTo("idFeed",idFeed)
             .get()
@@ -115,11 +122,12 @@ class CommentSectionActivity : AppCompatActivity() {
 
     private fun insertFirestoreData(idFeed: String){
         val userName = preferencesHelper.getString(PREF_USER_NAME)
-        //getDate
+        // Get Date
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("yyyy-MM-dd-HH-mm",Locale.getDefault())
         val date = dateFormat.format(calendar.time).toString()
-        //getComment
+
+        // Get Comment
         val comment = binding.etCommentComment.text.toString()
 
         val data = hashMapOf(
@@ -128,6 +136,7 @@ class CommentSectionActivity : AppCompatActivity() {
             "comment" to comment,
             "date" to date
         )
+
         db.collection("comments").add(data).addOnSuccessListener{
             Log.d("Comment","Success")
         }.addOnFailureListener{

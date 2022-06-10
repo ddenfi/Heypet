@@ -41,6 +41,5 @@ class LoadingStateAdapter(private val retry: () -> Unit) :
             binding.btnRetry.isVisible = loadState is LoadState.Error
             binding.tvTimeout.isVisible = loadState is LoadState.Error
         }
-
     }
 }

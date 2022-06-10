@@ -12,5 +12,4 @@ data class ListPostData (
     @PrimaryKey
     @field:SerializedName("id")
     val id: String
-    
 ): Parcelable

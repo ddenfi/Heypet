@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.bottomnavigation.ui.reminder.DetailReminderActivity">
+    tools:context=".view.bottomnavigation.fragments.reminder.DetailReminderActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

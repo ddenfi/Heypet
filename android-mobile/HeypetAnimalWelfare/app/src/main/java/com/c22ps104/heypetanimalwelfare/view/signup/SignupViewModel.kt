@@ -7,15 +7,12 @@ import androidx.lifecycle.ViewModel
 import com.c22ps104.heypetanimalwelfare.api.ApiConfig
 import com.c22ps104.heypetanimalwelfare.api.ApiService
 import com.c22ps104.heypetanimalwelfare.api.RegisterResponse
-import okhttp3.MultipartBody
-import org.json.JSONObject
-import org.json.JSONTokener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Multipart
 
 class SignupViewModel:ViewModel() {
+
     private val retrofit: ApiService = ApiConfig.getApiService()
 
     private val _register = MutableLiveData<RegisterResponse>()
@@ -24,6 +21,7 @@ class SignupViewModel:ViewModel() {
 
     fun register(name: String, bio:String,phoneNumber:String, email: String, password: String) {
         Log.d("registerForm","$name $email $password $bio $phoneNumber")
+
         retrofit.register(name,bio,email, phoneNumber,password).enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(
                 call: Call<RegisterResponse>,

@@ -7,12 +7,12 @@ import androidx.lifecycle.ViewModel
 import com.c22ps104.heypetanimalwelfare.api.ApiConfig
 import com.c22ps104.heypetanimalwelfare.api.ApiService
 import com.c22ps104.heypetanimalwelfare.api.LoginResponse
-import com.c22ps104.heypetanimalwelfare.api.RegisterResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginViewModel:ViewModel() {
+
     private val retrofit: ApiService = ApiConfig.getApiService()
 
     private val _login = MutableLiveData<LoginResponse>()
@@ -20,6 +20,7 @@ class LoginViewModel:ViewModel() {
 
     fun login(email: String, password: String) {
         Log.d("Form"," $email $password")
+
         retrofit.login(email,password).enqueue(object :
             Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {

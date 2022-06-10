@@ -4,12 +4,12 @@ import android.app.Application
 import com.c22ps104.heypetanimalwelfare.database.UserDatabase
 
 class UserRepository(application: Application) {
-    //init
+
+    // Initiation
     private val userDatabase = UserDatabase.getDatabase(application)
     private val reminderDao = userDatabase.reminderDao()
 
-
-    //reminder
+    // Reminder
     suspend fun addReminder(data: ReminderEntity) {
         reminderDao.addReminder(data)
     }
@@ -21,5 +21,4 @@ class UserRepository(application: Application) {
     suspend fun deleteAllReminder() = reminderDao.deleteAllReminder()
 
     suspend fun deleteReminder(idReminder:Int) = reminderDao.deleteReminder(idReminder)
-
 }

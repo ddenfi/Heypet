@@ -5,11 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.c22ps104.heypetanimalwelfare.api.CommentModel
-import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 import com.c22ps104.heypetanimalwelfare.databinding.ItemCommentBinding
-import com.c22ps104.heypetanimalwelfare.databinding.ItemReminderBinding
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class ListCommentAdapter:RecyclerView.Adapter<ListCommentAdapter.ListViewHolder>() {
@@ -44,5 +40,4 @@ class ListCommentAdapter:RecyclerView.Adapter<ListCommentAdapter.ListViewHolder>
     }
 
     override fun getItemCount() = listComment.size
-
 }

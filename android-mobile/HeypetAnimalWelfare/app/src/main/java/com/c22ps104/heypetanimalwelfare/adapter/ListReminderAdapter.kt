@@ -11,6 +11,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class ListReminderAdapter : RecyclerView.Adapter<ListReminderAdapter.ListViewHolder>() {
+
     private val listReminder: ArrayList<ReminderEntity> = ArrayList()
     private lateinit var onItemClickCallback: OnItemClickCallback
 

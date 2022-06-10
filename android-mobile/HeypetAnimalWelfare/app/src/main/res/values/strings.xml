@@ -26,9 +26,10 @@
     <string name="sign_up">Sign Up</string>
     <string name="cd_sign_up_image">Sign Up image</string>
 
-    <!-- Main and Post -->
+    <!-- Home and Feed -->
     <string name="heypet">heypet</string>
-    <string name="actionbar_filter_button"><![CDATA[>]]></string>
+    <string name="filter">Filter</string>
+    <string name="new_post">New Post</string>
     <string name="profile_name">irene_</string>
     <string name="post_tag">Adoption</string>
     <string name="likes_number">137</string>
@@ -43,6 +44,21 @@
     <string name="cd_camera_button">Open camera</string>
     <string name="cd_chat_button">Open chat</string>
     <string name="cd_notification_button">Open notification</string>
+
+    <!--List Feed Category-->
+    <string-array name="post_category">
+        <item>Tips &#38; Trick</item>
+        <item>Adoption</item>
+        <item>Breeding</item>
+        <item>Story</item>
+    </string-array>
+
+    <!-- Feed Filter -->
+    <string name="all">All</string>
+    <string name="adoption">Adoption</string>
+    <string name="tips">Tips</string>
+    <string name="breeding">Breeding</string>
+    <string name="story">Story</string>
 
     <!-- Profile -->
     <string name="_20">20</string>
@@ -81,7 +97,6 @@
     <string name="title_reminder">Reminder</string>
     <string name="title_profile">Profile</string>
 
-
     <!-- Misc -->
     <string name="username">Username</string>
     <string name="email">Email</string>
@@ -90,18 +105,14 @@
     <string name="retry">Retry</string>
     <string name="notification">Notification</string>
     <string name="chat">Chat</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="reminderItem_clock">07\n30</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
 
-    <!--List Upload Category-->
-    <string-array name="post_category">
-        <item>Tips &#38; Trick</item>
-        <item>Adoption</item>
-        <item>Breeding</item>
-        <item>Story</item>
-    </string-array>
-
+    <!-- Care Tips -->
+    <string name="breed">Breed</string>
+    <string name="personality">Personality</string>
+    <string name="health">Health</string>
+    <string name="grooming">Grooming</string>
+    <string name="cd_more_tips">More tips</string>
 
 </resources>

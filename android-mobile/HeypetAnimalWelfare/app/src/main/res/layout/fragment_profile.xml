@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".view.bottomnavigation.ui.profile.ProfileFragment">
+    tools:context=".view.bottomnavigation.fragments.profile.ProfileFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_hor_center"
@@ -13,15 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.40218878"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="9dp"
-        android:background="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.25"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
@@ -37,16 +29,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_hor_top"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_height="match_parent"
+            android:paddingTop="?attr/actionBarSize">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_profile_picture"
@@ -54,8 +38,9 @@
                 android:layout_height="88dp"
                 android:src="@drawable/profile_picture"
                 android:layout_marginStart="32dp"
+                android:layout_marginTop="2dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gl_hor_top"
+                app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="@string/cd_profile_image"/>
 
             <TextView
@@ -94,6 +79,7 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_profile_posts" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/tv_profile_followers"
                 style="@style/Text.Light"
                 android:text="@string/followers"
@@ -103,6 +89,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/tv_followers_number"
                 style="@style/Text.Medium"
                 android:text="@string/_20"
@@ -112,6 +99,7 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_profile_followers" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/tv_profile_following"
                 style="@style/Text.Light"
                 android:text="@string/following"
@@ -121,6 +109,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/tv_following_number"
                 style="@style/Text.Medium"
                 android:text="@string/_20"
@@ -130,6 +119,7 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_profile_following" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/tv_profile_fullname"
                 style="@style/Text.Bold"
                 android:textSize="13sp"
@@ -140,6 +130,7 @@
                 app:layout_constraintTop_toBottomOf="@id/img_profile_picture" />
 
             <ImageView
+                android:alpha="0"
                 android:id="@+id/img_pet_type"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -150,6 +141,7 @@
                 android:contentDescription="@string/cd_pet_type" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/tv_pet_name"
                 style="@style/Text.Medium.PetDetails"
                 android:text="@string/pet_name"
@@ -167,6 +159,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/img_pet_type" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/tv_pet_breed"
                 style="@style/Text.Medium.PetDetails"
                 android:text="@string/pet_breed"
@@ -175,6 +168,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/img_pet_type" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/tv_pet_description"
                 style="@style/Text.Medium.PetDetails"
                 android:layout_width="0dp"
@@ -211,5 +205,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cv_profile_details"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

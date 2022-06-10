@@ -3,11 +3,10 @@ package com.c22ps104.heypetanimalwelfare.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.c22ps104.heypetanimalwelfare.api.PostsItem
-import com.c22ps104.heypetanimalwelfare.databinding.ItemMainPostBinding
+import com.c22ps104.heypetanimalwelfare.databinding.ItemHomePostBinding
 
 class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>() {
     private val listFeed: ArrayList<PostsItem> = ArrayList()
@@ -26,14 +25,16 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
         notifyDataSetChanged()
     }
 
-    inner class ListViewHolder(private var binding: ItemMainPostBinding) :
+    inner class ListViewHolder(private var binding: ItemHomePostBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(feed: PostsItem) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(feed.photo)
                     .into(imgPostPicture)
+
                 tvPostDescription.text = feed.description
+
                 tvPostTag.text = when (feed.categoryId) {
                     "1" -> "Story"
                     "2" -> "Breed"
@@ -41,6 +42,7 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
                     "4" -> "Tips"
                     else -> ""
                 }
+
                 tvProfileName.text = feed.userName
 //                Glide.with(itemView.context)
 //                    .load(feed.userPhoto)
@@ -48,6 +50,7 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
 //                    .into(imgProfilePicture)
 
             }
+
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(listFeed[absoluteAdapterPosition])
             }
@@ -56,7 +59,7 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val binding =
-            ItemMainPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemHomePostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 

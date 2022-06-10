@@ -55,6 +55,11 @@
         <item name="android:layout_marginStart">4dp</item>
     </style>
 
+    <style name="Text.Medium.CareTips">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/blue_selected_item</item>
+    </style>
+
     <style name="Text.Light">
         <item name="fontFamily">@font/lexend_light</item>
         <item name="android:textSize">16sp</item>

@@ -5,43 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".view.bottomnavigation.ui.home.HomeFragment">
+    tools:context=".view.bottomnavigation.fragments.home.HomeFragment">
+    
+    <ImageView
+        android:id="@+id/home_actionbar_background"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="?attr/actionBarSize"
         android:id="@+id/rv_posts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="?attr/actionBarSize"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_main_post" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_home_post" />
 
     <ProgressBar
         android:id="@+id/pb_feeds"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_posts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rv_posts"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintBottom_toBottomOf="@+id/rv_posts" />
 
-    <TextView
+    <Button
         android:visibility="gone"
         android:id="@+id/btn_refresh"
         style="@style/Text"
         android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Refresh"
+        android:text="@string/new_post"
         android:background="@drawable/button_general"
         android:gravity="center"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/rv_posts" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,39 +22,37 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_all"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:text="All"
+                android:text="@string/all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_adoption"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:text="Adoption"
+                android:text="@string/adoption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_tips"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:text="Tips"
+                android:text="@string/tips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_breeding"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:text="Breeding"
+                android:text="@string/breeding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_story"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:text="Story"
+                android:text="@string/story"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
-
 
         </com.google.android.material.chip.ChipGroup>
 

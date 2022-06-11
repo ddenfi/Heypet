@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 data class ClassifyResponse(
 
 	@field:SerializedName("createdAt")
-	val createdAt: String = "",
+	val createdAt: String?,
 
 	@field:SerializedName("personality")
 	val personality: String,
@@ -30,5 +30,5 @@ data class ClassifyResponse(
 	val id: Int,
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String = ""
+	val updatedAt: String?
 ) : Parcelable

@@ -55,9 +55,9 @@ class CommentSectionActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerView() {
-        binding.rvDetailPostComments.setHasFixedSize(true)
-        binding.rvDetailPostComments.layoutManager = LinearLayoutManager(this)
-        binding.rvDetailPostComments.adapter = adapter
+        binding.rvComments.setHasFixedSize(true)
+        binding.rvComments.layoutManager = LinearLayoutManager(this)
+        binding.rvComments.adapter = adapter
     }
 
     private fun fireStoreListener(idFeed: String) {
@@ -128,7 +128,7 @@ class CommentSectionActivity : AppCompatActivity() {
         val date = dateFormat.format(calendar.time).toString()
 
         // Get Comment
-        val comment = binding.etCommentComment.text.toString()
+        val comment = binding.etCommentInput.text.toString()
 
         val data = hashMapOf(
             "name" to userName,

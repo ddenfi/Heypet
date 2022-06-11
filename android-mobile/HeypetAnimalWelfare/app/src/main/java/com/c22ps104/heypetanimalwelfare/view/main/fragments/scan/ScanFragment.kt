@@ -13,9 +13,14 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
+import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.api.ClassifyResponse
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentScanBinding
 import com.c22ps104.heypetanimalwelfare.view.caretips.CaretipsActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -26,6 +31,7 @@ class ScanFragment : Fragment() {
     private var _binding: FragmentScanBinding? = null
     private val binding get() = _binding!!
     private lateinit var scanViewModel: ScanViewModel
+    private var byteArray:ByteArray? = null
 
     private val takePicture =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -33,7 +39,9 @@ class ScanFragment : Fragment() {
                 val imageBitmap = it.data?.extras?.get("data") as Bitmap
                 binding.ivPictureTaken.setImageBitmap(imageBitmap)
                 val file = createTempFile(imageBitmap)
+
                 if (file != null) {
+                    byteArray = bitmapToByteArray(imageBitmap)
                     scanViewModel.classify(file)
                 } else Toast.makeText(activity, "Filed to classify", Toast.LENGTH_SHORT)
             }
@@ -50,6 +58,7 @@ class ScanFragment : Fragment() {
                     val file = createTempFile(bitmap)
 
                     if (file != null) {
+                        byteArray = bitmapToByteArray(bitmap)
                         scanViewModel.classify(file)
                     } else Toast.makeText(activity, "Filed to classify", Toast.LENGTH_SHORT)
                 } catch (e: FileNotFoundException) {
@@ -86,10 +95,12 @@ class ScanFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         scanViewModel = ViewModelProvider(this)[ScanViewModel::class.java]
 
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.ivPictureTaken.setImageResource(R.drawable.default_scan)
 
         setupView()
 
@@ -98,7 +109,8 @@ class ScanFragment : Fragment() {
 
     private fun setupView() {
         val intentToCareTips = Intent(requireContext(),CaretipsActivity::class.java)
-        var extraData = ClassifyResponse("","","","","","",0,"")
+        val defaultValue = "You Must Scan First"
+        var extraData = ClassifyResponse("","","","",defaultValue,"",0,"")
 
         binding.btnScanCamera.setOnClickListener {
             cameraPermission.launch(android.Manifest.permission.CAMERA)
@@ -114,7 +126,7 @@ class ScanFragment : Fragment() {
             scanViewModel.classifyResult.observe(viewLifecycleOwner) {
                 if (it != null) {
                     binding.tvScanClassifyResult.text = it.name
-                    extraData = it
+                    extraData = it.copy()
                 }
             }
         }
@@ -133,18 +145,15 @@ class ScanFragment : Fragment() {
             scanViewModel.classifyResult.observe(viewLifecycleOwner) {
                 if (it != null) {
                     binding.tvScanClassifyResult.text = it.name
-
+                    extraData = it.copy()
                 }
             }
         }
 
         binding.btnDetail.setOnClickListener {
-            if(extraData.id != 0) {
+                intentToCareTips.putExtra(EXTRA_CLASSIFY_PHOTO,byteArray)
                 intentToCareTips.putExtra(EXTRA_CLASSIFY_RESULT,extraData)
                 startActivity(intentToCareTips)
-            } else {
-                
-            }
         }
     }
 
@@ -170,6 +179,12 @@ class ScanFragment : Fragment() {
         return file
     }
 
+    private fun bitmapToByteArray(bmp: Bitmap): ByteArray {
+        val stream = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        return stream.toByteArray()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -177,5 +192,6 @@ class ScanFragment : Fragment() {
 
     companion object{
         const val EXTRA_CLASSIFY_RESULT = "EXTRA_CLASSIFY_RESULT"
+        const val EXTRA_CLASSIFY_PHOTO = "EXTRA_CLASSIFY_PHOTO"
     }
 }

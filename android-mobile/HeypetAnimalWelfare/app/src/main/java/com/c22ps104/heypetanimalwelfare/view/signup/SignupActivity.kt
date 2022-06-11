@@ -37,8 +37,8 @@ class SignupActivity : AppCompatActivity() {
             if (it != null ) {
                 Toast.makeText(this,"Register Success",Toast.LENGTH_SHORT).show()
                 val intentToOnBoarding = Intent(this@SignupActivity, OnBoardingActivity::class.java)
-                intentToOnBoarding.putExtra(EXTRA_TOKEN,it.data?.token?.accessToken)
-                intentToOnBoarding.putExtra(EXTRA_USERNAME,it.data?.user?.name)
+                intentToOnBoarding.putExtra(EXTRA_TOKEN, it.data.token.accessToken)
+                intentToOnBoarding.putExtra(EXTRA_USERNAME, it.data.user.name)
                 startActivity(intentToOnBoarding)
                 finish()
                 RESULT_OK

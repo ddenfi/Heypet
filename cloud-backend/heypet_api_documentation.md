@@ -8,7 +8,7 @@ URL: `http://34.121.253.2:5001/api/v1/auth/register`
 
 Method: `POST`
 
-Auth requered: YES
+Auth requered: NO
 
 Example Request (All fields must be filled):
 
@@ -41,6 +41,7 @@ Example Response:
             "accessTokenExpires": "2022-06-07 01:32:31"
         },
         "user": {
+            "role": "user",
             "id": 2,
             "name": "heypet",
             "bio": "hi this is heypet",
@@ -60,7 +61,11 @@ URL: `http://34.121.253.2:5001/api/v1/auth/login`
 
 Method: `POST`
 
-Auth requered: YES
+Auth requered: YES (Bearer Token)
+
+**Must Input Token**
+
+Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ1MDU3NzEsImV4cCI6MTY1NDU2NTc3MSwidHlwZSI6ImFjY2VzcyJ9.E45aDUG07q4DINbVMpTG6wcyFIg3Jwi6W5yPM2h0AMQ`
 
 Example Request (All fields must be filled):
 
@@ -96,6 +101,7 @@ Example Response:
             "photo": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
             "email": "heypet@gmail.com",
             "phoneNumber": "082324252627",
+            "role": "user"
         }
     }
 }
@@ -145,6 +151,7 @@ Example Response:
                 "email": "heypet@gmail.com",
                 "phoneNumber": "082324252627",
                 "password": "$2a$08$jEbjxsYhLX2Gua78UGJoJeehkAWN9Ha3ohU6uDDHOTJwUhHWRJbhS",
+                "role": "user",
                 "createdAt": "2022-06-06T08:52:31.000Z",
                 "updatedAt": "2022-06-06T08:52:31.000Z"
             },
@@ -157,6 +164,7 @@ Example Response:
                 "email": "zayn@gmail.com",
                 "phoneNumber": "0823724234586",
                 "password": "$2a$08$WVYhgyyH4OhNbWlSlE91O.TA7iTxMM8QZjxGHBaJSG8jIa/4iW7Ay",
+                "role": "user",
                 "createdAt": "2022-06-05T16:23:24.000Z",
                 "updatedAt": "2022-06-05T16:23:24.000Z"
             }
@@ -204,6 +212,7 @@ Example Response:
             "email": "heypet@gmail.com",
             "phoneNumber": "082324252627",
             "password": "$2a$08$jEbjxsYhLX2Gua78UGJoJeehkAWN9Ha3ohU6uDDHOTJwUhHWRJbhS",
+            "role": "user",
             "createdAt": "2022-06-06T08:52:31.000Z",
             "updatedAt": "2022-06-06T08:52:31.000Z"
         }
@@ -227,7 +236,7 @@ Example Request:
 
 ```
 curl --location --request PUT 'http://34.121.253.2:5001/api/v1/users/session/profile' \
---form 'pet="Golden Retriever"' \
+--form 'pet="Anjing"' \
 --form 'bio="Hi! Welcome to my profile..."' \
 --form 'photo=@"/C:/Users/Milla/Downloads/Capstone Project/image/puppy.jpg"'
 ```

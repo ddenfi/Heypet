@@ -13,7 +13,9 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.c22ps104.heypetanimalwelfare.api.ClassifyResponse
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentScanBinding
+import com.c22ps104.heypetanimalwelfare.view.caretips.CaretipsActivity
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -95,6 +97,9 @@ class ScanFragment : Fragment() {
     }
 
     private fun setupView() {
+        val intentToCareTips = Intent(requireContext(),CaretipsActivity::class.java)
+        var extraData = ClassifyResponse("","","","","","",0,"")
+
         binding.btnScanCamera.setOnClickListener {
             cameraPermission.launch(android.Manifest.permission.CAMERA)
 
@@ -109,6 +114,7 @@ class ScanFragment : Fragment() {
             scanViewModel.classifyResult.observe(viewLifecycleOwner) {
                 if (it != null) {
                     binding.tvScanClassifyResult.text = it.name
+                    extraData = it
                 }
             }
         }
@@ -127,7 +133,17 @@ class ScanFragment : Fragment() {
             scanViewModel.classifyResult.observe(viewLifecycleOwner) {
                 if (it != null) {
                     binding.tvScanClassifyResult.text = it.name
+
                 }
+            }
+        }
+
+        binding.btnDetail.setOnClickListener {
+            if(extraData.id != 0) {
+                intentToCareTips.putExtra(EXTRA_CLASSIFY_RESULT,extraData)
+                startActivity(intentToCareTips)
+            } else {
+                
             }
         }
     }
@@ -157,5 +173,9 @@ class ScanFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object{
+        const val EXTRA_CLASSIFY_RESULT = "EXTRA_CLASSIFY_RESULT"
     }
 }

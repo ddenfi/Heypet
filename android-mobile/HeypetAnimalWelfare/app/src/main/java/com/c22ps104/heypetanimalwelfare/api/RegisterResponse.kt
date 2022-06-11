@@ -5,56 +5,56 @@ import com.google.gson.annotations.SerializedName
 data class RegisterResponse(
 
 	@field:SerializedName("data")
-	val data: Data? = null,
+	val data: RegisterData,
 
 	@field:SerializedName("status")
-	val status: String? = null
+	val status: String
 )
 
-data class Data(
-
-	@field:SerializedName("user")
-	val user: User? = null,
-
-	@field:SerializedName("token")
-	val token: Token? = null
-)
-
-data class User(
+data class RegisterUser(
 
 	@field:SerializedName("createdAt")
-	val createdAt: String? = null,
+	val createdAt: String,
 
 	@field:SerializedName("role")
-	val role: String? = null,
+	val role: String,
 
 	@field:SerializedName("phoneNumber")
-	val phoneNumber: String? = null,
+	val phoneNumber: String,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("bio")
-	val bio: String? = null,
+	val bio: String,
 
 	@field:SerializedName("photo")
-	val photo: String? = null,
+	val photo: String,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:SerializedName("email")
-	val email: String? = null,
+	val email: String,
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String? = null
+	val updatedAt: String
 )
 
-data class Token(
+data class RegisterData(
+
+	@field:SerializedName("user")
+	val user: RegisterUser,
+
+	@field:SerializedName("token")
+	val token: RegisterToken
+)
+
+data class RegisterToken(
 
 	@field:SerializedName("accessTokenExpires")
-	val accessTokenExpires: String? = null,
+	val accessTokenExpires: String,
 
 	@field:SerializedName("accessToken")
-	val accessToken: String? = null
+	val accessToken: String
 )

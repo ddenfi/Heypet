@@ -4,7 +4,7 @@
 
 ## Register
 
-URL: `http://34.121.253.2:5001/api/v1/auth/register`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/auth/register`
 
 Method: `POST`
 
@@ -13,7 +13,7 @@ Auth requered: NO
 Example Request (All fields must be filled):
 
 ```
-curl --location --request POST 'http://34.121.253.2:5001/api/v1/auth/register' \
+curl --location --request POST 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/auth/register' \
 --form 'name="heypet"' \
 --form 'bio="hi this is heypet"' \
 --form 'email="heypet@gmail.com"' \
@@ -47,7 +47,7 @@ Example Response:
             "bio": "hi this is heypet",
             "email": "heypet@gmail.com",
             "phoneNumber": "082324252627",
-            "photo": "http://34.121.253.2:5001/user/photo-1654505551014.jpeg",
+            "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654505551014.jpeg",
             "updatedAt": "2022-06-06T08:52:31.895Z",
             "createdAt": "2022-06-06T08:52:31.895Z"
         }
@@ -57,7 +57,7 @@ Example Response:
 
 ## Login
 
-URL: `http://34.121.253.2:5001/api/v1/auth/login`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/auth/login`
 
 Method: `POST`
 
@@ -70,7 +70,7 @@ Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ
 Example Request (All fields must be filled):
 
 ```
-curl --location --request POST 'http://34.121.253.2:5001/api/v1/auth/login' \
+curl --location --request POST 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/auth/login' \
 --data-raw '{
     "email" : "heypet@gmail.com",
     "password" : "heypet123"
@@ -98,7 +98,7 @@ Example Response:
             "name": "heypet",
             "bio": "hi this is heypet",
             "pet": null,
-            "photo": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+            "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
             "email": "heypet@gmail.com",
             "phoneNumber": "082324252627",
             "role": "user"
@@ -111,7 +111,7 @@ Example Response:
 
 ## Get All Users
 
-URL: `http://34.121.253.2:5001/api/v1/users`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/users`
 
 Method: `GET`
 
@@ -124,7 +124,7 @@ Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ
 Example Request:
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/users'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/users'
 ```
 
 ### Success Response
@@ -147,7 +147,7 @@ Example Response:
                 "name": "heypet",
                 "bio": "hi this is heypet",
                 "pet": null,
-                "photo": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
                 "email": "heypet@gmail.com",
                 "phoneNumber": "082324252627",
                 "password": "$2a$08$jEbjxsYhLX2Gua78UGJoJeehkAWN9Ha3ohU6uDDHOTJwUhHWRJbhS",
@@ -160,7 +160,7 @@ Example Response:
                 "name": "zayn",
                 "bio": "halooo semua",
                 "pet": "Kucing Persia",
-                "photo": "http://34.121.253.2:5001/user/photo-1654446204064.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654446204064.jpeg",
                 "email": "zayn@gmail.com",
                 "phoneNumber": "0823724234586",
                 "password": "$2a$08$WVYhgyyH4OhNbWlSlE91O.TA7iTxMM8QZjxGHBaJSG8jIa/4iW7Ay",
@@ -175,7 +175,7 @@ Example Response:
 
 ## Get Users by Token
 
-URL: `http://34.121.253.2:5001/api/v1/users/session`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/users/session`
 
 Method: `GET`
 
@@ -188,7 +188,7 @@ Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ
 Example Request:
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/users/session'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/users/session'
 ```
 
 ### Success Response
@@ -208,7 +208,7 @@ Example Response:
             "name": "heypet",
             "bio": "hi this is heypet",
             "pet": null,
-            "photo": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+            "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
             "email": "heypet@gmail.com",
             "phoneNumber": "082324252627",
             "password": "$2a$08$jEbjxsYhLX2Gua78UGJoJeehkAWN9Ha3ohU6uDDHOTJwUhHWRJbhS",
@@ -222,7 +222,7 @@ Example Response:
 
 ## Update Profile
 
-URL: `http://34.121.253.2:5001/api/v1/users/session/profile`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/users/session/profile`
 
 Method: `PUT`
 
@@ -235,7 +235,7 @@ Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ
 Example Request:
 
 ```
-curl --location --request PUT 'http://34.121.253.2:5001/api/v1/users/session/profile' \
+curl --location --request PUT 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/users/session/profile' \
 --form 'pet="Anjing"' \
 --form 'bio="Hi! Welcome to my profile..."' \
 --form 'photo=@"/C:/Users/Milla/Downloads/Capstone Project/image/puppy.jpg"'
@@ -259,7 +259,7 @@ Example Response:
 
 ## Create Category
 
-URL: `http://34.121.253.2:5001/api/v1/categories`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories`
 
 Method: `POST`
 
@@ -268,7 +268,7 @@ Auth requered: NO
 Example Request:
 
 ```
-curl --location --request POST 'http://34.121.253.2:5001/api/v1/categories' \
+curl --location --request POST 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories' \
 --data-raw '{
     "name" : "Reels"
 }'
@@ -298,7 +298,7 @@ Example Response:
 
 ## Get All Categories
 
-URL: `http://34.121.253.2:5001/api/v1/categories`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories`
 
 Method: `GET`
 
@@ -307,7 +307,7 @@ Auth requered: NO
 Example Request:
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/categories' \
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories' \
 --data-raw ''
 ```
 
@@ -362,7 +362,7 @@ Example Response:
 
 ## Get Category By Id
 
-URL: `http://34.121.253.2:5001/api/v1/categories/:id`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories/:id`
 
 Method: `GET`
 
@@ -379,7 +379,7 @@ id: 1
 id: 5
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/categories/5'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories/5'
 ```
 
 ### Success Response
@@ -406,7 +406,7 @@ Example Response:
 
 ## Update Category
 
-URL: `http://34.121.253.2:5001/api/v1/categories/:id`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories/:id`
 
 Method: `PUT`
 
@@ -419,7 +419,7 @@ Example Request:
 id: 5
 
 ```
-curl --location --request PUT 'http://34.121.253.2:5001/api/v1/categories/5' \
+curl --location --request PUT 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories/5' \
 --data-raw '{
     "name" : "Charity"
 }'
@@ -446,7 +446,7 @@ Example Response:
 
 ## Delete Category
 
-URL: `http://34.121.253.2:5001/api/v1/categories/:id`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories/:id`
 
 Method: `DELETE`
 
@@ -459,7 +459,7 @@ Example Request:
 id: 5
 
 ```
-curl --location --request DELETE 'http://34.121.253.2:5001/api/v1/categories/5'
+curl --location --request DELETE 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/categories/5'
 ```
 
 ### Success Response
@@ -483,7 +483,7 @@ Example Response:
 
 ## Create Animal
 
-URL: `http://34.121.253.2:5001/api/v1/animals`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals`
 
 Method: `POST`
 
@@ -492,7 +492,7 @@ Auth requered: NO
 Example Request:
 
 ```
-curl --location --request POST 'http://34.121.253.2:5001/api/v1/animals' \
+curl --location --request POST 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals' \
 --data-raw '{
     "name" : "Abyssinian 2",
     "animalType":"Cat",
@@ -530,7 +530,7 @@ Example Response:
 
 ## Get All Animals
 
-URL: `http://34.121.253.2:5001/api/v1/animals`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals`
 
 Method: `GET`
 
@@ -539,7 +539,7 @@ Auth requered: NO
 Example Request:
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/animals'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals'
 ```
 
 ### Success Response
@@ -603,7 +603,7 @@ Example Response:
 
 ## Get Animal By Id
 
-URL: `http://34.121.253.2:5001/api/v1/animals`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals`
 
 Method: `GET`
 
@@ -616,7 +616,7 @@ Example Request:
 id: 4
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/animals/4'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals/4'
 ```
 
 ### Success Response
@@ -647,7 +647,7 @@ Example Response:
 
 ## Get Animal By Name
 
-URL: `http://34.121.253.2:5001/api/v1/animals/key/name?name=Labrador`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals/key/name?name=Labrador`
 
 Method: `GET`
 
@@ -660,7 +660,7 @@ Example Request:
 name: Labrador
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/animals/key/name?name=Labrador'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals/key/name?name=Labrador'
 ```
 
 ### Success Response
@@ -686,7 +686,7 @@ Example Response:
 
 ## Update Animal
 
-URL: `http://34.121.253.2:5001/api/v1/animals/:id`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals/:id`
 
 Method: `PUT`
 
@@ -699,7 +699,7 @@ Example Request:
 id: 4
 
 ```
-curl --location --request PUT 'http://34.121.253.2:5001/api/v1/animals/4' \
+curl --location --request PUT 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals/4' \
 --data-raw '{
     "name": "Abyssinian 3",
     "personality": "Abyssinian adalah kucing cerdas yang suka bermain dan berinteraksi dengan manusia.",
@@ -724,7 +724,7 @@ Example Response:
 
 ## Delete Animal
 
-URL: `http://34.121.253.2:5001/api/v1/animals/:id`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals/:id`
 
 Method: `DELETE`
 
@@ -737,7 +737,7 @@ Example Request:
 id: 4
 
 ```
-curl --location --request DELETE 'http://34.121.253.2:5001/api/v1/animals/4'
+curl --location --request DELETE 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals/4'
 ```
 
 ### Success Response
@@ -758,7 +758,7 @@ Example Response:
 
 ## Create Posts
 
-URL: `http://34.121.253.2:5001/api/v1/posts/feed`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts/feed`
 
 Method: `POST`
 
@@ -793,11 +793,11 @@ Example Response:
             "id": 2,
             "categoryId": "1",
             "description": "Hi guys. This is my pet. His name is Dogy",
-            "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
+            "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654609806398.jpeg",
             "idFeeds": "fVuUJ7NkvJnssrIVVij0",
             "userName": "heypet",
             "idUser": 2,
-            "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+            "userPhoto": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
             "updatedAt": "2022-06-07T13:50:09.660Z",
             "createdAt": "2022-06-07T13:50:09.660Z"
         }
@@ -807,7 +807,7 @@ Example Response:
 
 ## Get All Posts
 
-URL: `http://34.121.253.2:5001/api/v1/posts`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts`
 
 Method: `GET`
 
@@ -816,7 +816,7 @@ Auth requered: NO
 Example Request:
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/posts'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts'
 ```
 
 ### Success Response
@@ -837,11 +837,11 @@ Example Response:
                 "id": 2,
                 "categoryId": "1",
                 "description": "Hi guys. This is my pet. His name is Dogy",
-                "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654609806398.jpeg",
                 "idFeeds": "fVuUJ7NkvJnssrIVVij0",
                 "userName": "heypet",
                 "idUser": 2,
-                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "userPhoto": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
                 "updatedAt": "2022-06-07T13:50:09.660Z",
                 "createdAt": "2022-06-07T13:50:09.660Z",
                 "CategoryId": "1",
@@ -850,7 +850,7 @@ Example Response:
                 "id": 1,
                 "categoryId": "1",
                 "description": "Hallo",
-                "photo": "http://34.121.253.2:5001/feeds/photo-1654445986057.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654445986057.jpeg",
                 "idFeeds": "u29yg0aF2kw6gqxzWhIQ",
                 "userName": "heylovers"
                 "idUser": "1",
@@ -866,7 +866,7 @@ Example Response:
 
 ## Get Posts by Token
 
-URL: `http://34.121.253.2:5001/api/v1/posts`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts`
 
 Method: `GET`
 
@@ -879,7 +879,7 @@ Example Token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI2LCJpYXQiOjE2NTQ
 Example Request:
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/posts'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts'
 ```
 
 ### Success Response
@@ -900,11 +900,11 @@ Example Response:
                 "id": 2,
                 "categoryId": "1",
                 "description": "Hi guys. This is my pet. His name is Dogy",
-                "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654609806398.jpeg",
                 "idFeeds": "fVuUJ7NkvJnssrIVVij0",
                 "userName": "heypet",
                 "idUser": 2,
-                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "userPhoto": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
                 "updatedAt": "2022-06-07T13:50:09.660Z",
                 "createdAt": "2022-06-07T13:50:09.660Z",
                 "CategoryId": "1",
@@ -913,7 +913,7 @@ Example Response:
                 "id": 1,
                 "categoryId": "1",
                 "description": "Hallo",
-                "photo": "http://34.121.253.2:5001/feeds/photo-1654445986057.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654445986057.jpeg",
                 "idFeeds": "u29yg0aF2kw6gqxzWhIQ",
                 "userName": "heylovers"
                 "idUser": "1",
@@ -929,7 +929,7 @@ Example Response:
 
 ## Get Post By CategoryId
 
-URL: `http://34.121.253.2:5001/api/v1/posts/category/:categoryId`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts/category/:categoryId`
 
 Method: `GET`
 
@@ -942,7 +942,7 @@ Example Request:
 categoryId: 1
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/posts/category/1'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts/category/1'
 ```
 
 ### Success Response
@@ -963,12 +963,12 @@ Example Response:
                 "id": 2,
                 "categoryId": 1,
                 "description": "Hi guys. This is my pet. His name is Dogy",
-                "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654609806398.jpeg",
                 "idFeeds": "fVuUJ7NkvJnssrIVVij0",
                 "userName": "heypet",
                 "userName": "heypet",
                 "idUser": 2,
-                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "userPhoto": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
                 "createdAt": "2022-06-07T13:50:09.000Z",
                 "updatedAt": "2022-06-07T13:50:09.000Z",
                 "CategoryId": 1,
@@ -983,7 +983,7 @@ Example Response:
                 "id": 1,
                 "categoryId": "1",
                 "description": "Hallo",
-                "photo": "http://34.121.253.2:5001/feeds/photo-1654445986057.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654445986057.jpeg",
                 "idFeeds": "u29yg0aF2kw6gqxzWhIQ",
                 "userName": "heylovers"
                 "idUser": "1",
@@ -1005,7 +1005,7 @@ Example Response:
 
 ## Get Posts by User Id
 
-URL: `http://34.121.253.2:5001/api/v1/posts/profile/feeds/:idUser`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts/profile/feeds/:idUser`
 
 Method: `GET`
 
@@ -1016,7 +1016,7 @@ Example Request:
 idUser: 2
 
 ```
-curl --location --request GET 'http://34.121.253.2:5001/api/v1/posts/profile/feeds/2'
+curl --location --request GET 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts/profile/feeds/2'
 ```
 
 ### Success Response
@@ -1037,11 +1037,11 @@ Example Response:
                 "id": 6,
                 "categoryId": "1",
                 "description": "My pet is so cute",
-                "photo": "http://34.121.253.2:5001/feeds/photo-1654781028584.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654781028584.jpeg",
                 "idFeeds": "T2p1lpIRfKRvEv9DeFzv",
                 "userName": "heypet",
                 "idUser": "2",
-                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg"
+                "userPhoto": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg"
                 "createdAt": "2022-06-09T13:23:51.000Z",
                 "updatedAt": "2022-06-09T13:23:51.000Z",
                 "CategoryId": "1"
@@ -1050,11 +1050,11 @@ Example Response:
                 "id": 4,
                 "categoryId": "1",
                 "description": "Hi this is my pet. Her name is Huahua.",
-                "photo": "http://34.121.253.2:5001/feeds/undefined",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/undefined",
                 "idFeeds": "hoHX8hUG3NkjjmjvUAwj",
                 "userName": "heypet",
                 "idUser": "2",
-                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "userPhoto": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
                 "createdAt": "2022-06-09T12:31:22.000Z",
                 "updatedAt": "2022-06-09T12:31:22.000Z",
                 "CategoryId": "1"
@@ -1063,11 +1063,11 @@ Example Response:
                 "id": 2,
                 "categoryId": "1",
                 "description": "Hi guys. This is my pet. His name is Dogy",
-                "photo": "http://34.121.253.2:5001/feeds/photo-1654609806398.jpeg",
+                "photo": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/feeds/photo-1654609806398.jpeg",
                 "idFeeds": "fVuUJ7NkvJnssrIVVij0",
                 "userName": "heypet",
                 "idUser": 2,
-                "userPhoto": "http://34.121.253.2:5001/user/photo-1654777803624.jpeg",
+                "userPhoto": "https://heypetpetpet-2326mg2rrq-uc.a.run.app/user/photo-1654777803624.jpeg",
                 "updatedAt": "2022-06-07T13:50:09.660Z",
                 "createdAt": "2022-06-07T13:50:09.660Z"
             }
@@ -1078,7 +1078,7 @@ Example Response:
 
 ## Delete Post
 
-URL: `http://34.121.253.2:5001/api/v1/posts/:id`
+URL: `https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts/:id`
 
 Method: `DELETE`
 
@@ -1091,7 +1091,7 @@ Example Request:
 id: 2
 
 ```
-curl --location --request DELETE 'http://34.121.253.2:5001/api/v1/posts/2'
+curl --location --request DELETE 'https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/posts/2'
 ```
 
 ### Success Response

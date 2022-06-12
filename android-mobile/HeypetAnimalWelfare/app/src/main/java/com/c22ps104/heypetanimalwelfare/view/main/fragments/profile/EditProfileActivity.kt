@@ -38,6 +38,7 @@ class EditProfileActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
 
         binding.tvEditProfileUsername.text = preferencesHelper.getString(PREF_USER_NAME)
+        binding.ivPhotoProfile.setImageResource(R.drawable.default_photo_profile)
 
         val token = preferencesHelper.getString(PREF_TOKEN)!!
         editProfileViewModel.getUserDetail(token)
@@ -45,6 +46,7 @@ class EditProfileActivity : AppCompatActivity() {
         editProfileViewModel.userDetails.observe(this) {
             Glide.with(this)
                 .load(it.photo)
+                .placeholder(R.drawable.default_photo_profile)
                 .into(binding.ivPhotoProfile)
         }
     }

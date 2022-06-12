@@ -27,7 +27,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp">
 
             <TextView
                 android:id="@+id/tv_breed_title"
@@ -119,7 +120,7 @@
                 android:id="@+id/tv_moretips_title"
                 style="@style/Text.Medium.CareTips"
                 android:layout_height="match_parent"
-                android:text="@string/personality"
+                android:text="@string/read_more"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="@id/tv_grooming"
                 app:layout_constraintTop_toBottomOf="@id/tv_grooming" />
@@ -128,7 +129,7 @@
                 android:id="@+id/tv_moretips"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="More Tips"
+                android:text="@string/how_to_take_care"
                 android:background="@drawable/textviewcstm_caretips"
                 android:padding="10dp"
                 android:layout_marginTop="4dp"

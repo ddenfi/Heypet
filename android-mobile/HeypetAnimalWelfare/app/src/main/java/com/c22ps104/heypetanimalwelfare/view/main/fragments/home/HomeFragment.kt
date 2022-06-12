@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,13 +54,13 @@ class HomeFragment : Fragment() {
 
     private fun setupViewModel() {
         homeViewModel.filterState.observe(requireActivity()) {
-            sendRequest(it)
+            requestCategorized(it)
             Log.d("Filter state", it)
         }
 
         homeViewModel.feedsResult.observe(requireActivity()) {
-            if (it!=null) {
-                Log.d("Feeds","")
+            if (it != null) {
+                Log.d("Feeds", "")
                 adapter.setData(it)
             }
 
@@ -112,23 +111,27 @@ class HomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
+
         if (id == R.id.menu_filter) {
             bottomSheet.show(childFragmentManager, ModalBottomSheet.TAG)
         }
+
         if (id == R.id.menu_add_post) {
             startActivity(Intent(activity, UploadActivity::class.java))
-            Toast.makeText(requireContext(), "Add Post Clicked", Toast.LENGTH_SHORT).show()
         }
+
         return super.onOptionsItemSelected(item)
     }
 
     private fun fireStoreListener() {
         val docRef = db.collection("feeds")
         docRef.addSnapshotListener { snapshot, e ->
+
             if (e != null) {
                 Log.w("Firestore", "listen:error", e)
                 return@addSnapshotListener
             }
+
             for (dc in snapshot!!.documentChanges) {
 //                when (dc.type) {
 //                    DocumentChange.Type.ADDED -> Log.d(
@@ -150,7 +153,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun sendRequest(test: String) {
+    private fun requestCategorized(test: String) {
         when (test) {
             "0" -> homeViewModel.getAllFeeds()
             "1" -> homeViewModel.getCategorizedFeed("1")

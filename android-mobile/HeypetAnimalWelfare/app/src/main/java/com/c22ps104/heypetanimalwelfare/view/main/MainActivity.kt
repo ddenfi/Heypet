@@ -18,6 +18,34 @@ import com.c22ps104.heypetanimalwelfare.databinding.BottomSheetLayoutBinding
 import com.c22ps104.heypetanimalwelfare.view.main.fragments.home.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityBottomNavigationBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityBottomNavigationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.tbNavigation)
+
+        val navView: BottomNavigationView = binding.navView
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.bottom_nav_host) as NavHostFragment
+        val navController = navHostFragment.navController
+        val appBarConfiguration = AppBarConfiguration.Builder(
+            R.id.navigation_home,
+            R.id.navigation_scan,
+            R.id.navigation_reminder,
+            R.id.navigation_profile
+        ).build()
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+    }
+}
+
 class ModalBottomSheet : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetLayoutBinding? = null
@@ -64,34 +92,5 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "ModalBottomSheet"
-    }
-}
-
-
-class BottomNavigationActivity : AppCompatActivity() {
-
-    lateinit var binding: ActivityBottomNavigationBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityBottomNavigationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setSupportActionBar(binding.tbNavigation)
-
-        val navView: BottomNavigationView = binding.navView
-
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.bottom_nav_host) as NavHostFragment
-        val navController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_home,
-            R.id.navigation_scan,
-            R.id.navigation_reminder,
-            R.id.navigation_profile
-        ).build()
-
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
     }
 }

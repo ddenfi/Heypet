@@ -39,6 +39,10 @@
         <item name="android:textColor">@color/blue_dark_text_title</item>
     </style>
 
+    <style name="Text.WithTheme">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="Text.Bold">
         <item name="fontFamily">@font/lexend_bold</item>
         <item name="android:textStyle">bold</item>

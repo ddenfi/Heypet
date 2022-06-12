@@ -14,7 +14,7 @@ class HomeViewModel : ViewModel() {
     private val _filterState = MutableLiveData("0")
     val filterState: LiveData<String> = _filterState
 
-    fun setFilterState(categoryId: String){
+    fun setFilterState(categoryId: String) {
         _filterState.postValue(categoryId)
     }
 
@@ -27,7 +27,7 @@ class HomeViewModel : ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
     fun getAllFeeds() {
-        Log.d("View Model Called","")
+        Log.d("View Model Called", "")
 
         _isLoading.postValue(true)
 
@@ -38,7 +38,7 @@ class HomeViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     val feedsResponse: FeedsResponse = response.body()!!
                     _feedsResult.postValue(feedsResponse.data.posts)
-                    Log.d("Get All Feeds",response.message())
+                    Log.d("Get All Feeds", response.message())
                 } else {
                     Log.d("Get All Feeds", response.body().toString())
                 }
@@ -46,18 +46,20 @@ class HomeViewModel : ViewModel() {
 
             override fun onFailure(call: Call<FeedsResponse>, t: Throwable) {
                 _isLoading.postValue(false)
-                Log.d("Get All Feeds Filed", "Failure ${t.message}")
+                Log.d("Get All Feeds Failed", "Failure ${t.message}")
             }
         })
     }
 
-    fun getCategorizedFeed(categoryId:String) {
-        Log.d("View Model Called","")
+    fun getCategorizedFeed(categoryId: String) {
+        Log.d("View Model Called", "")
+
         retrofit.getCategorizedFeed(categoryId).enqueue(object :
             Callback<FeedsResponse> {
             override fun onResponse(call: Call<FeedsResponse>, response: Response<FeedsResponse>) {
                 Log.d("Feed url",call.request().url.toString())
                 _isLoading.postValue(false)
+
                 if (response.isSuccessful) {
                     val feedsResponse: FeedsResponse = response.body()!!
                     _feedsResult.postValue(feedsResponse.data.posts)
@@ -69,7 +71,7 @@ class HomeViewModel : ViewModel() {
 
             override fun onFailure(call: Call<FeedsResponse>, t: Throwable) {
                 _isLoading.postValue(false)
-                Log.d("Categorized Feeds Filed", "Failure ${t.message}")
+                Log.d("Feeds Categorize Failed", "Failure ${t.message}")
             }
         })
     }

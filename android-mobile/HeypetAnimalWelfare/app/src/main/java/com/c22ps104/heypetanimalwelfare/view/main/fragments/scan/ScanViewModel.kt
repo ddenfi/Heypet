@@ -31,6 +31,7 @@ class ScanViewModel : ViewModel() {
         val reqBody = MultipartBody.Part.createFormData("file", file.name, reqFile)
 
         _isLoading.postValue(true)
+
         retrofit.classify(reqBody).enqueue(object :
             Callback<ClassifyResponse> {
             override fun onResponse(call: Call<ClassifyResponse>, response: Response<ClassifyResponse>) {

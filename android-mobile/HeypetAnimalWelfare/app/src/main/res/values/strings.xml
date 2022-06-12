@@ -74,6 +74,7 @@
     <string name="none">None</string>
     <string name="upload">Upload</string>
     <string name="gallery">Gallery</string>
+    <string name="story_by_default">*Story by default</string>
     <string name="cd_picture_to_post">Picture to post</string>
     <string name="cd_gallery_button">Open gallery</string>
 
@@ -93,6 +94,7 @@
     <string name="personality">Personality</string>
     <string name="health">Health</string>
     <string name="grooming">Grooming</string>
+    <string name="how_to_take_care">How to take care</string>
     <string name="cd_more_tips">More tips</string>
 
     <!-- Reminder -->
@@ -111,6 +113,7 @@
     <string name="cd_clock">Open clock</string>
 
     <!-- Profile -->
+    <string name="logout">Logout</string>
     <string name="_20">20</string>
     <string name="posts">Posts</string>
     <string name="followers">Followers</string>

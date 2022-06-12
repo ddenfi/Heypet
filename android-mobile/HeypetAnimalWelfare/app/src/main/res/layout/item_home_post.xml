@@ -141,6 +141,7 @@
             card_view:layout_constraintTop_toBottomOf="@id/img_post_heart" />
 
         <TextView
+            android:alpha="0"
             android:id="@+id/tv_readmore"
             style="@style/Text.Bold"
             android:layout_width="match_parent"

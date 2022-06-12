@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_IS_LOGIN
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityWelcomeBinding
-import com.c22ps104.heypetanimalwelfare.view.main.BottomNavigationActivity
+import com.c22ps104.heypetanimalwelfare.view.main.MainActivity
 import com.c22ps104.heypetanimalwelfare.view.login.LoginActivity
 import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity
 
@@ -42,7 +42,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun checkLoginState() {
         if(preferencesHelper.getBoolean(PREF_IS_LOGIN)) {
-            val intentToMain = Intent(this@WelcomeActivity, BottomNavigationActivity::class.java)
+            val intentToMain = Intent(this@WelcomeActivity, MainActivity::class.java)
             intentToMain.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intentToMain)
             finish()

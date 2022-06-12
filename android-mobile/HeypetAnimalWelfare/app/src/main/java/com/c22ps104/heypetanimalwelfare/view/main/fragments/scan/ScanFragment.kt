@@ -31,7 +31,7 @@ class ScanFragment : Fragment() {
     private var _binding: FragmentScanBinding? = null
     private val binding get() = _binding!!
     private lateinit var scanViewModel: ScanViewModel
-    private var byteArray:ByteArray? = null
+    private var byteArray: ByteArray? = null
 
     private val takePicture =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -108,7 +108,7 @@ class ScanFragment : Fragment() {
     }
 
     private fun setupView() {
-        val intentToCareTips = Intent(requireContext(),CaretipsActivity::class.java)
+        val intentToCareTips = Intent(requireContext(), CaretipsActivity::class.java)
         val defaultValue = "You Must Scan First"
         var extraData = ClassifyResponse("","","","",defaultValue,"",0,"")
 
@@ -151,9 +151,9 @@ class ScanFragment : Fragment() {
         }
 
         binding.btnDetail.setOnClickListener {
-                intentToCareTips.putExtra(EXTRA_CLASSIFY_PHOTO,byteArray)
-                intentToCareTips.putExtra(EXTRA_CLASSIFY_RESULT,extraData)
-                startActivity(intentToCareTips)
+            intentToCareTips.putExtra(EXTRA_CLASSIFY_PHOTO, byteArray)
+            intentToCareTips.putExtra(EXTRA_CLASSIFY_RESULT, extraData)
+            startActivity(intentToCareTips)
         }
     }
 
@@ -190,7 +190,7 @@ class ScanFragment : Fragment() {
         _binding = null
     }
 
-    companion object{
+    companion object {
         const val EXTRA_CLASSIFY_RESULT = "EXTRA_CLASSIFY_RESULT"
         const val EXTRA_CLASSIFY_PHOTO = "EXTRA_CLASSIFY_PHOTO"
     }

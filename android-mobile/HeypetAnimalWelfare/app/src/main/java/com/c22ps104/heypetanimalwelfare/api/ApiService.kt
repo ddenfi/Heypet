@@ -35,9 +35,9 @@ interface ApiService {
     @POST("posts/feed")
     fun postFeed(
         @Header("Authorization") token: String,
-        @Part ("categoryId") categoryId:RequestBody,
-        @Part photo:MultipartBody.Part,
-        @Part ("description") desc:RequestBody
+        @Part ("categoryId") categoryId: RequestBody,
+        @Part photo: MultipartBody.Part,
+        @Part ("description") desc: RequestBody
     ): Call<PostFeedsResponse>
 
     @GET("posts")
@@ -46,7 +46,7 @@ interface ApiService {
 
     @GET("posts/category/{categorizedId}")
     fun getCategorizedFeed(
-        @Path ("categorizedId") categorizedId:String
+        @Path ("categorizedId") categorizedId: String
     ): Call<FeedsResponse>
 
     @PUT("users/session/profile")

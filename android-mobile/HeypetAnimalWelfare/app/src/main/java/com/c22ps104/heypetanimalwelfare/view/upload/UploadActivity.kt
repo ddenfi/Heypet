@@ -17,6 +17,7 @@ import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_TOKEN
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityUploadBinding
+import com.c22ps104.heypetanimalwelfare.view.main.MainActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -31,7 +32,7 @@ import kotlin.math.min
 class UploadActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUploadBinding
-    private val viewModel:UploadViewModel by viewModels()
+    private val uploadViewModel: UploadViewModel by viewModels()
     private lateinit var preferencesHelper: PreferencesHelper
 
     private lateinit var tempFile:File
@@ -136,8 +137,14 @@ class UploadActivity : AppCompatActivity() {
             val token = preferencesHelper.getString(PREF_TOKEN)
 
             if (token != null) {
-                viewModel.upload(token, categorySelected, imageMultipart, desc).observe(this) {
-                    Toast.makeText(this,"Upload $it",Toast.LENGTH_SHORT).show()
+                uploadViewModel.upload(token, categorySelected, imageMultipart, desc).observe(this) {
+                    Toast.makeText(this,"Upload $it", Toast.LENGTH_SHORT).show()
+
+                    if (it == "Success") {
+                        val intentToMain = Intent(this@UploadActivity, MainActivity::class.java)
+                        startActivity(intentToMain)
+                        finish()
+                    }
                 }
             }
         }

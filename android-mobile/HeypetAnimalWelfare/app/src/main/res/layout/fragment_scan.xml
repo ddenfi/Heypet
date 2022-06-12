@@ -6,13 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".view.main.fragments.scan.ScanFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_ver_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/iv_picture_taken"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/default_scan"
         android:contentDescription="@string/cd_picture_to_post" />
@@ -21,11 +30,10 @@
         android:id="@+id/btn_scan_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
         android:text="@string/camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.283"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="@id/gl_ver_center"
         app:layout_constraintTop_toBottomOf="@id/iv_picture_taken" />
 
     <Button
@@ -33,8 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/gallery"
-        android:layout_marginStart="60dp"
-        app:layout_constraintStart_toEndOf="@id/btn_scan_camera"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toEndOf="@id/gl_ver_center"
         app:layout_constraintTop_toTopOf="@id/btn_scan_camera"
         app:layout_constraintBottom_toBottomOf="@id/btn_scan_camera" />
 

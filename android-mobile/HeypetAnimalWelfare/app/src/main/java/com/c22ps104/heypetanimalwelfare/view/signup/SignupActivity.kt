@@ -12,7 +12,7 @@ import com.c22ps104.heypetanimalwelfare.view.onboarding.OnBoardingActivity
 class SignupActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding
-    private val viewModel:SignupViewModel by viewModels()
+    private val signupViewModel: SignupViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,16 +26,17 @@ class SignupActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btnSignup.setOnClickListener {
-            val _email = binding.etEmail.text.toString()
-            val _pass = binding.etPassword.text.toString()
-            val _name = binding.etUsername.text.toString()
-            viewModel.register(email = _email, password = _pass, name = _name, bio = "", phoneNumber = "")
-            Log.d("registerFormAct","$_name $_email")
+            val email = binding.etEmail.text.toString()
+            val pass = binding.etPassword.text.toString()
+            val name = binding.etUsername.text.toString()
+            signupViewModel.register(email = email, password = pass, name = name, bio = "", phoneNumber = "")
+            Log.d("registerFormAct","$name $email")
         }
 
-        viewModel.register.observe(this) {
+        signupViewModel.register.observe(this) {
             if (it != null ) {
                 Toast.makeText(this,"Register Success",Toast.LENGTH_SHORT).show()
+
                 val intentToOnBoarding = Intent(this@SignupActivity, OnBoardingActivity::class.java)
                 intentToOnBoarding.putExtra(EXTRA_TOKEN, it.data.token.accessToken)
                 intentToOnBoarding.putExtra(EXTRA_USERNAME, it.data.user.name)
@@ -46,7 +47,7 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    companion object{
+    companion object {
         const val EXTRA_TOKEN = "EXTRA_TOKEN"
         const val EXTRA_USERNAME ="EXTRA_USERNAME"
     }

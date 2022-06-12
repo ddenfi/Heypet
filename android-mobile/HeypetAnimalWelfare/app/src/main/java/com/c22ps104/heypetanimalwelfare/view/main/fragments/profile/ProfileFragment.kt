@@ -2,11 +2,10 @@ package com.c22ps104.heypetanimalwelfare.view.main.fragments.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentProfileBinding
 import com.c22ps104.heypetanimalwelfare.view.welcome.WelcomeActivity
@@ -36,22 +35,29 @@ class ProfileFragment : Fragment() {
 //            textView.text = it
 //        }
 
-        // TODO memindahkan logout ke activity settings
         preferencesHelper = PreferencesHelper(requireActivity())
-        setupView()
 
         return root
     }
 
-    private fun setupView() {
-        binding.btnLogout.setOnClickListener {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.profile_options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if (id == R.id.btn_logout) {
             preferencesHelper.clear()
 
-            val intentToLogin = Intent(requireActivity(), WelcomeActivity::class.java)
-            intentToLogin.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intentToLogin)
+            val intentToWelcome = Intent(requireActivity(), WelcomeActivity::class.java)
+            intentToWelcome.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intentToWelcome)
             activity?.finish()
         }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {

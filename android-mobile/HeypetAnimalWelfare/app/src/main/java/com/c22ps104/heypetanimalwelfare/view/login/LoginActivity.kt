@@ -11,12 +11,12 @@ import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_IS
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_TOKEN
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_USER_NAME
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityLoginBinding
-import com.c22ps104.heypetanimalwelfare.view.main.BottomNavigationActivity
+import com.c22ps104.heypetanimalwelfare.view.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private val viewModel:LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var preferencesHelper: PreferencesHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,13 +38,13 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.etPassword.text.toString()
 
             Log.d("LoginFrom","$email $password")
-            viewModel.login(email,password)
+            loginViewModel.login(email, password)
 
-            viewModel.login.observe(this) {
+            loginViewModel.login.observe(this) {
                 if (it != null) {
-                    saveSession(it.data.token.accessToken, it.data.user.id.toString(),it.data.user.name)
+                    saveSession(it.data.token.accessToken, it.data.user.id.toString(), it.data.user.name)
 
-                    val intentToMain = Intent(this@LoginActivity, BottomNavigationActivity::class.java)
+                    val intentToMain = Intent(this@LoginActivity, MainActivity::class.java)
                     intentToMain.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intentToMain)
                     finish()

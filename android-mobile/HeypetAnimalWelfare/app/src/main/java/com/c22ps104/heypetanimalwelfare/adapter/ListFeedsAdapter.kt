@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import com.c22ps104.heypetanimalwelfare.databinding.ItemHomePostBinding
 
@@ -44,11 +45,10 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
                 }
 
                 tvProfileName.text = feed.userName
-//                Glide.with(itemView.context)
-//                    .load(feed.userPhoto)
-//                    .placeholder()
-//                    .into(imgProfilePicture)
-
+                Glide.with(itemView.context)
+                    .load(feed.userPhoto)
+                    .placeholder(R.drawable.default_photo_profile)
+                    .into(imgProfilePicture)
             }
 
             itemView.setOnClickListener {

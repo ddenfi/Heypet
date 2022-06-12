@@ -13,7 +13,6 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class CommentSectionActivity : AppCompatActivity() {
 
@@ -101,18 +100,20 @@ class CommentSectionActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val listComment: ArrayList<CommentModel> = ArrayList()
-                    for (document in task.result) {
-                        val comment = CommentModel()
-                        comment.name = document.data.getValue("name").toString()
-                        comment.comment = document.data.getValue("comment").toString()
-                        comment.date = document.data.getValue("date").toString()
-                        comment.idFeed = document.data.getValue("idFeed").toString()
-
+                    for ((i, document) in task.result.withIndex()) {
+                        listComment.add(
+                            CommentModel(
+                                name = document.data.getValue("name") as String,
+                                comment = document.data.getValue("comment") as String,
+                                date = document.data.getValue("date") as String,
+                                idFeed = document.data.getValue("idFeed") as String
+                            )
+                        )
                         Log.d(
                             "Comment",
-                            "${comment.name} ${comment.date} ${comment.comment} ${comment.idFeed}"
+                            "${listComment[i].name} ${listComment[i].date} ${listComment[i].comment} ${listComment[i].idFeed}"
+
                         )
-                        listComment.add(comment)
                     }
                     adapter.setData(listComment)
                 } else {

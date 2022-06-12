@@ -39,7 +39,7 @@ class ScanFragment : Fragment() {
                 if (file != null) {
                     byteArray = bitmapToByteArray(imageBitmap)
                     scanViewModel.classify(file)
-                } else Toast.makeText(activity, "Filed to classify", Toast.LENGTH_SHORT)
+                } else Toast.makeText(activity, "Failed to classify", Toast.LENGTH_SHORT)
             }
         }
 
@@ -56,7 +56,7 @@ class ScanFragment : Fragment() {
                     if (file != null) {
                         byteArray = bitmapToByteArray(bitmap)
                         scanViewModel.classify(file)
-                    } else Toast.makeText(activity, "Filed to classify", Toast.LENGTH_SHORT)
+                    } else Toast.makeText(activity, "Failed to classify", Toast.LENGTH_SHORT)
                 } catch (e: FileNotFoundException) {
                     e.printStackTrace()
                 }
@@ -147,9 +147,13 @@ class ScanFragment : Fragment() {
         }
 
         binding.btnDetail.setOnClickListener {
-            intentToCareTips.putExtra(EXTRA_CLASSIFY_PHOTO, byteArray)
-            intentToCareTips.putExtra(EXTRA_CLASSIFY_RESULT, extraData)
-            startActivity(intentToCareTips)
+            if(byteArray != null) {
+                intentToCareTips.putExtra(EXTRA_CLASSIFY_PHOTO, byteArray)
+                intentToCareTips.putExtra(EXTRA_CLASSIFY_RESULT, extraData)
+                startActivity(intentToCareTips)
+            } else {
+                Toast.makeText(activity, "Please attach an image to scan", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

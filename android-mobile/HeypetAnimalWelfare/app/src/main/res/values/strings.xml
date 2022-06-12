@@ -85,7 +85,7 @@
     <!-- Scan -->
     <string name="camera">Camera</string>
     <string name="classified_as">Classified As</string>
-    <string name="your_pet_breed">Your pet breed</string>
+    <string name="your_pet_breed"><i>Your pet breed</i></string>
     <string name="cd_picture_taken">Pet image</string>
     <string name="cd_caretips">Open identified pet\'s care tips</string>
 

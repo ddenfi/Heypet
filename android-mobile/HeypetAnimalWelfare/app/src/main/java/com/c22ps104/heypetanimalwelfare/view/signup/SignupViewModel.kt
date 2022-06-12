@@ -21,8 +21,6 @@ class SignupViewModel(application: Application) : AndroidViewModel(application) 
     val register: LiveData<RegisterResponse> = _register
 
     fun register(name: String, bio: String, phoneNumber: String, email: String, password: String) {
-        Log.d("registerForm", "$name $email $password $bio $phoneNumber")
-
         retrofit.register(name, bio, email, phoneNumber, password)
             .enqueue(object : Callback<RegisterResponse> {
                 override fun onResponse(
@@ -30,10 +28,11 @@ class SignupViewModel(application: Application) : AndroidViewModel(application) 
                     response: Response<RegisterResponse>
                 ) {
                     if (response.isSuccessful) {
+                        Log.d("Signup", response.body().toString())
                         val responseBody = response.body()
                         _register.postValue(responseBody!!)
                     } else {
-                        Log.d("Register3", response.body().toString())
+                        Log.d("Signup", response.body().toString())
                         Toast.makeText(
                             getApplication(),
                             "Email is already registered",
@@ -43,7 +42,7 @@ class SignupViewModel(application: Application) : AndroidViewModel(application) 
                 }
 
                 override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                    Log.d("Register", "Failure ${t.message}")
+                    Log.d("Signup", "Failure ${t.message}")
                     Toast.makeText(getApplication(), "No connection", Toast.LENGTH_SHORT).show()
                 }
             })

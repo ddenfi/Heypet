@@ -11,7 +11,7 @@ import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.adapter.ListFeedsAdapter
 import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentHomeBinding
-import com.c22ps104.heypetanimalwelfare.view.comment.CommentSectionActivity
+import com.c22ps104.heypetanimalwelfare.view.comment.CommentActivity
 import com.c22ps104.heypetanimalwelfare.view.main.ModalBottomSheet
 import com.c22ps104.heypetanimalwelfare.view.upload.UploadActivity
 import com.google.firebase.firestore.FirebaseFirestore
@@ -55,12 +55,10 @@ class HomeFragment : Fragment() {
     private fun setupViewModel() {
         homeViewModel.filterState.observe(requireActivity()) {
             requestCategorized(it)
-            Log.d("Filter state", it)
         }
 
         homeViewModel.feedsResult.observe(requireActivity()) {
             if (it != null) {
-                Log.d("Feeds", "")
                 adapter.setData(it)
             }
 
@@ -82,9 +80,10 @@ class HomeFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : ListFeedsAdapter.OnItemClickCallback {
             override fun onItemClicked(data: PostsItem) {
-                val toCommentSection = Intent(requireActivity(), CommentSectionActivity::class.java)
-                toCommentSection.putExtra("EXTRA_ID", data.idFeeds)
-                startActivity(toCommentSection)
+                // TODO("Intent with data to comment")
+                val intentToComment = Intent(requireActivity(), CommentActivity::class.java)
+                intentToComment.putExtra("EXTRA_ID", data.idFeeds)
+                startActivity(intentToComment)
             }
         })
 
@@ -127,20 +126,21 @@ class HomeFragment : Fragment() {
             }
 
             for (dc in snapshot!!.documentChanges) {
-//                when (dc.type) {
-//                    DocumentChange.Type.ADDED -> Log.d(
-//                        "Firestore_ADDED",
-//                        "date: ${dc.document.data.getValue("date")}"
-//                    )
-//                    DocumentChange.Type.MODIFIED -> Log.d(
-//                        "Firestore_MODIFIED",
-//                        "date: ${dc.document.data.getValue("date")}"
-//                    )
-//                    DocumentChange.Type.REMOVED -> Log.d(
-//                        "Firestore_REMOVED",
-//                        "date: ${dc.document.data.getValue("date")}"
-//                    )
-//                }
+                /*when (dc.type) {
+                    DocumentChange.Type.ADDED -> Log.d(
+                        "Firestore_ADDED",
+                        "date: ${dc.document.data.getValue("date")}"
+                    )
+                    DocumentChange.Type.MODIFIED -> Log.d(
+                        "Firestore_MODIFIED",
+                        "date: ${dc.document.data.getValue("date")}"
+                    )
+                    DocumentChange.Type.REMOVED -> Log.d(
+                        "Firestore_REMOVED",
+                        "date: ${dc.document.data.getValue("date")}"
+                    )
+                }*/
+
                 binding.btnRefresh.visibility = View.VISIBLE
 //                readFirestoreData()
             }

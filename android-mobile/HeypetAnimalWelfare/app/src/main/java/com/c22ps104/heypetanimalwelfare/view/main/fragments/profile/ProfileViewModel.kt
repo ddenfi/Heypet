@@ -1,16 +1,18 @@
 package com.c22ps104.heypetanimalwelfare.view.main.fragments.profile
 
+import android.app.Application
 import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.c22ps104.heypetanimalwelfare.api.*
-import com.google.firebase.firestore.auth.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(application: Application) : AndroidViewModel(application) {
+
     private val retrofit: ApiService = ApiConfig.getApiService()
 
     private val _feedsResult = MutableLiveData<List<PostsItem>>()
@@ -23,27 +25,28 @@ class ProfileViewModel : ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
     fun getUserDetail(token: String) {
-        _isLoading.postValue(true)
-
         retrofit.getUserDetail("Bearer $token").enqueue(object :
             Callback<UserDetailResponse> {
+
             override fun onResponse(
                 call: Call<UserDetailResponse>,
                 response: Response<UserDetailResponse>
             ) {
                 _isLoading.postValue(false)
+
                 if (response.isSuccessful) {
                     val userDetail = response.body()!!
                     _userDetails.postValue(userDetail.data.users)
-                    Log.d("ProfileDetail", response.message())
+                    Log.d("Profile Detail", response.message())
                 } else {
-                    Log.d("ProfileMessage", response.message())
+                    Log.d("Profile Detail", response.message())
                 }
             }
 
             override fun onFailure(call: Call<UserDetailResponse>, t: Throwable) {
                 _isLoading.postValue(false)
-                Log.d("ProfileMessage", "Failure ${t.message}")
+                Log.d("Profile Detail", "Failure ${t.message}")
+                Toast.makeText(getApplication(), "No connection", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -55,18 +58,20 @@ class ProfileViewModel : ViewModel() {
             Callback<FeedsResponse> {
             override fun onResponse(call: Call<FeedsResponse>, response: Response<FeedsResponse>) {
                 _isLoading.postValue(false)
+
                 if (response.isSuccessful) {
                     val feedsResponse: FeedsResponse = response.body()!!
                     _feedsResult.postValue(feedsResponse.data.posts)
-                    Log.d("Get All Feeds", response.message())
+                    Log.d("Profile Posts", response.message())
                 } else {
-                    Log.d("Get All Feeds", response.body().toString())
+                    Log.d("Profile Posts", response.body().toString())
                 }
             }
 
             override fun onFailure(call: Call<FeedsResponse>, t: Throwable) {
                 _isLoading.postValue(false)
-                Log.d("Get All Feeds Failed", "Failure ${t.message}")
+                Log.d("Profile Posts", "Failure ${t.message}")
+                Toast.makeText(getApplication(), "No connection", Toast.LENGTH_SHORT).show()
             }
         })
     }

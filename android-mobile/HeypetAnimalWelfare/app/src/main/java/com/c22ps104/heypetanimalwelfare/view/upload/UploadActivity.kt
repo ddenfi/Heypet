@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.ThumbnailUtils
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -13,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_TOKEN
@@ -42,7 +42,7 @@ class UploadActivity : AppCompatActivity() {
             if (it.resultCode == -1) {
                 val imageBitmap = it.data?.extras?.get("data") as Bitmap
 
-                Log.d("Upload Image", "${imageBitmap.width} ${imageBitmap.height} ")
+                Log.d("Upload Image Size", "${imageBitmap.width} ${imageBitmap.height} ")
 
                 binding.ivUpload.setImageBitmap(cropBmp(imageBitmap))
 

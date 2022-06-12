@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -16,6 +15,7 @@ import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityBottomNavigationBinding
 import com.c22ps104.heypetanimalwelfare.databinding.BottomSheetLayoutBinding
 import com.c22ps104.heypetanimalwelfare.view.main.fragments.home.HomeViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MainActivity : AppCompatActivity() {
@@ -70,9 +70,10 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
     private fun setupBottomSheet() {
         binding.filterGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             when (checkedIds[0]) {
+
                 binding.chipAll.id -> {
                     homeViewModel.setFilterState("0")
-                    Log.d("filter state update", "")
+                    Log.d("Bottom Sheet", "Filter state updated")
                 }
 
                 binding.chipStory.id -> homeViewModel.setFilterState("1")

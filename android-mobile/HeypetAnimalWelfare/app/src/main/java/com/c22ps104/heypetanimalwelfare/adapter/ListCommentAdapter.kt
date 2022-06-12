@@ -17,14 +17,15 @@ class ListCommentAdapter : RecyclerView.Adapter<ListCommentAdapter.ListViewHolde
             clear()
             addAll(data)
         }
+
         notifyDataSetChanged()
     }
 
     inner class ListViewHolder(private var binding: ItemCommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: CommentModel) {
-            binding.tvItemCommentComment.text = data.comment
             binding.tvItemCommnetName.text = data.name
+            binding.tvItemCommentComment.text = data.comment
         }
     }
 

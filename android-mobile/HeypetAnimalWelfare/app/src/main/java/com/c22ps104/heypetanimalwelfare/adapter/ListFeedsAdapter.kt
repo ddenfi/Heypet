@@ -10,6 +10,7 @@ import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import com.c22ps104.heypetanimalwelfare.databinding.ItemHomePostBinding
 
 class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>() {
+
     private val listFeed: ArrayList<PostsItem> = ArrayList()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -23,12 +24,14 @@ class ListFeedsAdapter : RecyclerView.Adapter<ListFeedsAdapter.ListViewHolder>()
             clear()
             addAll(data)
         }
+
         notifyDataSetChanged()
     }
 
     inner class ListViewHolder(private var binding: ItemHomePostBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(feed: PostsItem) {
+
             with(binding) {
                 Glide.with(itemView.context)
                     .load(feed.photo)

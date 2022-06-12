@@ -12,68 +12,68 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintGuide_percent="0.1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_login_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/figure_login"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/cd_login_image"
+        android:src="@drawable/figure_login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_hor_top"
-        android:contentDescription="@string/cd_login_image" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_hor_top" />
 
     <TextView
         android:id="@+id/tv_login_title"
         style="@style/Text.Bold"
-        android:textSize="32sp"
-        android:text="@string/login_title"
         android:layout_marginStart="64dp"
         android:layout_marginTop="32dp"
+        android:text="@string/login_title"
+        android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_login_character" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@color/blue_primary"
-        android:textColorHint="@color/blue_dark_text_subtitle"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="32dp"
+        android:textColorHint="@color/blue_dark_text_subtitle"
+        app:boxStrokeColor="@color/blue_primary"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_login_title">
 
         <EditText
             android:id="@+id/et_email"
             style="@style/Text"
             android:layout_width="match_parent"
-            android:textColor="@color/blue_pale_login_input"
+            android:autofillHints="emailAddress"
             android:ems="10"
             android:hint="@string/email"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:autofillHints="emailAddress"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/blue_pale_login_input"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@color/blue_primary"
-        android:textColorHint="@color/blue_dark_text_subtitle"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/til_email"
+        android:textColorHint="@color/blue_dark_text_subtitle"
+        app:boxStrokeColor="@color/blue_primary"
         app:layout_constraintEnd_toEndOf="@id/til_email"
+        app:layout_constraintStart_toStartOf="@id/til_email"
         app:layout_constraintTop_toBottomOf="@id/til_email"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/blue_dark_text_title">
@@ -82,78 +82,78 @@
             android:id="@+id/et_password"
             style="@style/Text"
             android:layout_width="match_parent"
-            android:textColor="@color/blue_pale_login_input"
-            android:ems="10"
-            app:passwordToggleEnabled="true"
-            android:hint="@string/password"
-            tools:ignore="SpeakableTextPresentCheck"
             android:autofillHints="password"
-            android:inputType="textPassword" />
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/blue_pale_login_input"
+            app:passwordToggleEnabled="true"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:alpha="0"
         android:id="@+id/tv_forgot_password"
         style="@style/Text"
-        android:textSize="10sp"
-        android:text="@string/forgot_password"
         android:layout_marginTop="4dp"
+        android:alpha="0"
+        android:text="@string/forgot_password"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@id/til_password"
         app:layout_constraintTop_toBottomOf="@id/til_password" />
 
     <TextView
         android:id="@+id/btn_login"
         style="@style/Text.Bold"
-        android:textSize="16sp"
-        android:textColor="@color/white_blue_login_button"
-        android:text="@string/log_in"
-        android:gravity="center"
-        android:background="@drawable/button_general"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="@id/til_email"
+        android:background="@drawable/button_general"
+        android:gravity="center"
+        android:text="@string/log_in"
+        android:textColor="@color/white_blue_login_button"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/til_email"
+        app:layout_constraintStart_toStartOf="@id/til_email"
         app:layout_constraintTop_toBottomOf="@id/tv_forgot_password" />
 
     <TextView
         android:id="@+id/tv_or"
         style="@style/Text"
-        android:textSize="20sp"
-        android:text="@string/or"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/til_email"
+        android:text="@string/or"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@id/til_email"
+        app:layout_constraintStart_toStartOf="@id/til_email"
         app:layout_constraintTop_toBottomOf="@id/btn_login" />
 
     <ImageView
         android:id="@+id/btn_google"
         style="@style/AlternativeLoginButton"
-        android:src="@drawable/button_google"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/til_email"
+        android:contentDescription="@string/cd_google_login"
+        android:src="@drawable/button_google"
         app:layout_constraintEnd_toEndOf="@id/til_email"
-        app:layout_constraintTop_toBottomOf="@id/tv_or"
-        android:contentDescription="@string/cd_google_login" />
+        app:layout_constraintStart_toStartOf="@id/til_email"
+        app:layout_constraintTop_toBottomOf="@id/tv_or" />
 
     <ImageView
-        android:alpha="0"
         android:id="@+id/btn_facebook"
         style="@style/AlternativeLoginButton"
-        android:src="@drawable/button_facebook"
         android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toStartOf="@id/btn_google"
-        app:layout_constraintTop_toTopOf="@id/btn_google"
+        android:alpha="0"
+        android:contentDescription="@string/cd_facebook_login"
+        android:src="@drawable/button_facebook"
         app:layout_constraintBottom_toBottomOf="@id/btn_google"
-        android:contentDescription="@string/cd_facebook_login" />
+        app:layout_constraintEnd_toStartOf="@id/btn_google"
+        app:layout_constraintTop_toTopOf="@id/btn_google" />
 
     <ImageView
-        android:alpha="0"
         android:id="@+id/btn_apple"
         style="@style/AlternativeLoginButton"
-        android:src="@drawable/button_apple"
         android:layout_marginStart="32dp"
-        app:layout_constraintStart_toEndOf="@id/btn_google"
-        app:layout_constraintTop_toTopOf="@id/btn_google"
+        android:alpha="0"
+        android:contentDescription="@string/cd_apple_login"
+        android:src="@drawable/button_apple"
         app:layout_constraintBottom_toBottomOf="@id/btn_google"
-        android:contentDescription="@string/cd_apple_login" />
+        app:layout_constraintStart_toEndOf="@id/btn_google"
+        app:layout_constraintTop_toTopOf="@id/btn_google" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

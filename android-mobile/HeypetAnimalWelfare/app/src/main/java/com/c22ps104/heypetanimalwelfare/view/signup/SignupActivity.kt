@@ -1,11 +1,10 @@
 package com.c22ps104.heypetanimalwelfare.view.signup
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.databinding.ActivitySignupBinding
 import com.c22ps104.heypetanimalwelfare.view.onboarding.OnBoardingActivity
 
@@ -26,9 +25,9 @@ class SignupActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btnSignup.setOnClickListener {
+            val name = binding.etUsername.text.toString()
             val email = binding.etEmail.text.toString()
             val pass = binding.etPassword.text.toString()
-            val name = binding.etUsername.text.toString()
 
             signupViewModel.register(
                 email = email,
@@ -37,13 +36,11 @@ class SignupActivity : AppCompatActivity() {
                 bio = "",
                 phoneNumber = ""
             )
-
-            Log.d("registerFormAct", "$name $email")
         }
 
         signupViewModel.register.observe(this) {
             if (it != null) {
-                Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Registration Success", Toast.LENGTH_SHORT).show()
 
                 val intentToOnBoarding = Intent(this@SignupActivity, OnBoardingActivity::class.java)
                 intentToOnBoarding.putExtra(EXTRA_TOKEN, it.data.token.accessToken)

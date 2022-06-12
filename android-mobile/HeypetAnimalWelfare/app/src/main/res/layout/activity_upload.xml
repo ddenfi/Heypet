@@ -10,55 +10,55 @@
         android:id="@+id/iv_upload"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:contentDescription="@string/cd_picture_taken"
         android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars"
-        android:contentDescription="@string/cd_picture_taken" />
+        tools:src="@tools:sample/avatars" />
 
     <View
         android:id="@+id/line"
         android:layout_width="0dp"
         android:layout_height="2dp"
-        android:background="@color/blue_primary"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="100dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/blue_primary"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_upload" />
 
     <ImageView
         android:id="@+id/iv_upload_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_camera"
         android:layout_marginStart="24dp"
-        app:tint="@color/blue_primary"
+        android:contentDescription="@string/cd_camera_button"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintBottom_toBottomOf="@id/line"
         app:layout_constraintStart_toEndOf="@id/line"
         app:layout_constraintTop_toTopOf="@id/line"
-        app:layout_constraintBottom_toBottomOf="@id/line"
-        android:contentDescription="@string/cd_camera_button" />
+        app:tint="@color/blue_primary" />
 
     <ImageView
         android:id="@+id/iv_upload_gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_add_photo_alternate_24"
         android:layout_marginStart="8dp"
-        app:tint="@color/blue_primary"
+        android:contentDescription="@string/cd_gallery_button"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_upload_camera"
         app:layout_constraintStart_toEndOf="@+id/iv_upload_camera"
         app:layout_constraintTop_toTopOf="@+id/iv_upload_camera"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_upload_camera"
-        android:contentDescription="@string/cd_gallery_button" />
+        app:tint="@color/blue_primary" />
 
     <TextView
         android:id="@+id/tv_caption_title"
         style="@style/Text.Medium"
-        android:textColor="@color/blue_primary"
-        android:text="@string/caption"
         android:layout_marginTop="16dp"
+        android:text="@string/caption"
+        android:textColor="@color/blue_primary"
         app:layout_constraintStart_toStartOf="@id/line"
         app:layout_constraintTop_toBottomOf="@id/line" />
 
@@ -66,18 +66,18 @@
         android:id="@+id/et_upload_caption"
         style="@style/Text.WithTheme"
         android:layout_width="0dp"
-        android:textSize="14sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/textview_rounded_stroke"
         android:gravity="center"
         android:hint="@string/caption_description"
         android:importantForAutofill="no"
-        android:background="@drawable/textview_rounded_stroke"
         android:inputType="text"
         android:padding="10dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_caption_title" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -86,29 +86,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_upload_caption">
 
         <AutoCompleteTextView
             android:id="@+id/tvAutocomplete_upload"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/none"
+            android:layout_weight="1"
             android:hint="@string/category"
             android:inputType="none"
-            android:layout_weight="1" />
+            android:text="@string/none" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_default_category"
         style="@style/Text"
+        android:layout_marginTop="2dp"
+        android:text="@string/story_by_default"
         android:textColor="@color/blue_primary"
         android:textSize="10sp"
-        android:text="@string/story_by_default"
-        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="@id/til_category"
         app:layout_constraintTop_toBottomOf="@id/til_category" />
 
@@ -116,10 +116,10 @@
         android:id="@+id/btn_upload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/upload"
         android:background="@color/background"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/upload"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,22 +1,22 @@
 package com.c22ps104.heypetanimalwelfare.view.comment
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps104.heypetanimalwelfare.adapter.ListCommentAdapter
 import com.c22ps104.heypetanimalwelfare.api.CommentModel
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_USER_NAME
-import com.c22ps104.heypetanimalwelfare.databinding.ActivityCommnetSectionBinding
+import com.c22ps104.heypetanimalwelfare.databinding.ActivityCommentBinding
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CommentSectionActivity : AppCompatActivity() {
+class CommentActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCommnetSectionBinding
+    private lateinit var binding: ActivityCommentBinding
     private val adapter by lazy {
         ListCommentAdapter()
     }
@@ -26,11 +26,10 @@ class CommentSectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCommnetSectionBinding.inflate(layoutInflater)
+        binding = ActivityCommentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Comment"
+        setupView()
 
         preferencesHelper = PreferencesHelper(this)
         val id = intent.getStringExtra("EXTRA_ID")
@@ -38,14 +37,21 @@ class CommentSectionActivity : AppCompatActivity() {
         if (id != null) {
             Log.d("Call Firebase", id)
             fireStoreListener(id)
+
             binding.btnSend.setOnClickListener {
                 insertFirestoreData(id)
             }
+
         } else {
             Log.d("Call Firebase", "null")
         }
 
         setRecyclerView()
+    }
+
+    private fun setupView() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Comment"
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -100,6 +106,7 @@ class CommentSectionActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val listComment: ArrayList<CommentModel> = ArrayList()
+
                     for ((i, document) in task.result.withIndex()) {
                         listComment.add(
                             CommentModel(
@@ -109,12 +116,13 @@ class CommentSectionActivity : AppCompatActivity() {
                                 idFeed = document.data.getValue("idFeed") as String
                             )
                         )
+
                         Log.d(
                             "Comment",
                             "${listComment[i].name} ${listComment[i].date} ${listComment[i].comment} ${listComment[i].idFeed}"
-
                         )
                     }
+
                     adapter.setData(listComment)
                 } else {
                     Log.w("Firestore", "Error getting documents.", task.exception)

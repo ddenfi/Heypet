@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
-    //Auth related
+    // Auth related
     @FormUrlEncoded
     @POST("auth/register")
     fun register(
@@ -24,7 +24,7 @@ interface ApiService {
         @Field("password") password: String,
     ): Call<LoginResponse>
 
-    //Post Related
+    // Post related
     @Multipart
     @POST("predict")
     fun classify(
@@ -49,7 +49,7 @@ interface ApiService {
         @Path("categorizedId") categorizedId: String
     ): Call<FeedsResponse>
 
-    //User Related
+    // User related
     @Multipart
     @PUT("users/session/profile")
     fun updateProfile(
@@ -61,12 +61,11 @@ interface ApiService {
 
     @GET("posts/profile/feeds/{idUser}")
     fun getUserPost(
-        @Path ("idUser") idUser:String
+        @Path("idUser") idUser: String
     ): Call<FeedsResponse>
 
     @GET("users/session")
     fun getUserDetail(
-        @Header ("Authorization") token:String
-    ):Call<UserDetailResponse>
-
+        @Header("Authorization") token: String
+    ): Call<UserDetailResponse>
 }

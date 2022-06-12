@@ -21,8 +21,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     val login: LiveData<LoginResponse> = _login
 
     fun login(email: String, password: String) {
-        Log.d("Form", " $email $password")
-
         retrofit.login(email, password).enqueue(object :
             Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
@@ -39,7 +37,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.d("Register", "Failure ${t.message}")
+                Log.d("Login", "Failure ${t.message}")
                 Toast.makeText(getApplication(), "No connection", Toast.LENGTH_SHORT).show()
             }
         })

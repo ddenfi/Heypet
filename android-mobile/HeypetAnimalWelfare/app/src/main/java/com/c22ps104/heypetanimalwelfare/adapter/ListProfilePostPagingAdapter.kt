@@ -20,7 +20,7 @@ class ListProfilePostPagingAdapter :
     inner class ListViewHolder(private var binding: ItemHomePostBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(post: ListPostData) {
-            // TODO
+            // TODO("Profile PagingAdapter")
         }
     }
 

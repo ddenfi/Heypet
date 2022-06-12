@@ -1,9 +1,11 @@
 package com.c22ps104.heypetanimalwelfare.view.main.fragments.scan
 
+import android.app.Application
 import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.c22ps104.heypetanimalwelfare.api.ApiConfig
 import com.c22ps104.heypetanimalwelfare.api.ApiService
 import com.c22ps104.heypetanimalwelfare.api.ClassifyResponse
@@ -16,7 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 
-class ScanViewModel : ViewModel() {
+class ScanViewModel(application: Application) : AndroidViewModel(application) {
 
     private val retrofit: ApiService = ApiConfig.getApiServiceModel()
 
@@ -39,16 +41,18 @@ class ScanViewModel : ViewModel() {
                 response: Response<ClassifyResponse>
             ) {
                 _isLoading.postValue(false)
+
                 if (response.isSuccessful) {
                     _classifyResult.postValue(response.body())
                 } else {
-                    Log.d("Classify", response.body().toString())
+                    Log.d("Scan", response.body().toString())
                 }
             }
 
             override fun onFailure(call: Call<ClassifyResponse>, t: Throwable) {
                 _isLoading.postValue(false)
-                Log.d("Classify", "Failure ${t.message}")
+                Log.d("Scan", "Failure ${t.message}")
+                Toast.makeText(getApplication(), "No connection", Toast.LENGTH_SHORT).show()
             }
         })
     }

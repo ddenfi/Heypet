@@ -3,8 +3,8 @@ package com.c22ps104.heypetanimalwelfare.view.caretips
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.api.ClassifyResponse
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityCaretipsBinding
 import com.c22ps104.heypetanimalwelfare.view.main.fragments.scan.ScanFragment.Companion.EXTRA_CLASSIFY_PHOTO
@@ -19,9 +19,13 @@ class CaretipsActivity : AppCompatActivity() {
         binding = ActivityCaretipsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val extraData = intent.getParcelableExtra<ClassifyResponse>(EXTRA_CLASSIFY_RESULT)
         val extraPhoto = intent.getByteArrayExtra(EXTRA_CLASSIFY_PHOTO)
+        val extraData = intent.getParcelableExtra<ClassifyResponse>(EXTRA_CLASSIFY_RESULT)
 
+        setupView(extraPhoto, extraData)
+    }
+
+    private fun setupView(extraPhoto: ByteArray?, extraData: ClassifyResponse?) {
         if (extraPhoto != null) binding.ivPictureTaken.setImageBitmap(
             BitmapFactory.decodeByteArray(
                 extraPhoto,

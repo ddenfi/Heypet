@@ -1,11 +1,11 @@
 package com.c22ps104.heypetanimalwelfare.view.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.view.welcome.WelcomeActivity
 

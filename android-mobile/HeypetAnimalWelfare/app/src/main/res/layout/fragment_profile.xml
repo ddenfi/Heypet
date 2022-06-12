@@ -20,12 +20,12 @@
         android:id="@+id/cv_profile_details"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:cardCornerRadius="10dp"
         android:background="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/gl_hor_center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/gl_hor_center">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,78 +36,78 @@
                 android:id="@+id/img_profile_picture"
                 android:layout_width="88dp"
                 android:layout_height="88dp"
-                android:src="@drawable/profile_picture"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="2dp"
+                android:contentDescription="@string/cd_profile_image"
+                android:src="@drawable/profile_picture"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/cd_profile_image"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_profile_name"
                 style="@style/Text.Medium"
-                android:text="@string/profile_name"
                 android:layout_marginStart="32dp"
+                android:text="@string/profile_name"
                 app:layout_constraintStart_toEndOf="@id/img_profile_picture"
                 app:layout_constraintTop_toTopOf="@id/img_profile_picture" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_profile_posts"
                 style="@style/Text.Light"
+                android:alpha="0"
                 android:text="@string/posts"
-                app:layout_constraintStart_toStartOf="@id/tv_profile_name"
-                app:layout_constraintBottom_toBottomOf="@id/img_profile_picture" />
+                app:layout_constraintBottom_toBottomOf="@id/img_profile_picture"
+                app:layout_constraintStart_toStartOf="@id/tv_profile_name" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_posts_number"
                 style="@style/Text.Medium"
-                android:text="@string/_20"
                 android:layout_marginBottom="2dp"
-                app:layout_constraintStart_toStartOf="@id/tv_profile_posts"
+                android:alpha="0"
+                android:text="@string/_20"
+                app:layout_constraintBottom_toTopOf="@id/tv_profile_posts"
                 app:layout_constraintEnd_toEndOf="@id/tv_profile_posts"
-                app:layout_constraintBottom_toTopOf="@id/tv_profile_posts" />
+                app:layout_constraintStart_toStartOf="@id/tv_profile_posts" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_profile_followers"
                 style="@style/Text.Light"
-                android:text="@string/followers"
                 android:layout_marginStart="16dp"
+                android:alpha="0"
+                android:text="@string/followers"
+                app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts"
                 app:layout_constraintStart_toEndOf="@id/tv_profile_posts"
-                app:layout_constraintTop_toTopOf="@id/tv_profile_posts"
-                app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts" />
+                app:layout_constraintTop_toTopOf="@id/tv_profile_posts" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_followers_number"
                 style="@style/Text.Medium"
-                android:text="@string/_20"
                 android:layout_marginBottom="2dp"
-                app:layout_constraintStart_toStartOf="@id/tv_profile_followers"
+                android:alpha="0"
+                android:text="@string/_20"
+                app:layout_constraintBottom_toTopOf="@id/tv_profile_followers"
                 app:layout_constraintEnd_toEndOf="@id/tv_profile_followers"
-                app:layout_constraintBottom_toTopOf="@id/tv_profile_followers" />
+                app:layout_constraintStart_toStartOf="@id/tv_profile_followers" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_profile_following"
                 style="@style/Text.Light"
-                android:text="@string/following"
                 android:layout_marginStart="16dp"
+                android:alpha="0"
+                android:text="@string/following"
+                app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts"
                 app:layout_constraintStart_toEndOf="@id/tv_profile_followers"
-                app:layout_constraintTop_toTopOf="@id/tv_profile_posts"
-                app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts" />
+                app:layout_constraintTop_toTopOf="@id/tv_profile_posts" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_following_number"
                 style="@style/Text.Medium"
-                android:text="@string/_20"
                 android:layout_marginBottom="2dp"
-                app:layout_constraintStart_toStartOf="@id/tv_profile_following"
+                android:alpha="0"
+                android:text="@string/_20"
+                app:layout_constraintBottom_toTopOf="@id/tv_profile_following"
                 app:layout_constraintEnd_toEndOf="@id/tv_profile_following"
-                app:layout_constraintBottom_toTopOf="@id/tv_profile_following" />
+                app:layout_constraintStart_toStartOf="@id/tv_profile_following" />
 
             <TextView
                 android:id="@+id/tv_profile_bio"
@@ -152,26 +152,26 @@
                 app:layout_constraintTop_toTopOf="@id/img_pet_type" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_pet_breed"
                 style="@style/Text.Medium.PetDetails"
+                android:alpha="0"
                 android:text="@string/pet_breed"
+                app:layout_constraintBottom_toBottomOf="@id/img_pet_type"
                 app:layout_constraintStart_toEndOf="@id/tv_pet_dash"
-                app:layout_constraintTop_toTopOf="@id/img_pet_type"
-                app:layout_constraintBottom_toBottomOf="@id/img_pet_type" />
+                app:layout_constraintTop_toTopOf="@id/img_pet_type" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_pet_description"
                 style="@style/Text.Medium.PetDetails"
                 android:layout_width="0dp"
-                android:text="@string/lorem_ipsum"
-                android:maxLines="2"
                 android:layout_marginStart="0dp"
-                android:layout_marginEnd="32dp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/img_pet_type"
+                android:layout_marginEnd="32dp"
+                android:alpha="0"
+                android:maxLines="2"
+                android:text="@string/lorem_ipsum"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/img_pet_type"
                 app:layout_constraintTop_toBottomOf="@id/img_pet_type" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -183,28 +183,28 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
-        tools:listitem="@layout/item_profile_post"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cv_profile_details"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        tools:listitem="@layout/item_profile_post" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_profile_details"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_profile_details" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="9dp"
         android:background="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,11 @@
 package com.c22ps104.heypetanimalwelfare.view.main.fragments.reminder
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
@@ -19,7 +19,7 @@ class ReminderAddOneTimeActivity : AppCompatActivity(), DatePickerFragment.Dialo
     TimePickerFragment.DialogTimeListener {
 
     private lateinit var binding: ActivityReminderAddOneTimeBinding
-    private val viewModel: ReminderAddOneTimeViewModel by viewModels()
+    private val reminderAddOneTimeViewModel: ReminderAddOneTimeViewModel by viewModels()
     private val reminderSetCalendar = Calendar.getInstance()
     private lateinit var alarmReceiver: AlarmReceiver
 
@@ -60,11 +60,13 @@ class ReminderAddOneTimeActivity : AppCompatActivity(), DatePickerFragment.Dialo
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
+
         if (id == R.id.menu_save) {
             saveReminder()
             finish()
             Toast.makeText(applicationContext, "Reminder Saved", Toast.LENGTH_SHORT).show()
         }
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -72,17 +74,19 @@ class ReminderAddOneTimeActivity : AppCompatActivity(), DatePickerFragment.Dialo
         val name = binding.etReminderRepeatingName.text.toString()
         val date = reminderSetCalendar.time
         val reminder = ReminderEntity(reminderDate = date, reminderName = name, reminderType = 1)
+
         lifecycleScope.launch {
-            viewModel.addReminder(reminder)
-            viewModel.getLatestReminder().observe(this@ReminderAddOneTimeActivity) {
-                alarmReceiver.setOneTimeAlarm(
-                    this@ReminderAddOneTimeActivity,
-                    1,
-                    reminderSetCalendar,
-                    name,
-                    it.id
-                )
-            }
+            reminderAddOneTimeViewModel.addReminder(reminder)
+            reminderAddOneTimeViewModel.getLatestReminder()
+                .observe(this@ReminderAddOneTimeActivity) {
+                    alarmReceiver.setOneTimeAlarm(
+                        this@ReminderAddOneTimeActivity,
+                        1,
+                        reminderSetCalendar,
+                        name,
+                        it.id
+                    )
+                }
         }
     }
 

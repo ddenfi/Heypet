@@ -1,18 +1,24 @@
 package com.c22ps104.heypetanimalwelfare.view.main.fragments.home
 
+import android.app.Application
 import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.c22ps104.heypetanimalwelfare.api.*
+import com.c22ps104.heypetanimalwelfare.api.ApiConfig
+import com.c22ps104.heypetanimalwelfare.api.ApiService
+import com.c22ps104.heypetanimalwelfare.api.FeedsResponse
+import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel : ViewModel() {
-    private val retrofit: ApiService = ApiConfig.getApiService()
-    private val _filterState = MutableLiveData("0")
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val retrofit: ApiService = ApiConfig.getApiService()
+
+    private val _filterState = MutableLiveData("0")
     val filterState: LiveData<String> = _filterState
 
     fun setFilterState(categoryId: String) {
@@ -26,14 +32,13 @@ class HomeViewModel : ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
     fun getAllFeeds() {
-        Log.d("View Model Called", "")
-
         _isLoading.postValue(true)
 
         retrofit.getAllFeeds().enqueue(object :
             Callback<FeedsResponse> {
             override fun onResponse(call: Call<FeedsResponse>, response: Response<FeedsResponse>) {
                 _isLoading.postValue(false)
+
                 if (response.isSuccessful) {
                     val feedsResponse: FeedsResponse = response.body()!!
                     _feedsResult.postValue(feedsResponse.data.posts)
@@ -45,14 +50,13 @@ class HomeViewModel : ViewModel() {
 
             override fun onFailure(call: Call<FeedsResponse>, t: Throwable) {
                 _isLoading.postValue(false)
-                Log.d("Get All Feeds Failed", "Failure ${t.message}")
+                Log.d("Get All Feeds", "Failure ${t.message}")
+                Toast.makeText(getApplication(), "No connection", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
     fun getCategorizedFeed(categoryId: String) {
-        Log.d("View Model Called", "")
-
         retrofit.getCategorizedFeed(categoryId).enqueue(object :
             Callback<FeedsResponse> {
             override fun onResponse(call: Call<FeedsResponse>, response: Response<FeedsResponse>) {
@@ -70,7 +74,8 @@ class HomeViewModel : ViewModel() {
 
             override fun onFailure(call: Call<FeedsResponse>, t: Throwable) {
                 _isLoading.postValue(false)
-                Log.d("Feeds Categorize Failed", "Failure ${t.message}")
+                Log.d("Categorized Feeds", "Failure ${t.message}")
+                Toast.makeText(getApplication(), "No connection", Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -1,10 +1,9 @@
 package com.c22ps104.heypetanimalwelfare.view.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_ID
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_IS_LOGIN
@@ -33,11 +32,9 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btnLogin.setOnClickListener {
-
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
 
-            Log.d("LoginFrom", "$email $password")
             loginViewModel.login(email, password)
 
             loginViewModel.login.observe(this) {

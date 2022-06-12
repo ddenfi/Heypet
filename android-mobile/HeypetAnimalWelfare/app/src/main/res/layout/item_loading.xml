@@ -8,9 +8,9 @@
     <TextView
         android:id="@+id/tv_timeout"
         style="@style/Text"
-        android:textAlignment="center"
-        android:text="@string/timeout"
         android:layout_gravity="center"
+        android:text="@string/timeout"
+        android:textAlignment="center"
         android:textColor="?android:textColorPrimary" />
 
     <ProgressBar
@@ -23,9 +23,9 @@
     <Button
         android:id="@+id/btn_retry"
         style="@style/Text"
-        android:textColor="@color/white"
-        android:text="@string/retry"
+        android:layout_gravity="center"
         android:background="@drawable/button_general"
-        android:layout_gravity="center" />
+        android:text="@string/retry"
+        android:textColor="@color/white" />
 
 </LinearLayout>

@@ -8,7 +8,8 @@ import com.bumptech.glide.Glide
 import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import com.c22ps104.heypetanimalwelfare.databinding.ItemProfilePostBinding
 
-class ListUserPostAdapter: RecyclerView.Adapter<ListUserPostAdapter.ListViewHolder>() {
+class ListUserPostAdapter : RecyclerView.Adapter<ListUserPostAdapter.ListViewHolder>() {
+
     private val listFeed: ArrayList<PostsItem> = ArrayList()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -28,11 +29,13 @@ class ListUserPostAdapter: RecyclerView.Adapter<ListUserPostAdapter.ListViewHold
     inner class ListViewHolder(private var binding: ItemProfilePostBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(feed: PostsItem) {
+
             with(binding) {
                 Glide.with(itemView.context)
                     .load(feed.photo)
                     .into(imgPostPicture)
             }
+
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(listFeed[absoluteAdapterPosition])
             }

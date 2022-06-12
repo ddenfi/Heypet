@@ -1,13 +1,13 @@
 package com.c22ps104.heypetanimalwelfare.view.welcome
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_IS_LOGIN
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityWelcomeBinding
-import com.c22ps104.heypetanimalwelfare.view.main.MainActivity
 import com.c22ps104.heypetanimalwelfare.view.login.LoginActivity
+import com.c22ps104.heypetanimalwelfare.view.main.MainActivity
 import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity
 
 class WelcomeActivity : AppCompatActivity() {

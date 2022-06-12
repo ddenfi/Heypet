@@ -8,7 +8,6 @@ import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 import com.c22ps104.heypetanimalwelfare.databinding.ItemReminderBinding
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ListReminderAdapter : RecyclerView.Adapter<ListReminderAdapter.ListViewHolder>() {
 
@@ -33,12 +32,14 @@ class ListReminderAdapter : RecyclerView.Adapter<ListReminderAdapter.ListViewHol
         fun bind(data: ReminderEntity) {
             val timeFormat = SimpleDateFormat("HH\nmm", Locale.getDefault())
             val dateFormat = SimpleDateFormat("dd-MM-yy", Locale.getDefault())
+
             with(binding) {
                 tvItemReminderName.text = data.reminderName
                 tvItemReminderTime.text = timeFormat.format(data.reminderDate)
                 tvItemReminderType.text =
                     if (data.reminderType == 1) dateFormat.format(data.reminderDate) else "Everyday"
             }
+
             binding.ivItemReminderDelete.setOnClickListener {
                 onItemClickCallback.onItemClicked(listReminder[absoluteAdapterPosition])
             }

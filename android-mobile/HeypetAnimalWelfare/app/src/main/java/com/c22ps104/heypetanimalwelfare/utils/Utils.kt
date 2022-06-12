@@ -25,6 +25,7 @@ fun createCustomTempFile(context: Context): File {
 
 fun rotateBitmap(bitmap: Bitmap, isBackCamera: Boolean = false): Bitmap {
     val matrix = Matrix()
+
     return if (isBackCamera) {
         matrix.postRotate(0f)
         Bitmap.createBitmap(
@@ -53,6 +54,7 @@ fun rotateBitmap(bitmap: Bitmap, isBackCamera: Boolean = false): Bitmap {
 
 fun bitmapToFile(bitmap: Bitmap, context: Context): File {
     val myFile = createCustomTempFile(context)
+
     try {
         // Compress the bitmap and save in jpg format
         val stream: OutputStream = FileOutputStream(myFile)
@@ -73,6 +75,7 @@ fun uriToFile(selectedImg: Uri, context: Context): File {
     val outputStream: OutputStream = FileOutputStream(myFile)
     val buf = ByteArray(1024)
     var len: Int
+
     while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
     outputStream.close()
     inputStream.close()

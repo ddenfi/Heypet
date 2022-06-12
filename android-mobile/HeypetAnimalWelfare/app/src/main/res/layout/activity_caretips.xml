@@ -11,20 +11,20 @@
         android:id="@+id/iv_picture_taken"
         android:layout_width="0dp"
         android:layout_height="250dp"
-        android:src="@drawable/default_scan"
+        android:contentDescription="@string/cd_picture_taken"
         android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/default_scan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/cd_picture_taken" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:paddingBottom="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/iv_picture_taken"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_picture_taken">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,8 +35,8 @@
                 android:id="@+id/tv_breed_title"
                 style="@style/Text.Medium.CareTips"
                 android:layout_height="match_parent"
-                android:text="@string/breed"
                 android:layout_marginStart="24dp"
+                android:text="@string/breed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,22 +44,22 @@
                 android:id="@+id/tv_breed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/breed"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/textviewcstm_caretips"
                 android:padding="10dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/breed"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_breed_title" />
 
             <TextView
                 android:id="@+id/tv_personality_title"
                 style="@style/Text.Medium.CareTips"
                 android:layout_height="match_parent"
-                android:text="@string/personality"
                 android:layout_marginTop="16dp"
+                android:text="@string/personality"
                 app:layout_constraintStart_toStartOf="@id/tv_breed"
                 app:layout_constraintTop_toBottomOf="@id/tv_breed" />
 
@@ -67,20 +67,20 @@
                 android:id="@+id/tv_personality"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/personality"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/textviewcstm_caretips"
                 android:padding="10dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="@+id/tv_breed"
+                android:text="@string/personality"
                 app:layout_constraintEnd_toEndOf="@+id/tv_breed"
+                app:layout_constraintStart_toStartOf="@+id/tv_breed"
                 app:layout_constraintTop_toBottomOf="@+id/tv_personality_title" />
 
             <TextView
                 android:id="@+id/tv_health_title"
                 style="@style/Text.Medium.CareTips"
                 android:layout_height="match_parent"
-                android:text="@string/health"
                 android:layout_marginTop="16dp"
+                android:text="@string/health"
                 app:layout_constraintStart_toStartOf="@id/tv_personality"
                 app:layout_constraintTop_toBottomOf="@id/tv_personality" />
 
@@ -88,20 +88,20 @@
                 android:id="@+id/tv_health"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/health"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/textviewcstm_caretips"
                 android:padding="10dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="@+id/tv_breed"
+                android:text="@string/health"
                 app:layout_constraintEnd_toEndOf="@+id/tv_breed"
+                app:layout_constraintStart_toStartOf="@+id/tv_breed"
                 app:layout_constraintTop_toBottomOf="@+id/tv_health_title" />
 
             <TextView
                 android:id="@+id/tv_grooming_title"
                 style="@style/Text.Medium.CareTips"
                 android:layout_height="match_parent"
-                android:text="@string/grooming"
                 android:layout_marginTop="16dp"
+                android:text="@string/grooming"
                 app:layout_constraintStart_toStartOf="@id/tv_health"
                 app:layout_constraintTop_toBottomOf="@id/tv_health" />
 
@@ -109,20 +109,20 @@
                 android:id="@+id/tv_grooming"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/grooming"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/textviewcstm_caretips"
                 android:padding="10dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="@+id/tv_breed"
+                android:text="@string/grooming"
                 app:layout_constraintEnd_toEndOf="@+id/tv_breed"
+                app:layout_constraintStart_toStartOf="@+id/tv_breed"
                 app:layout_constraintTop_toBottomOf="@+id/tv_grooming_title" />
 
             <TextView
                 android:id="@+id/tv_moretips_title"
                 style="@style/Text.Medium.CareTips"
                 android:layout_height="match_parent"
-                android:text="@string/read_more"
                 android:layout_marginTop="16dp"
+                android:text="@string/read_more"
                 app:layout_constraintStart_toStartOf="@id/tv_grooming"
                 app:layout_constraintTop_toBottomOf="@id/tv_grooming" />
 
@@ -130,25 +130,25 @@
                 android:id="@+id/tv_moretips"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/how_to_take_care"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/textviewcstm_caretips"
                 android:padding="10dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="@+id/tv_breed"
+                android:text="@string/how_to_take_care"
                 app:layout_constraintEnd_toEndOf="@+id/tv_breed"
+                app:layout_constraintStart_toStartOf="@+id/tv_breed"
                 app:layout_constraintTop_toBottomOf="@+id/tv_moretips_title" />
 
             <ImageButton
                 android:id="@+id/btn_moretips"
                 android:layout_width="50dp"
                 android:layout_height="0dp"
-                android:src="@drawable/icon_search_nav"
                 android:background="@drawable/button_detail_reminder"
-                app:tint="@color/white"
+                android:contentDescription="@string/cd_more_tips"
+                android:src="@drawable/icon_search_nav"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_moretips"
                 app:layout_constraintEnd_toEndOf="@+id/tv_moretips"
                 app:layout_constraintTop_toTopOf="@+id/tv_moretips"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_moretips"
-                android:contentDescription="@string/cd_more_tips" />
+                app:tint="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

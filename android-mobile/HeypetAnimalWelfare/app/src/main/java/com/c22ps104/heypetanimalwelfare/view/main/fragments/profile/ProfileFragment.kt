@@ -5,18 +5,14 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.c22ps104.heypetanimalwelfare.R
-import com.c22ps104.heypetanimalwelfare.adapter.ListFeedsAdapter
 import com.c22ps104.heypetanimalwelfare.adapter.ListUserPostAdapter
 import com.c22ps104.heypetanimalwelfare.api.PostsItem
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
-import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_ID
 import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper.Companion.PREF_TOKEN
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentProfileBinding
-import com.c22ps104.heypetanimalwelfare.view.comment.CommentSectionActivity
 import com.c22ps104.heypetanimalwelfare.view.welcome.WelcomeActivity
 
 class ProfileFragment : Fragment() {
@@ -30,7 +26,7 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var preferencesHelper: PreferencesHelper
-    private val viewModel:ProfileViewModel by viewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,34 +38,40 @@ class ProfileFragment : Fragment() {
         val root: View = binding.root
 
         preferencesHelper = PreferencesHelper(requireActivity())
-        val token = preferencesHelper.getString(PREF_TOKEN)
-        if (token != null){
-            viewModel.getUserDetail(token)
-        }
 
-        setUpView()
+        setupView()
         setUpRecyclerView()
         setHasOptionsMenu(true)
 
         return root
     }
 
-    private fun setUpView() {
+    private fun setupView() {
+        val token = preferencesHelper.getString(PREF_TOKEN)
+        if (token != null) {
+            profileViewModel.getUserDetail(token)
+        }
+
         binding.imgProfilePicture.setImageResource(R.drawable.default_photo_profile)
-        viewModel.userDetails.observe(viewLifecycleOwner){
+
+        profileViewModel.userDetails.observe(viewLifecycleOwner) {
             Glide.with(requireContext())
                 .load(it.photo)
                 .placeholder(R.drawable.default_photo_profile)
                 .into(binding.imgProfilePicture)
+
             binding.tvProfileName.text = it.name
             binding.tvProfileBio.text = it.bio
-            binding.tvPetName.text = it.bio
-            viewModel.getUserPost(it.id.toString())
+            binding.tvPetName.text = it.pet
+
+            profileViewModel.getUserPost(it.id.toString())
         }
-        viewModel.feedsResult.observe(requireActivity()){
+
+        profileViewModel.feedsResult.observe(requireActivity()) {
             adapter.setData(it)
         }
-        viewModel.isLoading.observe(viewLifecycleOwner) {
+
+        profileViewModel.isLoading.observe(viewLifecycleOwner) {
             if (it) {
                 binding.progressBar.visibility = View.VISIBLE
             } else {
@@ -79,16 +81,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
+        binding.rvProfilePosts.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.rvProfilePosts.setHasFixedSize(true)
-        binding.rvProfilePosts.layoutManager = LinearLayoutManager(requireContext())
         binding.rvProfilePosts.adapter = adapter
 
         adapter.setOnItemClickCallback(object : ListUserPostAdapter.OnItemClickCallback {
             override fun onItemClicked(data: PostsItem) {
-                //TODO post detail
-//                val toDetailPost = Intent(requireActivity(), CommentSectionActivity::class.java)
-//                toDetailPost.putExtra("EXTRA_ID", data.idFeeds)
-//                startActivity(toDetailPost)
+                // TODO("Intent with data to comment")
+//                val intentToDetail = Intent(requireActivity(), CommentSectionActivity::class.java)
+//                intentToDetail.putExtra("EXTRA_ID", data.idFeeds)
+//                startActivity(intentToDetail)
             }
         })
     }
@@ -104,10 +106,12 @@ class ProfileFragment : Fragment() {
                 preferencesHelper.clear()
 
                 val intentToWelcome = Intent(requireActivity(), WelcomeActivity::class.java)
-                intentToWelcome.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                intentToWelcome.flags =
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intentToWelcome)
                 activity?.finish()
             }
+
             R.id.btn_edit -> {
                 startActivity(Intent(requireActivity(), EditProfileActivity::class.java))
             }

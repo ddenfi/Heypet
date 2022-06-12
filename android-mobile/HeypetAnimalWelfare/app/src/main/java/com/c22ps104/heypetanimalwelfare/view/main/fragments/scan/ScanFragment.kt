@@ -66,8 +66,8 @@ class ScanFragment : Fragment() {
     private val cameraPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                takePicture.launch(intent)
+                val intentCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                takePicture.launch(intentCamera)
             } else {
                 Toast.makeText(activity, "Permission Denied", Toast.LENGTH_SHORT).show()
             }
@@ -76,10 +76,11 @@ class ScanFragment : Fragment() {
     private val galleryPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
-                val intent = Intent()
-                intent.action = Intent.ACTION_GET_CONTENT
-                intent.type = "image/*"
-                val chooser = Intent.createChooser(intent, "Choose a Picture")
+                val intentGallery = Intent()
+                intentGallery.action = Intent.ACTION_GET_CONTENT
+                intentGallery.type = "image/*"
+
+                val chooser = Intent.createChooser(intentGallery, "Choose a Picture")
                 gallery.launch(chooser)
             } else {
                 Toast.makeText(activity, "Permission Denied", Toast.LENGTH_SHORT).show()
@@ -104,8 +105,7 @@ class ScanFragment : Fragment() {
     }
 
     private fun setupView() {
-        val intentToCareTips = Intent(requireContext(), CaretipsActivity::class.java)
-        val defaultValue = "You Must Scan First"
+        val defaultValue = "Unidentified"
         var extraData = ClassifyResponse("", "", "", "", defaultValue, "", 0, "")
 
         binding.btnScanCamera.setOnClickListener {
@@ -147,12 +147,14 @@ class ScanFragment : Fragment() {
         }
 
         binding.btnDetail.setOnClickListener {
-            if(byteArray != null) {
+            if (byteArray != null) {
+                val intentToCareTips = Intent(requireContext(), CaretipsActivity::class.java)
                 intentToCareTips.putExtra(EXTRA_CLASSIFY_PHOTO, byteArray)
                 intentToCareTips.putExtra(EXTRA_CLASSIFY_RESULT, extraData)
                 startActivity(intentToCareTips)
             } else {
-                Toast.makeText(activity, "Please attach an image to scan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Please attach an image to scan", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -191,7 +193,7 @@ class ScanFragment : Fragment() {
     }
 
     companion object {
-        const val EXTRA_CLASSIFY_RESULT = "EXTRA_CLASSIFY_RESULT"
         const val EXTRA_CLASSIFY_PHOTO = "EXTRA_CLASSIFY_PHOTO"
+        const val EXTRA_CLASSIFY_RESULT = "EXTRA_CLASSIFY_RESULT"
     }
 }

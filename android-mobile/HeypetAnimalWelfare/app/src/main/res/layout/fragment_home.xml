@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/main_background"
     tools:context=".view.main.fragments.home.HomeFragment">
-    
+
     <View
         android:id="@+id/home_actionbar_background"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_home_post" />
 
@@ -31,22 +31,22 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_posts"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rv_posts"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_posts" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_posts" />
 
     <Button
-        android:visibility="gone"
         android:id="@+id/btn_refresh"
         style="@style/Text"
-        android:textColor="@color/white"
-        android:text="@string/new_post"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_general"
         android:gravity="center"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/new_post"
+        android:textColor="@color/white"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/rv_posts" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

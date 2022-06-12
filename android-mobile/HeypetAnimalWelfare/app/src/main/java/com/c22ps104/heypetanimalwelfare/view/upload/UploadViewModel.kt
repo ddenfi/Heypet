@@ -1,9 +1,11 @@
 package com.c22ps104.heypetanimalwelfare.view.upload
 
+import android.app.Application
 import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.c22ps104.heypetanimalwelfare.api.ApiConfig
 import com.c22ps104.heypetanimalwelfare.api.ApiService
 import com.c22ps104.heypetanimalwelfare.api.PostFeedsResponse
@@ -13,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UploadViewModel : ViewModel() {
+class UploadViewModel(application: Application) : AndroidViewModel(application) {
 
     private val retrofit: ApiService = ApiConfig.getApiService()
 
@@ -23,9 +25,7 @@ class UploadViewModel : ViewModel() {
         photo: MultipartBody.Part,
         desc: RequestBody
     ): LiveData<String> {
-
         val result = MutableLiveData<String>()
-        Log.d("Token", token)
 
         retrofit.postFeed("Bearer $token", category, photo, desc).enqueue(object :
             Callback<PostFeedsResponse> {
@@ -35,17 +35,18 @@ class UploadViewModel : ViewModel() {
             ) {
                 val responseBody = response.body()
                 if (response.isSuccessful) {
-                    result.postValue("Success")
                     Log.d("Upload", responseBody!!.status)
+                    result.postValue("Success")
                 } else {
+                    Log.d("Upload", response.message())
                     result.postValue("Failed")
-                    Log.d("Upload Failed", response.message())
                 }
             }
 
             override fun onFailure(call: Call<PostFeedsResponse>, t: Throwable) {
-                result.postValue("Failure ${t.message}")
-                Log.d("Upload Failed", "Failure ${t.message}")
+                Log.d("Upload", "Failure ${t.message}")
+                result.postValue("Failed")
+                Toast.makeText(getApplication(), "No connection", Toast.LENGTH_SHORT).show()
             }
         })
 

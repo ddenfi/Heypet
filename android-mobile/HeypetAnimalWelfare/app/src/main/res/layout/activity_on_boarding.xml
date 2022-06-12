@@ -4,98 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.onboarding.OnBoardingActivity"
-    android:background="@color/white_blue_light">
+    android:background="@color/white_blue_light"
+    tools:context=".view.onboarding.OnBoardingActivity">
 
     <ImageView
+        android:id="@+id/img_onboarding_figure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:contentDescription="@string/cd_on_boarding_image"
         android:src="@drawable/figure_cat_walking"
         app:layout_constraintBottom_toTopOf="@+id/btn_finish"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_onBoarding_title"
+        style="@style/Text.Medium"
+        android:layout_marginTop="40dp"
+        android:text="@string/welcome"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/cd_on_boarding_image"
         android:src="@drawable/figure_bird"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        style="@style/Text.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Welcome!"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_onBoarding_title"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_onBoarding_username"
         style="@style/Text.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Irene_"
+        android:text="@string/profile_name"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@id/tv_onBoarding_title"
+        app:layout_constraintStart_toStartOf="@id/tv_onBoarding_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_onBoarding_title" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_photoProfile"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/default_photo_profile"
         android:elevation="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        android:src="@drawable/default_photo_profile"
+        app:layout_constraintEnd_toEndOf="@id/tv_onBoarding_title"
+        app:layout_constraintStart_toStartOf="@id/tv_onBoarding_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_onBoarding_username" />
+
+    <TextView
+        android:id="@+id/tv_changephoto"
+        style="@style/Text"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/change_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_photoProfile" />
 
     <ImageView
         android:id="@+id/iv_upload_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:contentDescription="@string/cd_gallery_button"
         android:src="@drawable/ic_camera"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintBottom_toBottomOf="@id/tv_changephoto"
+        app:layout_constraintStart_toEndOf="@id/tv_changephoto"
+        app:layout_constraintTop_toTopOf="@id/tv_changephoto"
+        app:tint="@color/blue_dark_text_title" />
 
     <ImageView
         android:id="@+id/iv_upload_gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:contentDescription="@string/cd_gallery_button"
         android:src="@drawable/ic_baseline_add_photo_alternate_24"
         app:layout_constraintBottom_toBottomOf="@+id/iv_upload_camera"
         app:layout_constraintStart_toEndOf="@+id/iv_upload_camera"
-        app:layout_constraintTop_toTopOf="@+id/iv_upload_camera" />
-
-    <TextView
-        android:id="@+id/textView2"
-        style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:drawablePadding="10dp"
-        android:drawableTint="@color/blue_dark_text_title"
-        android:gravity="center"
-        android:text="Change Photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_photoProfile" />
+        app:layout_constraintTop_toTopOf="@+id/iv_upload_camera"
+        app:tint="@color/blue_dark_text_title" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
@@ -105,19 +102,21 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/blue_dark_text_subtitle"
+        app:boxStrokeColor="@color/blue_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@id/tv_changephoto">
 
         <EditText
             android:id="@+id/et_bio"
             style="@style/Text"
             android:layout_width="match_parent"
             android:autofillHints="Your Bio"
-            android:ems="10"
             android:drawableStart="@drawable/ic_person_bio"
             android:drawablePadding="15dp"
-            android:hint="Lets Tell Your Name"
+            android:ems="10"
+            android:hint="@string/what_do_we_call_you"
             android:inputType="text"
             android:textColor="@color/blue_pale_login_input"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -131,6 +130,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/blue_dark_text_subtitle"
+        app:boxStrokeColor="@color/blue_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_email">
@@ -143,7 +144,7 @@
             android:drawableStart="@drawable/ic_pet"
             android:drawablePadding="15dp"
             android:ems="10"
-            android:hint="Tell us Your Buddy"
+            android:hint="@string/tell_us_about_your_buddy"
             android:inputType="text"
             android:textColor="@color/blue_pale_login_input"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -154,25 +155,23 @@
         style="@style/Text.Bold"
         android:layout_width="152dp"
         android:layout_height="72dp"
-        android:textSize="16sp"
-        android:textColor="@color/white_blue_login_button"
-        android:text="Finish"
-        android:gravity="center"
         android:background="@drawable/button_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:gravity="center"
+        android:text="@string/finish"
+        android:textColor="@color/white_blue_login_button"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tv_skip"
         style="@style/Text.Bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginEnd="164dp"
         android:layout_marginBottom="28dp"
-        android:text="Skip"
+        android:text="@string/skip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_finish"
-        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

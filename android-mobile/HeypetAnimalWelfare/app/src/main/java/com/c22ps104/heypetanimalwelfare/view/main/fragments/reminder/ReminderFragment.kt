@@ -64,7 +64,7 @@ class ReminderFragment : Fragment() {
         ListReminderAdapter()
     }
 
-    private val viewModel: ReminderViewModel by viewModels()
+    private val reminderViewModel: ReminderViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -82,7 +82,7 @@ class ReminderFragment : Fragment() {
 
         setupView()
 
-        viewModel.getAllReminder().observe(requireActivity()) {
+        reminderViewModel.getAllReminder().observe(requireActivity()) {
             adapter.setData(it)
         }
 
@@ -115,7 +115,7 @@ class ReminderFragment : Fragment() {
             if (id != 0 && type != 2) {
                 Log.d("Reminder", "Delete Success")
                 lifecycleScope.launch(Dispatchers.IO) {
-                    viewModel.deleteReminder(id)
+                    reminderViewModel.deleteReminder(id)
                 }
             }
         }
@@ -128,8 +128,9 @@ class ReminderFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : ListReminderAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ReminderEntity) {
-                lifecycleScope.launch { viewModel.deleteReminder(data.id) }
+                lifecycleScope.launch { reminderViewModel.deleteReminder(data.id) }
                 context?.let { reminderBroadcast.cancelAlarm(it, data.id) }
+
                 Toast.makeText(context, "Reminder ${data.reminderName} deleted", Toast.LENGTH_SHORT)
                     .show()
             }

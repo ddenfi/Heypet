@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_post_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/cv_post_item"
     android:layout_gravity="center"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
@@ -14,16 +14,16 @@
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:alpha="1"
             android:id="@+id/img_profile_picture"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/post_profile"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:alpha="1"
+            android:contentDescription="@string/cd_profile_image"
+            android:src="@drawable/post_profile"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/cd_profile_image"/>
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_profile_name"
@@ -37,92 +37,92 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:alpha="0"
             android:id="@+id/img_settings_icon"
             android:layout_width="19dp"
             android:layout_height="19dp"
-            android:src="@drawable/icon_settings_kebab"
             android:layout_marginEnd="16dp"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="@id/img_profile_picture"
+            android:alpha="0"
+            android:contentDescription="@string/cd_post_settings"
+            android:src="@drawable/icon_settings_kebab"
             card_view:layout_constraintBottom_toBottomOf="@id/img_profile_picture"
-            android:contentDescription="@string/cd_post_settings" />
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="@id/img_profile_picture" />
 
         <TextView
             android:id="@+id/tv_post_tag"
             style="@style/Text"
-            android:fontFamily="@font/lexend_medium"
-            android:textSize="10sp"
-            android:textColor="@color/white"
-            android:text="@string/post_tag"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/bg_post_tag"
+            android:fontFamily="@font/lexend_medium"
+            android:gravity="center"
             android:paddingHorizontal="8dp"
             android:paddingVertical="2dp"
-            android:gravity="center"
-            android:layout_marginEnd="16dp"
+            android:text="@string/post_tag"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            card_view:layout_constraintBottom_toBottomOf="@id/img_profile_picture"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="@id/img_profile_picture"
-            card_view:layout_constraintBottom_toBottomOf="@id/img_profile_picture" />
+            card_view:layout_constraintTop_toTopOf="@id/img_profile_picture" />
 
         <ImageView
             android:id="@+id/img_post_picture"
             android:layout_width="match_parent"
             android:layout_height="223dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/cd_post_picture"
             android:scaleType="centerCrop"
             android:src="@drawable/post_picture"
-            android:layout_marginTop="8dp"
-            card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@id/img_profile_picture"
-            android:contentDescription="@string/cd_post_picture" />
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/img_profile_picture" />
 
         <ImageView
-            android:alpha="0"
             android:id="@+id/img_post_heart"
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:src="@drawable/icon_heart"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:alpha="0"
+            android:contentDescription="@string/cd_like_button"
+            android:src="@drawable/icon_heart"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@id/img_post_picture"
-            android:contentDescription="@string/cd_like_button" />
+            card_view:layout_constraintTop_toBottomOf="@id/img_post_picture" />
 
         <TextView
-            android:alpha="0"
             android:id="@+id/tv_likes_number"
             style="@style/Text"
-            android:fontFamily="@font/lexend_medium"
-            android:textSize="10sp"
-            android:text="@string/likes_number"
             android:layout_marginStart="4dp"
+            android:alpha="0"
+            android:fontFamily="@font/lexend_medium"
+            android:text="@string/likes_number"
+            android:textSize="10sp"
+            card_view:layout_constraintBottom_toBottomOf="@id/img_post_heart"
             card_view:layout_constraintStart_toEndOf="@id/img_post_heart"
-            card_view:layout_constraintTop_toTopOf="@id/img_post_heart"
-            card_view:layout_constraintBottom_toBottomOf="@id/img_post_heart" />
+            card_view:layout_constraintTop_toTopOf="@id/img_post_heart" />
 
         <ImageView
-            android:alpha="0"
             android:id="@+id/img_post_comment"
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:src="@drawable/icon_comment"
             android:layout_marginStart="16dp"
-            card_view:layout_constraintStart_toEndOf="@id/tv_likes_number"
-            card_view:layout_constraintTop_toTopOf="@id/img_post_heart"
+            android:alpha="0"
+            android:contentDescription="@string/cd_comment_button"
+            android:src="@drawable/icon_comment"
             card_view:layout_constraintBottom_toBottomOf="@id/img_post_heart"
-            android:contentDescription="@string/cd_comment_button" />
+            card_view:layout_constraintStart_toEndOf="@id/tv_likes_number"
+            card_view:layout_constraintTop_toTopOf="@id/img_post_heart" />
 
         <ImageView
-            android:alpha="0"
             android:id="@+id/img_post_bookmark"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:src="@drawable/icon_bookmark_post"
             android:layout_marginEnd="16dp"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="@id/img_post_heart"
+            android:alpha="0"
+            android:contentDescription="@string/cd_bookmark_button"
+            android:src="@drawable/icon_bookmark_post"
             card_view:layout_constraintBottom_toBottomOf="@id/img_post_heart"
-            android:contentDescription="@string/cd_bookmark_button" />
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="@id/img_post_heart" />
 
         <TextView
             android:id="@+id/tv_post_description"
@@ -142,21 +142,21 @@
             card_view:layout_constraintTop_toBottomOf="@+id/img_post_picture" />
 
         <TextView
-            android:alpha="0"
             android:id="@+id/tv_readmore"
             style="@style/Text.Bold"
             android:layout_width="match_parent"
-            android:textSize="10sp"
-            android:textColor="@color/grey_dark_description"
-            android:text="@string/read_more"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="16dp"
-            card_view:layout_constraintStart_toStartOf="@id/tv_post_description"
+            android:layout_marginEnd="16dp"
+            android:alpha="0"
+            android:text="@string/read_more"
+            android:textColor="@color/grey_dark_description"
+            android:textSize="10sp"
+
+            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="@id/tv_post_description"
-            card_view:layout_constraintTop_toBottomOf="@id/tv_post_description"
-            card_view:layout_constraintBottom_toBottomOf="parent" />
+            card_view:layout_constraintStart_toStartOf="@id/tv_post_description"
+            card_view:layout_constraintTop_toBottomOf="@id/tv_post_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

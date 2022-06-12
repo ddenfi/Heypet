@@ -64,7 +64,7 @@
         style="@style/Text.Medium"
         android:layout_height="50dp"
         android:layout_width="match_parent"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/blue_selected_item"
         android:hint="@string/your_pet_breed"
         android:background="@drawable/textview_rounded_stroke"

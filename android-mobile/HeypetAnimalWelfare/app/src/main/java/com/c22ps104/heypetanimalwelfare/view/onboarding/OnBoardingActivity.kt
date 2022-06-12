@@ -11,6 +11,8 @@ import com.c22ps104.heypetanimalwelfare.utils.bitmapToFile
 import com.c22ps104.heypetanimalwelfare.view.login.LoginActivity
 import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity.Companion.EXTRA_TOKEN
 import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity.Companion.EXTRA_USERNAME
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -39,8 +41,8 @@ class OnBoardingActivity : AppCompatActivity() {
         }
 
         binding.btnFinish.setOnClickListener {
-            val bio = binding.etBio.text.toString()
-            val pet = binding.etBuddy.text.toString()
+            val bio = binding.etBio.text.toString().toRequestBody("text/plain".toMediaType())
+            val pet = binding.etBuddy.text.toString().toRequestBody("text/plain".toMediaType())
             val photo = bitmapToFile(binding.ivPhotoProfile.drawable.toBitmap(), this)
 
             if (token != null && name != null) {

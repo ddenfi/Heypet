@@ -96,12 +96,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-
-//        listFeedsAdapter.setOnItemClickCallback(object: ListFeedsAdapter.OnItemClickCallback {
-//            override fun onItemClicked(data: CategoriesItem) {
-//                // TODO (intent to detail)
-//            }
-//        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

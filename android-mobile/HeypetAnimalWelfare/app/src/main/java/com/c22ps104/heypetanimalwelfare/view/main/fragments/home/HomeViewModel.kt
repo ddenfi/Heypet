@@ -10,15 +10,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
-
+    private val retrofit: ApiService = ApiConfig.getApiService()
     private val _filterState = MutableLiveData("0")
+
     val filterState: LiveData<String> = _filterState
 
     fun setFilterState(categoryId: String) {
         _filterState.postValue(categoryId)
     }
-
-    private val retrofit: ApiService = ApiConfig.getApiService()
 
     private val _feedsResult = MutableLiveData<List<PostsItem>>()
     val feedsResult: LiveData<List<PostsItem>> = _feedsResult

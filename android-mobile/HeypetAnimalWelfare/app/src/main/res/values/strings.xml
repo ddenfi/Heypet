@@ -156,5 +156,6 @@
     <string name="chat">Chat</string>
     <string name="reminderItem_clock">07\n30</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus nibh ut ligula eleifend.</string>
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>

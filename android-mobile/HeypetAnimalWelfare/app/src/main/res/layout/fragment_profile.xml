@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.25"
+        app:layout_constraintGuide_percent="0.27"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
@@ -110,44 +110,46 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_profile_following" />
 
             <TextView
-                android:alpha="0"
-                android:id="@+id/tv_profile_fullname"
-                style="@style/Text.Bold"
-                android:textSize="13sp"
-                android:textColor="@color/grey_dark_description"
+                android:id="@+id/tv_profile_bio"
+                style="@style/Text"
+                android:layout_marginTop="4dp"
+                android:alpha="1"
                 android:text="@string/profile_fullname"
-                android:layout_marginTop="32dp"
-                app:layout_constraintStart_toStartOf="@id/img_profile_picture"
-                app:layout_constraintTop_toBottomOf="@id/img_profile_picture" />
+                android:textColor="@color/grey_dark_description"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_profile_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_profile_name" />
 
             <ImageView
-                android:alpha="0"
                 android:id="@+id/img_pet_type"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/icon_cat"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/tv_profile_fullname"
-                app:layout_constraintTop_toBottomOf="@id/tv_profile_fullname"
-                android:contentDescription="@string/cd_pet_type" />
+                android:alpha="1"
+                android:contentDescription="@string/cd_pet_type"
+                android:src="@drawable/icon_cat"
+                app:layout_constraintStart_toStartOf="@id/tv_profile_bio"
+                app:layout_constraintTop_toBottomOf="@id/tv_profile_bio" />
 
             <TextView
-                android:alpha="0"
                 android:id="@+id/tv_pet_name"
                 style="@style/Text.Medium.PetDetails"
+                android:layout_marginStart="12dp"
+                android:alpha="1"
                 android:text="@string/pet_name"
-                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/img_pet_type"
                 app:layout_constraintStart_toEndOf="@id/img_pet_type"
                 app:layout_constraintTop_toTopOf="@id/img_pet_type"
-                app:layout_constraintBottom_toBottomOf="@id/img_pet_type" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/tv_pet_dash"
                 style="@style/Text.Medium.PetDetails"
+                android:alpha="0"
                 android:text="@string/pet_dash"
+                app:layout_constraintBottom_toBottomOf="@id/img_pet_type"
                 app:layout_constraintStart_toEndOf="@id/tv_pet_name"
-                app:layout_constraintTop_toTopOf="@id/img_pet_type"
-                app:layout_constraintBottom_toBottomOf="@id/img_pet_type" />
+                app:layout_constraintTop_toTopOf="@id/img_pet_type" />
 
             <TextView
                 android:alpha="0"

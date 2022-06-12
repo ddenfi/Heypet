@@ -5,19 +5,148 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.main.fragments.profile.EditProfileActivity"
-    android:background="@color/background">
+    android:background="@color/white_blue_light">
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:src="@tools:sample/avatars"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/figure_cat_walking"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/profile_picture" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/figure_bird"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView"
+        style="@style/Text.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Edit Profile"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_onBoarding_username"
+        style="@style/Text.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Irene_"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_photoProfile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/default_photo_profile"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tv_onBoarding_username" />
+
+    <ImageView
+        android:id="@+id/iv_upload_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <ImageView
+        android:id="@+id/iv_upload_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_upload_camera"
+        app:layout_constraintStart_toEndOf="@+id/iv_upload_camera"
+        app:layout_constraintTop_toTopOf="@+id/iv_upload_camera" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/blue_dark_text_title"
+        android:gravity="center"
+        android:text="Change Photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_photoProfile" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <EditText
+            android:id="@+id/et_bio"
+            style="@style/Text"
+            android:layout_width="match_parent"
+            android:autofillHints="Your Bio"
+            android:ems="10"
+            android:drawableStart="@drawable/ic_person_bio"
+            android:drawablePadding="15dp"
+            android:hint="Lets Tell Yourshelf!"
+            android:inputType="text"
+            android:textColor="@color/blue_pale_login_input"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_buddy"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_email">
+
+        <EditText
+            android:id="@+id/et_buddy"
+            style="@style/Text"
+            android:layout_width="match_parent"
+            android:autofillHints="Your Pet"
+            android:drawableStart="@drawable/ic_pet"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:hint="Tell us Your Buddy!"
+            android:inputType="text"
+            android:textColor="@color/blue_pale_login_input"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

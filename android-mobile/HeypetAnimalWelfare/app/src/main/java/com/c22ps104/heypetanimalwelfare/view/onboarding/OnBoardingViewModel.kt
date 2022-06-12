@@ -23,7 +23,7 @@ class OnBoardingViewModel(application: Application) : AndroidViewModel(applicati
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun updateProfile(token: String, bio: String, pet: String, photo: File): LiveData<String> {
+    fun updateProfile(token: String, bio: RequestBody, pet: RequestBody, photo: File): LiveData<String> {
         val result = MutableLiveData<String>()
         val reqFile: RequestBody = photo.asRequestBody("image/*".toMediaTypeOrNull())
         val reqBody = MultipartBody.Part.createFormData("file", photo.name, reqFile)

@@ -37,6 +37,8 @@ class ProfileFragment : Fragment() {
 
         preferencesHelper = PreferencesHelper(requireActivity())
 
+        setHasOptionsMenu(true)
+
         return root
     }
 

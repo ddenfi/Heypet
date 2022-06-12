@@ -43,11 +43,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        setupViewModel()
         fireStoreListener()
-        setHasOptionsMenu(true)
-        setRecyclerView()
+        setupViewModel()
         setupView()
+        setRecyclerView()
+        setHasOptionsMenu(true)
 
         return root
     }

@@ -10,7 +10,7 @@
     <item
         android:id="@+id/menu_add_post"
         android:icon="@drawable/ic_add"
-        android:title="@string/chat"
+        android:title="@string/upload"
         app:showAsAction="always" />
 
 </menu>

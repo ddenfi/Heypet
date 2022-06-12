@@ -36,7 +36,8 @@ class ListReminderAdapter : RecyclerView.Adapter<ListReminderAdapter.ListViewHol
             with(binding) {
                 tvItemReminderName.text = data.reminderName
                 tvItemReminderTime.text = timeFormat.format(data.reminderDate)
-                tvItemReminderType.text = if (data.reminderType == 1) dateFormat.format(data.reminderDate) else "Everyday"
+                tvItemReminderType.text =
+                    if (data.reminderType == 1) dateFormat.format(data.reminderDate) else "Everyday"
             }
             binding.ivItemReminderDelete.setOnClickListener {
                 onItemClickCallback.onItemClicked(listReminder[absoluteAdapterPosition])

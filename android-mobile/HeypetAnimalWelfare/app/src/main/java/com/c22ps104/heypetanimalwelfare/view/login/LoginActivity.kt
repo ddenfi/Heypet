@@ -37,15 +37,20 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
 
-            Log.d("LoginFrom","$email $password")
+            Log.d("LoginFrom", "$email $password")
             loginViewModel.login(email, password)
 
             loginViewModel.login.observe(this) {
                 if (it != null) {
-                    saveSession(it.data.token.accessToken, it.data.user.id.toString(), it.data.user.name)
+                    saveSession(
+                        it.data.token.accessToken,
+                        it.data.user.id.toString(),
+                        it.data.user.name
+                    )
 
                     val intentToMain = Intent(this@LoginActivity, MainActivity::class.java)
-                    intentToMain.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    intentToMain.flags =
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intentToMain)
                     finish()
                 }
@@ -53,10 +58,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveSession(accessToken: String, userId: String,userName:String) {
+    private fun saveSession(accessToken: String, userId: String, userName: String) {
         preferencesHelper.putString(PREF_TOKEN, accessToken)
         preferencesHelper.putString(PREF_ID, userId)
         preferencesHelper.putBoolean(PREF_IS_LOGIN, true)
-        preferencesHelper.putString(PREF_USER_NAME,userName)
+        preferencesHelper.putString(PREF_USER_NAME, userName)
     }
 }

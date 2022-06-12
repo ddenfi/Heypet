@@ -51,15 +51,15 @@ fun rotateBitmap(bitmap: Bitmap, isBackCamera: Boolean = false): Bitmap {
     }
 }
 
-fun bitmapToFile(bitmap: Bitmap,context: Context):File {
+fun bitmapToFile(bitmap: Bitmap, context: Context): File {
     val myFile = createCustomTempFile(context)
-    try{
+    try {
         // Compress the bitmap and save in jpg format
-        val stream:OutputStream = FileOutputStream(myFile)
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream)
+        val stream: OutputStream = FileOutputStream(myFile)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
         stream.flush()
         stream.close()
-    }catch (e:IOException){
+    } catch (e: IOException) {
         e.printStackTrace()
     }
     return myFile

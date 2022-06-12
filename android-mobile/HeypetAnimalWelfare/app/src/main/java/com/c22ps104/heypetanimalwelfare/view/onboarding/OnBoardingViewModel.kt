@@ -32,14 +32,17 @@ class OnBoardingViewModel(application: Application) : AndroidViewModel(applicati
 
         retrofit.updateProfile("Bearer $token", bio, pet, reqBody).enqueue(object :
             Callback<UpdateProfileResponse> {
-            override fun onResponse(call: Call<UpdateProfileResponse>, response: Response<UpdateProfileResponse>) {
+            override fun onResponse(
+                call: Call<UpdateProfileResponse>,
+                response: Response<UpdateProfileResponse>
+            ) {
                 _isLoading.postValue(true)
 
                 if (response.isSuccessful) {
                     result.postValue("Success")
-                    Log.d("Register VM",response.message())
+                    Log.d("Register VM", response.message())
                 } else {
-                    Log.d("Register VM",response.message())
+                    Log.d("Register VM", response.message())
                 }
             }
 
@@ -50,6 +53,6 @@ class OnBoardingViewModel(application: Application) : AndroidViewModel(applicati
             }
         })
 
-    return result
+        return result
     }
 }

@@ -19,9 +19,9 @@ import java.util.*
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        val type = intent.getIntExtra(EXTRA_TYPE,0)
+        val type = intent.getIntExtra(EXTRA_TYPE, 0)
         val message = intent.getStringExtra(EXTRA_MESSAGE)
-        val id = intent.getIntExtra(EXTRA_ID,0)
+        val id = intent.getIntExtra(EXTRA_ID, 0)
 
         val title = if (type == 1) TYPE_ONE_TIME else TYPE_REPEATING
 
@@ -41,11 +41,17 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     // Method for notification
-    private fun showAlarmNotification(context: Context, title: String, message: String, notificationId: Int) {
+    private fun showAlarmNotification(
+        context: Context,
+        title: String,
+        message: String,
+        notificationId: Int
+    ) {
         val channelId = "Channel_1"
         val channelName = "AlarmManager channel"
 
-        val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManagerCompat =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.drawable.ic_baseline_access_time_24)
@@ -59,9 +65,11 @@ class AlarmReceiver : BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             // Create or update
-            val channel = NotificationChannel(channelId,
+            val channel = NotificationChannel(
+                channelId,
                 channelName,
-                NotificationManager.IMPORTANCE_DEFAULT)
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
 
             channel.enableVibration(true)
             channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
@@ -74,7 +82,7 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     // Method for one-time alarm
-    fun setOneTimeAlarm(context: Context, type: Int, date: Calendar, message: String, id:Int) {
+    fun setOneTimeAlarm(context: Context, type: Int, date: Calendar, message: String, id: Int) {
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
@@ -91,31 +99,42 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     // Method for repeating alarm
-    fun setRepeatingAlarm(context: Context, type: Int, date: Calendar, message: String, id:Int) {
+    fun setRepeatingAlarm(context: Context, type: Int, date: Calendar, message: String, id: Int) {
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
         intent.putExtra(EXTRA_TYPE, type)
-        intent.putExtra(EXTRA_ID,id)
+        intent.putExtra(EXTRA_ID, id)
 
         val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_IMMUTABLE)
         } else {
             TODO("VERSION.SDK_INT < M")
         }
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, date.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            date.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
     }
 
     // Use this method to check if the alarm is already registered in the alarm manager or not
     fun isAlarmSet(context: Context, type: String): Boolean {
         val intent = Intent(context, AlarmReceiver::class.java)
-        val requestCode = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
+        val requestCode =
+            if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
 
-        return PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_NO_CREATE) != null
+        return PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_NO_CREATE
+        ) != null
     }
 
-    fun cancelAlarm(context: Context, idReminder:Int) {
+    fun cancelAlarm(context: Context, idReminder: Int) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
 
@@ -130,7 +149,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
     // Method for Toast
     private fun showToast(context: Context, title: String, message: String?) {
-        if(message != null) Toast.makeText(context, "$title: $message", Toast.LENGTH_LONG).show()
+        if (message != null) Toast.makeText(context, "$title: $message", Toast.LENGTH_LONG).show()
         else Toast.makeText(context, title, Toast.LENGTH_LONG).show()
     }
 

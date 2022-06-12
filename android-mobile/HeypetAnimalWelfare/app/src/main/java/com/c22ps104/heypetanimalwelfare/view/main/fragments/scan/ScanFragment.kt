@@ -13,14 +13,10 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
 import com.c22ps104.heypetanimalwelfare.R
 import com.c22ps104.heypetanimalwelfare.api.ClassifyResponse
 import com.c22ps104.heypetanimalwelfare.databinding.FragmentScanBinding
 import com.c22ps104.heypetanimalwelfare.view.caretips.CaretipsActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -110,7 +106,7 @@ class ScanFragment : Fragment() {
     private fun setupView() {
         val intentToCareTips = Intent(requireContext(), CaretipsActivity::class.java)
         val defaultValue = "You Must Scan First"
-        var extraData = ClassifyResponse("","","","",defaultValue,"",0,"")
+        var extraData = ClassifyResponse("", "", "", "", defaultValue, "", 0, "")
 
         binding.btnScanCamera.setOnClickListener {
             cameraPermission.launch(android.Manifest.permission.CAMERA)

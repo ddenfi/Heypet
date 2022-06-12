@@ -17,13 +17,22 @@ class UploadViewModel : ViewModel() {
 
     private val retrofit: ApiService = ApiConfig.getApiService()
 
-    fun upload(token:String, category: RequestBody, photo: MultipartBody.Part, desc: RequestBody): LiveData<String> {
+    fun upload(
+        token: String,
+        category: RequestBody,
+        photo: MultipartBody.Part,
+        desc: RequestBody
+    ): LiveData<String> {
+
         val result = MutableLiveData<String>()
-        Log.d("Token",token)
+        Log.d("Token", token)
 
         retrofit.postFeed("Bearer $token", category, photo, desc).enqueue(object :
             Callback<PostFeedsResponse> {
-            override fun onResponse(call: Call<PostFeedsResponse>, response: Response<PostFeedsResponse>) {
+            override fun onResponse(
+                call: Call<PostFeedsResponse>,
+                response: Response<PostFeedsResponse>
+            ) {
                 val responseBody = response.body()
                 if (response.isSuccessful) {
                     result.postValue("Success")

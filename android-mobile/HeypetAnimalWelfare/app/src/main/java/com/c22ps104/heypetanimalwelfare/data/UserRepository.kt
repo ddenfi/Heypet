@@ -20,5 +20,5 @@ class UserRepository(application: Application) {
 
     suspend fun deleteAllReminder() = reminderDao.deleteAllReminder()
 
-    suspend fun deleteReminder(idReminder:Int) = reminderDao.deleteReminder(idReminder)
+    suspend fun deleteReminder(idReminder: Int) = reminderDao.deleteReminder(idReminder)
 }

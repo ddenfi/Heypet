@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
         binding.rvPosts.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPosts.adapter = adapter
 
-        adapter.setOnItemClickCallback(object : ListFeedsAdapter.OnItemClickCallback{
+        adapter.setOnItemClickCallback(object : ListFeedsAdapter.OnItemClickCallback {
             override fun onItemClicked(data: PostsItem) {
                 val toCommentSection = Intent(requireActivity(), CommentSectionActivity::class.java)
                 toCommentSection.putExtra("EXTRA_ID", data.idFeeds)

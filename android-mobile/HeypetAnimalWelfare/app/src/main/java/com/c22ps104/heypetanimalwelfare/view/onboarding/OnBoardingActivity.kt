@@ -14,7 +14,7 @@ import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity.Companion.EXT
 
 class OnBoardingActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityOnBoardingBinding
+    private lateinit var binding: ActivityOnBoardingBinding
     private val onBoardingViewModel: OnBoardingViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,8 @@ class OnBoardingActivity : AppCompatActivity() {
             if (token != null && name != null) {
                 onBoardingViewModel.updateProfile(token, bio, pet, photo).observe(this) {
                     val intentToLogin = Intent(this, LoginActivity::class.java)
-                    intentToLogin.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    intentToLogin.flags =
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intentToLogin)
                     finish()
                     Toast.makeText(application, "Update Profile $it", Toast.LENGTH_SHORT).show()

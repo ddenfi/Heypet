@@ -21,7 +21,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     val login: LiveData<LoginResponse> = _login
 
     fun login(email: String, password: String) {
-        Log.d("Form"," $email $password")
+        Log.d("Form", " $email $password")
 
         retrofit.login(email, password).enqueue(object :
             Callback<LoginResponse> {
@@ -30,7 +30,11 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                     _login.postValue(response.body())
                 } else {
                     Log.d("Login", response.body().toString())
-                    Toast.makeText(getApplication(), "Wrong username or password", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        getApplication(),
+                        "Wrong username or password",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 

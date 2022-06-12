@@ -57,7 +57,7 @@ class HomeViewModel : ViewModel() {
         retrofit.getCategorizedFeed(categoryId).enqueue(object :
             Callback<FeedsResponse> {
             override fun onResponse(call: Call<FeedsResponse>, response: Response<FeedsResponse>) {
-                Log.d("Feed url",call.request().url.toString())
+                Log.d("Feed url", call.request().url.toString())
                 _isLoading.postValue(false)
 
                 if (response.isSuccessful) {

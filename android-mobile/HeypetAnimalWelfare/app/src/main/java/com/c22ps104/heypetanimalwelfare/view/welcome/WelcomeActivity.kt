@@ -41,7 +41,7 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun checkLoginState() {
-        if(preferencesHelper.getBoolean(PREF_IS_LOGIN)) {
+        if (preferencesHelper.getBoolean(PREF_IS_LOGIN)) {
             val intentToMain = Intent(this@WelcomeActivity, MainActivity::class.java)
             intentToMain.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intentToMain)

@@ -15,10 +15,11 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.DialogDateListener,TimePickerFragment.DialogTimeListener {
+class ReminderAddOneTimeActivity : AppCompatActivity(), DatePickerFragment.DialogDateListener,
+    TimePickerFragment.DialogTimeListener {
 
-    private lateinit var binding:ActivityReminderAddOneTimeBinding
-    private val viewModel:ReminderAddOneTimeViewModel by viewModels()
+    private lateinit var binding: ActivityReminderAddOneTimeBinding
+    private val viewModel: ReminderAddOneTimeViewModel by viewModels()
     private val reminderSetCalendar = Calendar.getInstance()
     private lateinit var alarmReceiver: AlarmReceiver
 
@@ -38,12 +39,12 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
 
         binding.btnReminderRepeatingChooseDate.setOnClickListener {
             val dialogDate = DatePickerFragment()
-            dialogDate.show(supportFragmentManager,"RepeatingAlarmDate")
+            dialogDate.show(supportFragmentManager, "RepeatingAlarmDate")
         }
 
         binding.btnReminderRepeatingChooseTime.setOnClickListener {
             val dialogTime = TimePickerFragment()
-            dialogTime.show(supportFragmentManager,"RepeatingAlarmTime")
+            dialogTime.show(supportFragmentManager, "RepeatingAlarmTime")
         }
     }
 
@@ -59,10 +60,10 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if (id == R.id.menu_save){
+        if (id == R.id.menu_save) {
             saveReminder()
             finish()
-            Toast.makeText(applicationContext,"Reminder Saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Reminder Saved", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -74,7 +75,13 @@ class ReminderAddOneTimeActivity : AppCompatActivity(),DatePickerFragment.Dialog
         lifecycleScope.launch {
             viewModel.addReminder(reminder)
             viewModel.getLatestReminder().observe(this@ReminderAddOneTimeActivity) {
-                alarmReceiver.setOneTimeAlarm(this@ReminderAddOneTimeActivity,1, reminderSetCalendar, name, it.id)
+                alarmReceiver.setOneTimeAlarm(
+                    this@ReminderAddOneTimeActivity,
+                    1,
+                    reminderSetCalendar,
+                    name,
+                    it.id
+                )
             }
         }
     }

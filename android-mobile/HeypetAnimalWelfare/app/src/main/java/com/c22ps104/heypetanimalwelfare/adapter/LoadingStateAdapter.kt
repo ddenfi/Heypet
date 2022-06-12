@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.c22ps104.heypetanimalwelfare.databinding.ItemLoadingBinding
 
 class LoadingStateAdapter(private val retry: () -> Unit) :
-    LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>()
-{
+    LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -25,8 +24,7 @@ class LoadingStateAdapter(private val retry: () -> Unit) :
     }
 
     class LoadingStateViewHolder(private val binding: ItemLoadingBinding, retry: () -> Unit) :
-        RecyclerView.ViewHolder(binding.root)
-    {
+        RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.btnRetry.setOnClickListener { retry.invoke() }

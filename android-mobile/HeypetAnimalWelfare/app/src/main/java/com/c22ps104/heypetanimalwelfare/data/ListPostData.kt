@@ -8,8 +8,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = "post")
-data class ListPostData (
+data class ListPostData(
     @PrimaryKey
     @field:SerializedName("id")
     val id: String
-): Parcelable
+) : Parcelable

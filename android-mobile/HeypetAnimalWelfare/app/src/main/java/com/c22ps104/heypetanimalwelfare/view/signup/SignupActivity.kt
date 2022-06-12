@@ -29,13 +29,21 @@ class SignupActivity : AppCompatActivity() {
             val email = binding.etEmail.text.toString()
             val pass = binding.etPassword.text.toString()
             val name = binding.etUsername.text.toString()
-            signupViewModel.register(email = email, password = pass, name = name, bio = "", phoneNumber = "")
-            Log.d("registerFormAct","$name $email")
+
+            signupViewModel.register(
+                email = email,
+                password = pass,
+                name = name,
+                bio = "",
+                phoneNumber = ""
+            )
+
+            Log.d("registerFormAct", "$name $email")
         }
 
         signupViewModel.register.observe(this) {
-            if (it != null ) {
-                Toast.makeText(this,"Register Success",Toast.LENGTH_SHORT).show()
+            if (it != null) {
+                Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
 
                 val intentToOnBoarding = Intent(this@SignupActivity, OnBoardingActivity::class.java)
                 intentToOnBoarding.putExtra(EXTRA_TOKEN, it.data.token.accessToken)
@@ -49,6 +57,6 @@ class SignupActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_TOKEN = "EXTRA_TOKEN"
-        const val EXTRA_USERNAME ="EXTRA_USERNAME"
+        const val EXTRA_USERNAME = "EXTRA_USERNAME"
     }
 }

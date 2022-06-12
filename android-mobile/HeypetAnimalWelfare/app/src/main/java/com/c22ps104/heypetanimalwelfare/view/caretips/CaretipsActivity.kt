@@ -31,7 +31,7 @@ class CaretipsActivity : AppCompatActivity() {
         )
 
         if (extraData != null) {
-            with(binding){
+            with(binding) {
                 tvBreed.text = extraData.name
                 tvGrooming.text = extraData.grooming
                 tvHealth.text = extraData.health
@@ -39,10 +39,12 @@ class CaretipsActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnMoretips.setOnClickListener { extraData?.let { it1 -> searchGoogle(it1.name) } }
+        binding.btnMoretips.setOnClickListener {
+            extraData?.let { it1 -> searchGoogle(it1.name) }
+        }
     }
 
-    private fun searchGoogle(pet: String){
+    private fun searchGoogle(pet: String) {
         val url = "https://www.google.com/search?q=how+to+take+care+$pet"
         val intentGoogleSearch = Intent(Intent.ACTION_VIEW)
         intentGoogleSearch.data = Uri.parse(url)

@@ -14,4 +14,4 @@ data class ReminderEntity(
     val reminderType: Int,
     val reminderName: String,
     val reminderDate: Date
-):Parcelable
+) : Parcelable

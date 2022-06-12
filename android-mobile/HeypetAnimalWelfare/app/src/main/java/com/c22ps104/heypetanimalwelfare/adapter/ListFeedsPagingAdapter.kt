@@ -18,8 +18,7 @@ class ListFeedsPagingAdapter :
     }
 
     inner class ListViewHolder(private var binding: ItemProfilePostBinding) :
-        RecyclerView.ViewHolder(binding.root)
-    {
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(post: ListPostData) {
             // TODO
         }
@@ -34,7 +33,7 @@ class ListFeedsPagingAdapter :
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val item = getItem(position)
 
-        if(item != null) {
+        if (item != null) {
             holder.bind(item)
         }
 

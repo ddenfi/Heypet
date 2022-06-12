@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 class ApiConfig {
     companion object {
         fun getApiService(): ApiService {
-            val loggingInterceptor = if(BuildConfig.DEBUG) {
+            val loggingInterceptor = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             } else {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
@@ -29,16 +29,16 @@ class ApiConfig {
         }
 
         fun getApiServiceModel(): ApiService {
-            val loggingInterceptor = if(BuildConfig.DEBUG) {
+            val loggingInterceptor = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             } else {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
             }
 
             val client = OkHttpClient.Builder()
-                .readTimeout(15,TimeUnit.SECONDS)
-                .connectTimeout(60,TimeUnit.SECONDS)
-                .writeTimeout(15,TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
                 .addInterceptor(loggingInterceptor)
                 .build()
 

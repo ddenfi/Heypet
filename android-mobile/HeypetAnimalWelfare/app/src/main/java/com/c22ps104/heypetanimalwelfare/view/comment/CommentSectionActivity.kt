@@ -37,13 +37,13 @@ class CommentSectionActivity : AppCompatActivity() {
         val id = intent.getStringExtra("EXTRA_ID")
 
         if (id != null) {
-            Log.d("Call Firebase",id)
+            Log.d("Call Firebase", id)
             fireStoreListener(id)
             binding.btnSend.setOnClickListener {
                 insertFirestoreData(id)
             }
         } else {
-            Log.d("Call Firebase","null")
+            Log.d("Call Firebase", "null")
         }
 
         setRecyclerView()
@@ -93,10 +93,10 @@ class CommentSectionActivity : AppCompatActivity() {
     }
 
     private fun readFirestoreData(idFeed: String) {
-        Log.d("Firestore","Id Feed $idFeed")
+        Log.d("Firestore", "Id Feed $idFeed")
 
         db.collection("comments")
-            .whereEqualTo("idFeed",idFeed)
+            .whereEqualTo("idFeed", idFeed)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -108,23 +108,26 @@ class CommentSectionActivity : AppCompatActivity() {
                         comment.date = document.data.getValue("date").toString()
                         comment.idFeed = document.data.getValue("idFeed").toString()
 
-                        Log.d("Comment","${comment.name} ${comment.date} ${comment.comment} ${comment.idFeed}")
+                        Log.d(
+                            "Comment",
+                            "${comment.name} ${comment.date} ${comment.comment} ${comment.idFeed}"
+                        )
                         listComment.add(comment)
                     }
                     adapter.setData(listComment)
                 } else {
                     Log.w("Firestore", "Error getting documents.", task.exception)
                 }
-            }.addOnFailureListener{
-                Log.d("Firestore","Read Firestore error ${it.message}")
+            }.addOnFailureListener {
+                Log.d("Firestore", "Read Firestore error ${it.message}")
             }
     }
 
-    private fun insertFirestoreData(idFeed: String){
+    private fun insertFirestoreData(idFeed: String) {
         val userName = preferencesHelper.getString(PREF_USER_NAME)
         // Get Date
         val calendar = Calendar.getInstance()
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd-HH-mm",Locale.getDefault())
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.getDefault())
         val date = dateFormat.format(calendar.time).toString()
 
         // Get Comment
@@ -137,10 +140,10 @@ class CommentSectionActivity : AppCompatActivity() {
             "date" to date
         )
 
-        db.collection("comments").add(data).addOnSuccessListener{
-            Log.d("Comment","Success")
-        }.addOnFailureListener{
-            Log.d("Comment",it.toString())
+        db.collection("comments").add(data).addOnSuccessListener {
+            Log.d("Comment", "Success")
+        }.addOnFailureListener {
+            Log.d("Comment", it.toString())
         }
     }
 }

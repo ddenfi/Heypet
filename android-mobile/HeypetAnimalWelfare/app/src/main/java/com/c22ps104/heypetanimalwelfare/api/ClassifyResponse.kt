@@ -8,27 +8,27 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ClassifyResponse(
 
-	@field:SerializedName("createdAt")
-	val createdAt: String?,
+    @field:SerializedName("createdAt")
+    val createdAt: String?,
 
-	@field:SerializedName("personality")
-	val personality: String,
+    @field:SerializedName("personality")
+    val personality: String,
 
-	@field:SerializedName("animalType")
-	val animalType: String,
+    @field:SerializedName("animalType")
+    val animalType: String,
 
-	@field:SerializedName("grooming")
-	val grooming: String,
+    @field:SerializedName("grooming")
+    val grooming: String,
 
-	@field:SerializedName("name")
-	val name: String,
+    @field:SerializedName("name")
+    val name: String,
 
-	@field:SerializedName("health")
-	val health: String,
+    @field:SerializedName("health")
+    val health: String,
 
-	@field:SerializedName("id")
-	val id: Int,
+    @field:SerializedName("id")
+    val id: Int,
 
-	@field:SerializedName("updatedAt")
-	val updatedAt: String?
+    @field:SerializedName("updatedAt")
+    val updatedAt: String?
 ) : Parcelable

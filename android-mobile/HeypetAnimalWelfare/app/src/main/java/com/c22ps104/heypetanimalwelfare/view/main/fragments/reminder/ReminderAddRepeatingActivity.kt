@@ -15,10 +15,10 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ReminderAddRepeatingActivity : AppCompatActivity(),TimePickerFragment.DialogTimeListener {
+class ReminderAddRepeatingActivity : AppCompatActivity(), TimePickerFragment.DialogTimeListener {
 
     private lateinit var binding: ActivityReminderAddRepeatingBinding
-    private val viewModel:ReminderAddOneTimeViewModel by viewModels()
+    private val viewModel: ReminderAddOneTimeViewModel by viewModels()
     private val reminderSetCalendar = Calendar.getInstance()
     private lateinit var alarmReceiver: AlarmReceiver
 
@@ -38,7 +38,7 @@ class ReminderAddRepeatingActivity : AppCompatActivity(),TimePickerFragment.Dial
 
         binding.btnReminderRepeatingChooseTime.setOnClickListener {
             val dialogTime = TimePickerFragment()
-            dialogTime.show(supportFragmentManager,"RepeatingAlarmTime")
+            dialogTime.show(supportFragmentManager, "RepeatingAlarmTime")
         }
     }
 
@@ -54,22 +54,28 @@ class ReminderAddRepeatingActivity : AppCompatActivity(),TimePickerFragment.Dial
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if (id == R.id.menu_save){
+        if (id == R.id.menu_save) {
             saveReminder()
             finish()
-            Toast.makeText(applicationContext,"Reminder Saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Reminder Saved", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun saveReminder(){
+    private fun saveReminder() {
         val name = binding.etReminderRepeatingName.text.toString()
         val date = reminderSetCalendar.time
         val reminder = ReminderEntity(reminderDate = date, reminderName = name, reminderType = 2)
         lifecycleScope.launch {
             viewModel.addReminder(reminder)
             viewModel.getLatestReminder().observe(this@ReminderAddRepeatingActivity) {
-                alarmReceiver.setRepeatingAlarm(this@ReminderAddRepeatingActivity,2, reminderSetCalendar, name, it.id)
+                alarmReceiver.setRepeatingAlarm(
+                    this@ReminderAddRepeatingActivity,
+                    2,
+                    reminderSetCalendar,
+                    name,
+                    it.id
+                )
             }
         }
     }

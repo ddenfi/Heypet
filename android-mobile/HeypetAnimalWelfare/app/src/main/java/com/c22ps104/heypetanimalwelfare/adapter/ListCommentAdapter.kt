@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.c22ps104.heypetanimalwelfare.api.CommentModel
 import com.c22ps104.heypetanimalwelfare.databinding.ItemCommentBinding
-import kotlin.collections.ArrayList
 
-class ListCommentAdapter:RecyclerView.Adapter<ListCommentAdapter.ListViewHolder>() {
+class ListCommentAdapter : RecyclerView.Adapter<ListCommentAdapter.ListViewHolder>() {
 
     private val listComment: ArrayList<CommentModel> = ArrayList()
 

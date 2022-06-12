@@ -10,6 +10,7 @@ import com.c22ps104.heypetanimalwelfare.api.ClassifyResponse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,16 +26,18 @@ class ScanViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-
-    fun classify(file:File) {
-        val reqFile: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+    fun classify(file: File) {
+        val reqFile: RequestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
         val reqBody = MultipartBody.Part.createFormData("file", file.name, reqFile)
 
         _isLoading.postValue(true)
 
         retrofit.classify(reqBody).enqueue(object :
             Callback<ClassifyResponse> {
-            override fun onResponse(call: Call<ClassifyResponse>, response: Response<ClassifyResponse>) {
+            override fun onResponse(
+                call: Call<ClassifyResponse>,
+                response: Response<ClassifyResponse>
+            ) {
                 _isLoading.postValue(false)
                 if (response.isSuccessful) {
                     _classifyResult.postValue(response.body())

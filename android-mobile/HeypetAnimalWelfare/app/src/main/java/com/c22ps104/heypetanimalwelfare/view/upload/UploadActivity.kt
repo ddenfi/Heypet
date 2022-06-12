@@ -35,14 +35,14 @@ class UploadActivity : AppCompatActivity() {
     private val uploadViewModel: UploadViewModel by viewModels()
     private lateinit var preferencesHelper: PreferencesHelper
 
-    private lateinit var tempFile:File
+    private lateinit var tempFile: File
 
     private val takePicture =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == -1) {
                 val imageBitmap = it.data?.extras?.get("data") as Bitmap
 
-                Log.d("Upload Image","${imageBitmap.width} ${imageBitmap.height} ")
+                Log.d("Upload Image", "${imageBitmap.width} ${imageBitmap.height} ")
 
                 binding.ivUpload.setImageBitmap(cropBmp(imageBitmap))
 
@@ -106,7 +106,7 @@ class UploadActivity : AppCompatActivity() {
         val arrayAdapter = ArrayAdapter(this, R.layout.item_dropdown, category)
         binding.tvAutocompleteUpload.setAdapter(arrayAdapter)
 
-        binding.ivUploadCamera.setOnClickListener{
+        binding.ivUploadCamera.setOnClickListener {
             cameraPermission.launch(android.Manifest.permission.CAMERA)
         }
 
@@ -115,7 +115,8 @@ class UploadActivity : AppCompatActivity() {
         }
 
         binding.btnUpload.setOnClickListener {
-            val desc = binding.etUploadCaption.text.toString().toRequestBody("text/plain".toMediaType())
+            val desc =
+                binding.etUploadCaption.text.toString().toRequestBody("text/plain".toMediaType())
 
             val categoryId = when (binding.tvAutocompleteUpload.text.toString()) {
                 "Story" -> 1
@@ -137,15 +138,16 @@ class UploadActivity : AppCompatActivity() {
             val token = preferencesHelper.getString(PREF_TOKEN)
 
             if (token != null) {
-                uploadViewModel.upload(token, categorySelected, imageMultipart, desc).observe(this) {
-                    Toast.makeText(this,"Upload $it", Toast.LENGTH_SHORT).show()
+                uploadViewModel.upload(token, categorySelected, imageMultipart, desc)
+                    .observe(this) {
+                        Toast.makeText(this, "Upload $it", Toast.LENGTH_SHORT).show()
 
-                    if (it == "Success") {
-                        val intentToMain = Intent(this@UploadActivity, MainActivity::class.java)
-                        startActivity(intentToMain)
-                        finish()
+                        if (it == "Success") {
+                            val intentToMain = Intent(this@UploadActivity, MainActivity::class.java)
+                            startActivity(intentToMain)
+                            finish()
+                        }
                     }
-                }
             }
         }
     }

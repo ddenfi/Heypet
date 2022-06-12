@@ -10,7 +10,7 @@ import com.c22ps104.heypetanimalwelfare.data.ReminderEntity
 import com.c22ps104.heypetanimalwelfare.utils.DateConverter
 
 @Database(
-    entities = [ListPostData::class, RemoteKeys::class,ReminderEntity::class],
+    entities = [ListPostData::class, RemoteKeys::class, ReminderEntity::class],
     version = 1,
     exportSchema = false
 )

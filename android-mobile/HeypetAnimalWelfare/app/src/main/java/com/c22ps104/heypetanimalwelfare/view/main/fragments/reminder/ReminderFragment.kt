@@ -29,12 +29,32 @@ import kotlinx.coroutines.launch
 
 class ReminderFragment : Fragment() {
 
-    private val rotateOpen:Animation by lazy{ AnimationUtils.loadAnimation(requireContext(),R.anim.rotate_open_anim)}
-    private val rotateClose:Animation by lazy{ AnimationUtils.loadAnimation(requireContext(),R.anim.rotate_close_anim)}
-    private val fromBottom:Animation by lazy{ AnimationUtils.loadAnimation(requireContext(),R.anim.from_bottom_anim)}
-    private val toBottom:Animation by lazy{ AnimationUtils.loadAnimation(requireContext(),R.anim.to_bottom_anim)}
+    private val rotateOpen: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            requireContext(),
+            R.anim.rotate_open_anim
+        )
+    }
+    private val rotateClose: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            requireContext(),
+            R.anim.rotate_close_anim
+        )
+    }
+    private val fromBottom: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            requireContext(),
+            R.anim.from_bottom_anim
+        )
+    }
+    private val toBottom: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            requireContext(),
+            R.anim.to_bottom_anim
+        )
+    }
 
-    private lateinit var reminderBroadcast:AlarmReceiver
+    private lateinit var reminderBroadcast: AlarmReceiver
 
     private var clicked = false
 
@@ -44,7 +64,7 @@ class ReminderFragment : Fragment() {
         ListReminderAdapter()
     }
 
-    private val viewModel:ReminderViewModel by viewModels()
+    private val viewModel: ReminderViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -60,6 +80,20 @@ class ReminderFragment : Fragment() {
 
         reminderBroadcast = AlarmReceiver()
 
+        setupView()
+
+        viewModel.getAllReminder().observe(requireActivity()) {
+            adapter.setData(it)
+        }
+
+        activity?.registerReceiver(broadcastReceiver, IntentFilter("REMINDER_BROADCAST"))
+
+        setRecyclerView()
+
+        return binding.root
+    }
+
+    private fun setupView() {
         binding.fabReminderAdd.setOnClickListener {
             onAddButtonClicked()
         }
@@ -71,25 +105,16 @@ class ReminderFragment : Fragment() {
         binding.fabReminderAddRepeating.setOnClickListener {
             startActivity(Intent(activity, ReminderAddRepeatingActivity::class.java))
         }
-
-        viewModel.getAllReminder().observe(requireActivity()){
-            adapter.setData(it)
-        }
-
-        activity?.registerReceiver(broadcastReceiver, IntentFilter("REMINDER_BROADCAST"))
-
-        setRecyclerView()
-        return binding.root
     }
 
-    var broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+    private var broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            val id = intent.getIntExtra(EXTRA_ID,0)
-            val type = intent.getIntExtra(EXTRA_TYPE,0)
+            val id = intent.getIntExtra(EXTRA_ID, 0)
+            val type = intent.getIntExtra(EXTRA_TYPE, 0)
 
-            if (id != 0 && type != 2){
-                Log.d("Reminder","Delete Success")
-                lifecycleScope.launch(Dispatchers.IO){
+            if (id != 0 && type != 2) {
+                Log.d("Reminder", "Delete Success")
+                lifecycleScope.launch(Dispatchers.IO) {
                     viewModel.deleteReminder(id)
                 }
             }
@@ -101,11 +126,12 @@ class ReminderFragment : Fragment() {
         binding.rvReminder.layoutManager = LinearLayoutManager(requireContext())
         binding.rvReminder.adapter = adapter
 
-        adapter.setOnItemClickCallback(object : ListReminderAdapter.OnItemClickCallback{
+        adapter.setOnItemClickCallback(object : ListReminderAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ReminderEntity) {
-                lifecycleScope.launch{viewModel.deleteReminder(data.id)}
-                context?.let { reminderBroadcast.cancelAlarm(it,data.id) }
-                Toast.makeText(context,"Reminder ${data.reminderName} deleted",Toast.LENGTH_SHORT).show()
+                lifecycleScope.launch { viewModel.deleteReminder(data.id) }
+                context?.let { reminderBroadcast.cancelAlarm(it, data.id) }
+                Toast.makeText(context, "Reminder ${data.reminderName} deleted", Toast.LENGTH_SHORT)
+                    .show()
             }
         })
     }
@@ -113,8 +139,11 @@ class ReminderFragment : Fragment() {
     override fun onPause() {
         lifecycleScope.launch {
             delay(100L)
-            if (clicked) { onAddButtonClicked()}
+            if (clicked) {
+                onAddButtonClicked()
+            }
         }
+
         super.onPause()
     }
 
@@ -124,20 +153,20 @@ class ReminderFragment : Fragment() {
         clicked = !clicked
     }
 
-    private fun setAnimation(clicked:Boolean) {
+    private fun setAnimation(clicked: Boolean) {
         if (!clicked) {
             binding.fabReminderAdd.startAnimation(rotateOpen)
             binding.fabReminderAddOne.startAnimation(fromBottom)
             binding.fabReminderAddRepeating.startAnimation(fromBottom)
-        } else  {
+        } else {
             binding.fabReminderAdd.startAnimation(rotateClose)
             binding.fabReminderAddOne.startAnimation(toBottom)
             binding.fabReminderAddRepeating.startAnimation(toBottom)
         }
     }
 
-    private fun setVisibility(clicked:Boolean) {
-        if(!clicked){
+    private fun setVisibility(clicked: Boolean) {
+        if (!clicked) {
             binding.fabReminderAddOne.visibility = View.VISIBLE
             binding.fabReminderAddRepeating.visibility = View.VISIBLE
         } else {
@@ -146,14 +175,13 @@ class ReminderFragment : Fragment() {
         }
     }
 
-
-    override fun onDestroy() {
-        activity?.unregisterReceiver(broadcastReceiver)
-        super.onDestroy()
-    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+    override fun onDestroy() {
+        activity?.unregisterReceiver(broadcastReceiver)
+        super.onDestroy()
+    }
 }

@@ -28,16 +28,16 @@ interface ApiService {
     @Multipart
     @POST("predict")
     fun classify(
-        @Part file:MultipartBody.Part
+        @Part file: MultipartBody.Part
     ): Call<ClassifyResponse>
 
     @Multipart
     @POST("posts/feed")
     fun postFeed(
         @Header("Authorization") token: String,
-        @Part ("categoryId") categoryId: RequestBody,
+        @Part("categoryId") categoryId: RequestBody,
         @Part photo: MultipartBody.Part,
-        @Part ("description") desc: RequestBody
+        @Part("description") desc: RequestBody
     ): Call<PostFeedsResponse>
 
     @GET("posts")
@@ -46,15 +46,15 @@ interface ApiService {
 
     @GET("posts/category/{categorizedId}")
     fun getCategorizedFeed(
-        @Path ("categorizedId") categorizedId: String
+        @Path("categorizedId") categorizedId: String
     ): Call<FeedsResponse>
 
     @PUT("users/session/profile")
     fun updateProfile(
         @Header("Authorization") token: String,
-        @Part("pet") pet:String,
-        @Part("bio") bio:String,
-        @Part photo:MultipartBody.Part
+        @Part("pet") pet: String,
+        @Part("bio") bio: String,
+        @Part photo: MultipartBody.Part
     ): Call<UpdateProfileResponse>
 
 }

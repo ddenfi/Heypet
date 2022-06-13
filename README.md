@@ -1,15 +1,15 @@
-# HEYPET (The Animal Welfare Sector's Community Platform which Facilitates Interaction between Pet Owners) - Bangkit Capstone Project  Product Based 
+# HEYPET (The Animal Welfare Sector's Community Platform which Facilitates Interaction between Pet Owners) - Bangkit 2022 Product-Based Capstone Project
 
 # Profile
-Team ID: C22-PS104 
+## Team ID: C22-PS104 
 
-Selected theme: Human Healthcare & Animal Welfare
+## Selected theme: Human Healthcare & Animal Welfare
 
-Mentor: 
+## Mentor: 
 1. Andrew Tjanadi - B22M-140
 2. Sidiq Permana - B22M-064
 
-Team Member: 
+## Team Member: 
 1. M7211G1945 - Anggiat Dwi Prayoga - Universitas Indraprasta PGRI - ML [active]
 2. M7283H2430 - Insyiraah Oxaichiko Arissinta - Universitas Negeri Semarang - ML
 3. A2200F1860 - Deki Nur Fitrian - Universitas Diponegoro - MD

@@ -38,7 +38,7 @@ def index():
         img = Image.open(io.BytesIO(image_bytes))
         img = img.resize((299, 299), Image.NEAREST)
         p = predict_label(img)
-        res = requests.get("http://34.121.253.2:5001/api/v1/animals/key/name?name={}".format(p))
+        res = requests.get("https://heypetpetpet-2326mg2rrq-uc.a.run.app/api/v1/animals/key/name?name={}".format(p))
     return res.json()
 
 

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toBitmap
 import com.c22ps104.heypetanimalwelfare.databinding.ActivityOnBoardingBinding
 import com.c22ps104.heypetanimalwelfare.utils.bitmapToFile
+import com.c22ps104.heypetanimalwelfare.view.login.LoginActivity
 import com.c22ps104.heypetanimalwelfare.view.main.MainActivity
 import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity.Companion.EXTRA_TOKEN
 import com.c22ps104.heypetanimalwelfare.view.signup.SignupActivity.Companion.EXTRA_USERNAME
@@ -50,10 +51,10 @@ class OnBoardingActivity : AppCompatActivity() {
 
             if (token != null && name != null) {
                 onBoardingViewModel.updateProfile(token, pet, bio, photo).observe(this) {
-                    val intentToMain = Intent(this, MainActivity::class.java)
-                    intentToMain.flags =
+                    val intentToLogin = Intent(this, LoginActivity::class.java)
+                    intentToLogin.flags =
                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intentToMain)
+                    startActivity(intentToLogin)
                     finish()
                     Toast.makeText(application, "Profile Setup $it", Toast.LENGTH_SHORT).show()
                 }

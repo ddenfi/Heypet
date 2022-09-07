@@ -26,6 +26,8 @@ class CaretipsActivity : AppCompatActivity() {
     }
 
     private fun setupView(extraPhoto: ByteArray?, extraData: ClassifyResponse?) {
+        supportActionBar?.title = extraData?.name
+
         if (extraPhoto != null) binding.ivPictureTaken.setImageBitmap(
             BitmapFactory.decodeByteArray(
                 extraPhoto,

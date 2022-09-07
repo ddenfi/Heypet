@@ -70,8 +70,8 @@ class UploadActivity : AppCompatActivity() {
     private val cameraPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                takePicture.launch(intent)
+                val intentCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                takePicture.launch(intentCamera)
             } else {
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
             }
@@ -174,7 +174,6 @@ class UploadActivity : AppCompatActivity() {
 
         return file
     }
-
 
     private fun cropBmp(bitmap: Bitmap): Bitmap {
         val dimension = min(bitmap.width, bitmap.height)

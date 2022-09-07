@@ -52,6 +52,16 @@ class ProfileFragment : Fragment() {
             profileViewModel.getUserDetail(token)
         }
 
+        /*
+            TODO("ProfileFragment: may require fix to enable profile picture update")
+
+            Kemungkinan method setImageResource dan Glide.placeholder ini
+                membuat profile picture-nya ga ke-update sesuai dengan yang ada di API.
+
+            Baca lebih lanjut di halaman EditProfileActivity.kt.
+
+         */
+
         binding.imgProfilePicture.setImageResource(R.drawable.default_photo_profile)
 
         profileViewModel.userDetails.observe(viewLifecycleOwner) {

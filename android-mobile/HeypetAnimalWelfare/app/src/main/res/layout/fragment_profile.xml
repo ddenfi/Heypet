@@ -54,8 +54,8 @@
             <TextView
                 android:id="@+id/tv_profile_posts"
                 style="@style/Text.Light"
-                android:alpha="0"
                 android:text="@string/posts"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/img_profile_picture"
                 app:layout_constraintStart_toStartOf="@id/tv_profile_name" />
 
@@ -63,8 +63,8 @@
                 android:id="@+id/tv_posts_number"
                 style="@style/Text.Medium"
                 android:layout_marginBottom="2dp"
-                android:alpha="0"
                 android:text="@string/_20"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/tv_profile_posts"
                 app:layout_constraintEnd_toEndOf="@id/tv_profile_posts"
                 app:layout_constraintStart_toStartOf="@id/tv_profile_posts" />
@@ -73,8 +73,8 @@
                 android:id="@+id/tv_profile_followers"
                 style="@style/Text.Light"
                 android:layout_marginStart="16dp"
-                android:alpha="0"
                 android:text="@string/followers"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts"
                 app:layout_constraintStart_toEndOf="@id/tv_profile_posts"
                 app:layout_constraintTop_toTopOf="@id/tv_profile_posts" />
@@ -83,8 +83,8 @@
                 android:id="@+id/tv_followers_number"
                 style="@style/Text.Medium"
                 android:layout_marginBottom="2dp"
-                android:alpha="0"
                 android:text="@string/_20"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/tv_profile_followers"
                 app:layout_constraintEnd_toEndOf="@id/tv_profile_followers"
                 app:layout_constraintStart_toStartOf="@id/tv_profile_followers" />
@@ -93,8 +93,8 @@
                 android:id="@+id/tv_profile_following"
                 style="@style/Text.Light"
                 android:layout_marginStart="16dp"
-                android:alpha="0"
                 android:text="@string/following"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/tv_profile_posts"
                 app:layout_constraintStart_toEndOf="@id/tv_profile_followers"
                 app:layout_constraintTop_toTopOf="@id/tv_profile_posts" />
@@ -103,8 +103,8 @@
                 android:id="@+id/tv_following_number"
                 style="@style/Text.Medium"
                 android:layout_marginBottom="2dp"
-                android:alpha="0"
                 android:text="@string/_20"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/tv_profile_following"
                 app:layout_constraintEnd_toEndOf="@id/tv_profile_following"
                 app:layout_constraintStart_toStartOf="@id/tv_profile_following" />
@@ -113,7 +113,6 @@
                 android:id="@+id/tv_profile_bio"
                 style="@style/Text"
                 android:layout_marginTop="4dp"
-                android:alpha="1"
                 android:text="@string/profile_fullname"
                 android:textColor="@color/grey_dark_description"
                 android:textSize="13sp"
@@ -125,7 +124,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="8dp"
-                android:alpha="1"
                 android:contentDescription="@string/cd_pet_type"
                 android:src="@drawable/icon_cat"
                 app:layout_constraintStart_toStartOf="@id/tv_profile_bio"
@@ -135,7 +133,6 @@
                 android:id="@+id/tv_pet_name"
                 style="@style/Text.Medium.PetDetails"
                 android:layout_marginStart="12dp"
-                android:alpha="1"
                 android:text="@string/pet_name"
                 app:layout_constraintBottom_toBottomOf="@id/img_pet_type"
                 app:layout_constraintStart_toEndOf="@id/img_pet_type"
@@ -145,8 +142,8 @@
             <TextView
                 android:id="@+id/tv_pet_dash"
                 style="@style/Text.Medium.PetDetails"
-                android:alpha="0"
                 android:text="@string/pet_dash"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/img_pet_type"
                 app:layout_constraintStart_toEndOf="@id/tv_pet_name"
                 app:layout_constraintTop_toTopOf="@id/img_pet_type" />
@@ -154,8 +151,8 @@
             <TextView
                 android:id="@+id/tv_pet_breed"
                 style="@style/Text.Medium.PetDetails"
-                android:alpha="0"
                 android:text="@string/pet_breed"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/img_pet_type"
                 app:layout_constraintStart_toEndOf="@id/tv_pet_dash"
                 app:layout_constraintTop_toTopOf="@id/img_pet_type" />
@@ -167,9 +164,9 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                android:alpha="0"
                 android:maxLines="2"
                 android:text="@string/lorem_ipsum"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/img_pet_type"
                 app:layout_constraintTop_toBottomOf="@id/img_pet_type" />
@@ -201,7 +198,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="9dp"
+        android:layout_height="12dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

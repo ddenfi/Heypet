@@ -138,9 +138,9 @@
         android:id="@+id/tv_or"
         style="@style/Text"
         android:layout_marginTop="16dp"
-        android:alpha="0"
         android:text="@string/or"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/til_email"
         app:layout_constraintStart_toStartOf="@id/til_email"
         app:layout_constraintTop_toBottomOf="@id/btn_signup" />
@@ -149,9 +149,9 @@
         android:id="@+id/btn_google"
         style="@style/AlternativeLoginButton"
         android:layout_marginTop="16dp"
-        android:alpha="0"
         android:contentDescription="@string/cd_google_login"
         android:src="@drawable/button_google"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/til_username"
         app:layout_constraintStart_toStartOf="@id/til_username"
         app:layout_constraintTop_toBottomOf="@id/tv_or" />
@@ -160,9 +160,9 @@
         android:id="@+id/btn_facebook"
         style="@style/AlternativeLoginButton"
         android:layout_marginEnd="32dp"
-        android:alpha="0"
         android:contentDescription="@string/cd_facebook_login"
         android:src="@drawable/button_facebook"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/btn_google"
         app:layout_constraintEnd_toStartOf="@id/btn_google"
         app:layout_constraintTop_toTopOf="@id/btn_google" />
@@ -171,9 +171,9 @@
         android:id="@+id/btn_apple"
         style="@style/AlternativeLoginButton"
         android:layout_marginStart="32dp"
-        android:alpha="0"
         android:contentDescription="@string/cd_apple_login"
         android:src="@drawable/button_apple"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/btn_google"
         app:layout_constraintStart_toEndOf="@id/btn_google"
         app:layout_constraintTop_toTopOf="@id/btn_google" />

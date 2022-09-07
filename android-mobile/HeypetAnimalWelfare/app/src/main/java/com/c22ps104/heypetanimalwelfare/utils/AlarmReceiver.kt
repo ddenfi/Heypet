@@ -155,7 +155,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
     companion object {
         const val TYPE_ONE_TIME = "Heypet One Time Reminder"
-        const val TYPE_REPEATING = "Heypet Everyday Reminder"
+        const val TYPE_REPEATING = "Heypet Daily Reminder"
 
         const val EXTRA_MESSAGE = "message"
         const val EXTRA_TYPE = "type"

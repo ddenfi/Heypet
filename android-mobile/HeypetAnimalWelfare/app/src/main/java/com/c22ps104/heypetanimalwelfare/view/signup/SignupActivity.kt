@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.c22ps104.heypetanimalwelfare.data.PreferencesHelper
 import com.c22ps104.heypetanimalwelfare.databinding.ActivitySignupBinding
 import com.c22ps104.heypetanimalwelfare.view.onboarding.OnBoardingActivity
 
@@ -12,11 +13,14 @@ class SignupActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding
     private val signupViewModel: SignupViewModel by viewModels()
+    private lateinit var preferencesHelper: PreferencesHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        preferencesHelper = PreferencesHelper(this)
 
         setupView()
     }
@@ -40,6 +44,12 @@ class SignupActivity : AppCompatActivity() {
 
         signupViewModel.register.observe(this) {
             if (it != null) {
+                saveSession(
+                    it.data.token.accessToken,
+                    it.data.user.id.toString(),
+                    it.data.user.name
+                )
+
                 Toast.makeText(this, "Registration Success", Toast.LENGTH_SHORT).show()
 
                 val intentToOnBoarding = Intent(this@SignupActivity, OnBoardingActivity::class.java)
@@ -50,6 +60,13 @@ class SignupActivity : AppCompatActivity() {
                 RESULT_OK
             }
         }
+    }
+
+    private fun saveSession(accessToken: String, userId: String, userName: String) {
+        preferencesHelper.putString(PreferencesHelper.PREF_TOKEN, accessToken)
+        preferencesHelper.putString(PreferencesHelper.PREF_ID, userId)
+        preferencesHelper.putBoolean(PreferencesHelper.PREF_IS_LOGIN, true)
+        preferencesHelper.putString(PreferencesHelper.PREF_USER_NAME, userName)
     }
 
     companion object {

@@ -1,13 +1,14 @@
-# HEYPET (The Animal Welfare Sector's Community Platform which Facilitates Interaction between Pet Owners) - Bangkit 2022 Product-Based Capstone Project
+# HEYPET (The Animal Welfare Sector's Community Platform which Facilitates Interaction between Pet Owners) - Bangkit 2022 Product-Based Capstone Project - Top 53 Presentation
 
 # Profile
 ## Team ID: C22-PS104 
 
 ## Selected theme: Human Healthcare & Animal Welfare
 
-## Scrrenshot
+## Demo App
 
-<iframe src="https://drive.google.com/file/d/1lyFrvbqyqDMSMh3kvPMtX984h_KePXFD/preview" size="200" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/15smySVUsi_nLO4o33QSUd9k9jW-tCAxh/preview" width="640" height="480" allow="autoplay"></iframe>
+
 
 ## Mentor: 
 1. Andrew Tjanadi - B22M-140

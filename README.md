@@ -7,7 +7,8 @@
 
 ## Demo App
 
-<iframe src="https://drive.google.com/file/d/15smySVUsi_nLO4o33QSUd9k9jW-tCAxh/preview" width="640" height="480" allow="autoplay"></iframe>
+https://user-images.githubusercontent.com/99384080/226514771-b9419e9b-f7dc-49f3-9f76-b9248fbc4da3.mp4
+
 
 
 ## Mentor: 

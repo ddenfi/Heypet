@@ -5,6 +5,10 @@
 
 ## Selected theme: Human Healthcare & Animal Welfare
 
+## Scrrenshot
+
+<iframe src="https://drive.google.com/file/d/1lyFrvbqyqDMSMh3kvPMtX984h_KePXFD/preview" size="200" allow="autoplay"></iframe>
+
 ## Mentor: 
 1. Andrew Tjanadi - B22M-140
 2. Sidiq Permana - B22M-064
